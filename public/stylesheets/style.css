@@ -2,7 +2,9 @@
 body {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  background-color: #e6ecf0;
+  background: #dae2f8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #d6a4a4, #dae2f8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #d6a4a4, #dae2f8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* Custom page header */
@@ -26,10 +28,6 @@ body {
 
 }
 
-/* Custom page footer */
-.footer {
-
-}
 
 /* Main marketing message and sign up button */
 .jumbotron {
