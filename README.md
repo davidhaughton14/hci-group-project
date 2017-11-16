@@ -6,3 +6,7 @@
 
 ## Installation Instructions
 * npm install 
+
+## Run app
+* npm app
+..* Go to localhost:3000
