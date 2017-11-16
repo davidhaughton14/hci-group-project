@@ -1,0 +1,60 @@
+.form-register {
+  padding: 20px;
+  margin: 0 auto;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  width: 50%;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  padding-bottom: 50px;
+}
+
+.register-option {
+    padding:20px;
+    margin: 0 auto;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    width: 50%;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+}
+
+.alert{
+    margin: 0 auto;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.register-option p {
+    margin-bottom: 0;
+}
+
+.form-register-heading {
+    padding-bottom: 15px;
+}
+
+.form-register .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-register input{
+    border-radius: 5px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #d0d0d0;
+}
+
+.form-register button{
+    border-radius: 5px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.heading-container{
+    margin-bottom: 30px;
+}
