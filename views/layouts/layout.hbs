@@ -3,28 +3,29 @@
     <head>
         <meta charset="utf-8">
         <title>{{ title }}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/stylesheets/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/stylesheets/login.css">
         <link rel="stylesheet" href="/stylesheets/animate.css">
         <link rel="stylesheet" href="/stylesheets/hover.css">
+        <link rel="stylesheet" href="/stylesheets/nav.css">
     </head>
     <body>
         <div class="container">
-            {{#if user}}
-                <header class="header clearfix">
-                    <nav>
-                        <ul class="nav nav-pills float-right">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <h3 class="text-muted">Happy Helper <i class="fa fa-smile-o"></i></h3>
-                </header>
-            {{/if}}
-
+            <div class="text-center" id="nav-wrapper">
+                <h1 id="title"> HappyHelper <i class="fa fa-sun-o" aria-hidden="true"></i></h1>
+                <nav id="nav" class="navbar" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li id="first"><a href="/">DASHBOARD</a></li>
+                        <li><a href="/habits">HABITS</a></li>
+                        <li><a href="/meetups">MEETUPS</a></li>
+                        <li id="last"><a href="/recomendations">RECOMENDATIONS</a></li>
+                    </ul>
+                </nav>
+            </div>
             <main role="main">
                 <div class="row ">
                     <div class="col-md-12">
@@ -35,6 +36,5 @@
 
         </div>
     </body>
-    <!-- Javascript files -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</html>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
