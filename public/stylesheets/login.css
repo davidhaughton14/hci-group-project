@@ -7,6 +7,7 @@
   margin-bottom: 1.5rem;
   background-color: #fff;
   padding-bottom: 50px;
+  box-shadow: 0 0 25px grey;
 }
 
 .register-option {
@@ -17,6 +18,7 @@
     width: 50%;
     margin-bottom: 1.5rem;
     background-color: #fff;
+    box-shadow: 0 0 25px grey;
 }
 
 .alert{
@@ -59,4 +61,13 @@
 
 .heading-container{
     margin-bottom: 30px;
+}
+
+.motto{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.title{
+    margin-bottom: 5px;
 }
