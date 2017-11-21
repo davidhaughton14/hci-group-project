@@ -14,6 +14,12 @@ router.get('/dashboard', function(req, res, next) {
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
+/* GET habits page. */
+router.get('/habits', function(req, res, next) {
+    res.render('habits', { title: 'HappyHelper - Habits' });
+});
+
+
 passport.use(new LocalStrategy(function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
         if(err) throw err;
