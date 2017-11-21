@@ -133,12 +133,15 @@
     margin-top: 5px;
 }
 
-
-#happyRange{
-    width: 75%;
-    margin: 0 auto;
+.slider.slider-horizontal{
+  width:75%; /* sample value - set it as you like*/
+  display: block;
+  margin:0 auto;
 }
 
+.slider-tick-label{
+    margin-top: 20px;
+}
 #feeling-wrap{
     padding-bottom: 20px;
 }
@@ -155,4 +158,8 @@
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
 }
