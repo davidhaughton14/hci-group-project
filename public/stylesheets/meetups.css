@@ -122,3 +122,10 @@ div.panel {
     display: block;
     margin: 0 auto;
 }
+
+.your-meetups-wrap{
+    border: 1px solid black;
+    margin-bottom: 40px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+}
