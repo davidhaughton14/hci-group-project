@@ -1,0 +1,7 @@
+.nearby-wrap{
+    border:1px solid black;
+    background-color: white;
+    padding-bottom: 20px;
+    box-shadow: 0 0 25px grey;
+    height: 100px;
+}
