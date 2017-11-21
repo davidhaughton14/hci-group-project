@@ -12,8 +12,19 @@
     </nav>
 
     <div class="content">
-    	<p>Name:{{habit.name}}</p>
+    	<div class="row">
+    		<div class="col-md-2">
+    			<a href="/habits"><h5><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to all habits</h5></a>
+    		</div>
 
-    	<a href="{{habit.url}}/delete"> Delete habit </a>
+    		<div class="col-md-8">
+    			<h1>{{habit.name}}</h1>
+    		</div>
+
+    		<div class="col-md-2">
+    		<a href="{{habit.url}}/delete"><h5>Delete habit</h5></a>
+    		</div>
+    	</div>
+    	
     </div>
 </div>
