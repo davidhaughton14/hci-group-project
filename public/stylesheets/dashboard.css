@@ -117,3 +117,20 @@
     width: 200px;
     height: 150px;
 }
+
+#feelingLabel{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#feeling-heading-wrap{
+    width: 75%;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+}
+
+#happyRange{
+    width: 75%;
+    margin: 0 auto;
+}
