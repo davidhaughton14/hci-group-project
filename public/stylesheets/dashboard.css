@@ -4,7 +4,6 @@
 }
 
 .step-wrap{
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -16,8 +15,14 @@
 
 #stepCount{
     font-size: 15px;
-    margin-bottom: 5px;
-    /*float:right;*/
+    margin-bottom: 0;
+}
+
+#step-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
 }
 
 .diary-wrap{
