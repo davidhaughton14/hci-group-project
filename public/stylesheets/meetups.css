@@ -48,3 +48,60 @@ div.panel {
     margin: 0 auto;
     margin-top: 10px;
 }
+
+
+.container-3{
+    margin-top: 80px;
+    width: 75%;
+    left: 12.5%;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+.container-3 input#search-box{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #262626;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: black;
+    box-shadow: 0 0 10px #585a5a;
+}
+
+.container-3 input#search-box::-webkit-input-placeholder {
+   color: #65737e;
+}
+
+.container-3 .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 14px;
+    z-index: 1;
+    color: #4f5b66;
+    transition: all .55s ease;
+}
+
+/* ANIMATION EFFECTS */
+.container-3:hover .icon{
+    color: #585a5a;
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
+}
+
+.button-wrapper{
+    margin-top: 25px;
+}
+
+#search{
+    width: 200px;
+    margin: 0 auto;
+    height: 45px;
+    border: 1.1px solid #585a5a;
+}
