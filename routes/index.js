@@ -19,6 +19,11 @@ router.get('/habits', function(req, res, next) {
     res.render('habits', { title: 'HappyHelper - Habits' });
 });*/
 
+/* GET meetups page. */
+router.get('/meetups', function(req, res, next) {
+    res.render('meetups', { title: 'HappyHelper - Meetups' });
+});
+
 
 passport.use(new LocalStrategy(function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
