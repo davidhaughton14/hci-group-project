@@ -1,0 +1,17 @@
+.summary-wrap{
+    border:1px solid black;
+    background-color: white;
+}
+
+.diary-wrap{
+    border:1px solid black;
+    background-color: white;
+}
+
+.heading{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
