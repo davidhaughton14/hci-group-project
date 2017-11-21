@@ -12,8 +12,18 @@
     </nav>
 
     <div class="content">
-    	<p>Name:{{habit.name}}</p>
+    	<form method="POST" action="">
+			<div class="form-group">
+			{{habit.name}}
+			<input name="habitid" class="form-control" type="hidden" value="{{habit._id}}">
 
-    	<a href="{{habit.url}}/delete"> Delete habit </a>
+			<button class="btn btn-danger" type="submit">Delete</button>
+
+			</div>
+		</form>
     </div>
 </div>
+
+
+
+

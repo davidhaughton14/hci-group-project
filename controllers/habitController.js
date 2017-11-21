@@ -81,12 +81,39 @@ exports.habit_create_post = function(req, res) {
 
 // Display Habit delete form on GET
 exports.habit_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Habit delete GET');
+     async.parallel({
+    habit: function(callback) {     
+      Habit.findById(req.params.id)
+        .exec(callback);
+    },
+
+  }, function(err, results) {
+    if (err) { return next(err); }
+    //Successful, so render
+    res.render('habit_delete', { title: 'Delete Habit', habit: results.habit });
+  });
 };
 
 // Handle Habit delete on POST
 exports.habit_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Habit delete POST');
+    req.checkBody('habitid', 'Habit id must exist').notEmpty();  
+    
+    async.parallel({
+        author: function(callback) {     
+            Habit.findById(req.body.habitid).exec(callback);
+        }
+    }, function(err, results) {
+        if (err) { return next(err); }
+        //Success   
+
+            Habit.findByIdAndRemove(req.body.habitid, function deleteHabit(err) {
+                if (err) { return next(err); }
+                //Success - goto habit list
+                res.redirect('/habits');
+            });
+
+        
+    });
 };
 
 // Display Habit update form on GET
