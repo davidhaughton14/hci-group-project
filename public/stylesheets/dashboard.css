@@ -123,14 +123,33 @@
     margin-bottom: 0;
 }
 
-#feeling-heading-wrap{
+.box-wrap{
     width: 75%;
     display: block;
     margin:0 auto;
-    margin-top: 15px;
+    margin-top: 5px;
 }
+
 
 #happyRange{
     width: 75%;
     margin: 0 auto;
+}
+
+#feeling-wrap{
+    padding-bottom: 20px;
+}
+
+#happy-comments{
+    width: 75%;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+#save{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
