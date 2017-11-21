@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost/credcheck', {
 var db = mongoose.connection;
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var catalog = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 // Init App
 var app = express();
@@ -83,6 +84,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/catalog', catalog);  // Add catalog routes to middleware chain.
 
 // Set Port
 app.set('port', (process.env.PORT || 3005));
