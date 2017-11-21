@@ -3,10 +3,6 @@
     background-color: white;
 }
 
-.step-wrap{
-    margin-bottom: 20px;
-}
-
 #steps-progress{
     display: block;
     margin: 0 auto;
@@ -42,6 +38,28 @@
     margin:0 auto;
     margin-top: 15px;
 }
+
+#bpCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#bp-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.big-text{
+    font-size: 16px;
+}
+
+.bp-rating{
+    padding-left: 20px;
+}
+
 
 .diary-wrap{
     border:1px solid black;
