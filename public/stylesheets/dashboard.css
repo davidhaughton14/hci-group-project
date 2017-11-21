@@ -54,6 +54,7 @@
     display: block;
     margin:0 auto;
     margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 #vitDCount{
@@ -66,7 +67,6 @@
     display: block;
     margin:0 auto;
     margin-top: 15px;
-    margin-bottom: 20px;
 }
 
 .big-text{
@@ -89,4 +89,21 @@
     width: 75%;
     margin: 0 auto;
     margin-top: 15px;
+}
+
+#meetup-wrap{
+    background-color: lightblue;
+}
+
+.icon-background1{
+    font-size: 25px;
+    color: grey;
+}
+
+.fa-exclamation{
+    color: red;
+}
+
+.fa-stack{
+    margin-left: -5px;
 }
