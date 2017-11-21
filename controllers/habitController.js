@@ -1,19 +1,29 @@
 var Habit = require('../models/habit');
 
 // Display list of all Habits
-exports.habit_list = function(req, res) {
-    Habit.find({}, 'name')
-    .populate('name')
-    .exec(function (err, habits) {
+exports.habit_list = function(req, res, next) {
+    Habit.find()
+    .exec(function (err, habits_list) {
       if (err) { return next(err); }
       //Successful, so render
-      res.render('habits', { title: 'Habit List', habits: habits });
+      res.render('habits', { title: 'Habit List', habits: habits_list });
     });
 };
+var async = require('async');
 
 // Display detail page for a specific Habit
 exports.habit_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Habit detail: ' + req.params.id);
+    async.parallel({
+    habit: function(callback) {     
+      Habit.findById(req.params.id)
+        .exec(callback);
+    },
+
+  }, function(err, results) {
+    if (err) { return next(err); }
+    //Successful, so render
+    res.render('habit_detail', { title: 'Habit Detail', habit: results.habit });
+  });
 };
 
 // Display Habit create form on GET

@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var HabitSchema = new Schema(
   {
 
-    habit_name: {
+    name: {
     	type: String}
   }
 );
