@@ -112,3 +112,8 @@
 #info-section{
     padding-left: 30px;
 }
+
+#map{
+    width: 200px;
+    height: 150px;
+}

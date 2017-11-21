@@ -70,6 +70,11 @@
                                 <p>5.7 Mi away</p>
                             </div>
                         </div>
+                        <div clss="col-md-6">
+                            <div id="map-wrap">
+                                <div id="map"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,3 +90,19 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="javascripts/dashboard.js"></script>
+<script>
+  function initMap() {
+    var uluru = {lat: 55.7708, lng: -4.8433};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">
+</script>
