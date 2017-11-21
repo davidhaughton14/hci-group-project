@@ -25,6 +25,24 @@
     margin-top: 15px;
 }
 
+#sleep-progress{
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+#sleepCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#sleep-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+}
+
 .diary-wrap{
     border:1px solid black;
     background-color: white;
