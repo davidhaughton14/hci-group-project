@@ -1,0 +1,20 @@
+<form method="POST" action="">
+	<div class="form-group">
+	<label for="name"> Name </label>
+	<input name="name" class="name form-control" type="text" placeholder="habit name">
+
+	<button class="btn btn-primary" type="submit">Submit</button>
+
+	</div>
+
+	{{#if errors}}
+        {{#each errors}}
+        <div class="animated tada alert alert-danger">
+            {{msg}}
+        </div>
+        {{/each}}
+    {{/if}}
+
+
+</form>
+
