@@ -14,7 +14,8 @@
     <div class="content">
     	<form method="POST" action="">
 			<div class="form-group">
-			{{habit.name}}
+			<h3>Are you sure you want to delete {{habit.name}}?</h3>
+		
 			<input name="habitid" class="form-control" type="hidden" value="{{habit._id}}">
 
 			<button class="btn btn-danger" type="submit">Delete</button>
