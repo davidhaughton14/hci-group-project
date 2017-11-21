@@ -1,6 +1,7 @@
 .summary-wrap{
     border:1px solid black;
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .content-wrap{
@@ -106,4 +107,8 @@
 
 .fa-stack{
     margin-left: -5px;
+}
+
+#info-section{
+    padding-left: 30px;
 }
