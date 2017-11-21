@@ -10,5 +10,5 @@
 
 ## Run app
 * run "mongod" in one terminal
-* run "npm app" in another
+* run "node app" in another
   * Go to localhost:3000
