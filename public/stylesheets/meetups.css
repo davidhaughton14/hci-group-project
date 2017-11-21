@@ -25,6 +25,7 @@ button.accordion {
     outline: none;
     transition: 0.4s;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -40,6 +41,8 @@ div.panel {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     margin: 0;
+    background-color: white;
+    border: none;
 }
 
 .panel-wrapper{
@@ -104,4 +107,18 @@ div.panel {
     margin: 0 auto;
     height: 45px;
     border: 1.1px solid #585a5a;
+}
+
+.info-div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.button-div{
+    padding-top: 60px;
+}
+
+#view{
+    display: block;
+    margin: 0 auto;
 }
