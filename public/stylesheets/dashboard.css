@@ -1,98 +1,155 @@
-
-/* Style the buttons that are used to open and close the accordion panel */
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.accordion.active, button.accordion:hover {
-    background-color: #ccc;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-div.panel {
-    padding: 0 18px;
+.summary-wrap{
+    border:1px solid black;
     background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-.panel-wrapper{
-    background-color: #fff;
-    height: 100%;
-    border: 1px solid #d0d0d0;
-    box-shadow: 0 0 5px #585a5a;
-}
-
-#heading{
-    padding-top: 20px;
     padding-bottom: 20px;
 }
 
-/* Search 3 - zoom in looking glass */
-.container-3{
-    margin-top: 50px;
-    width: 75%;
-    left: 12.5%;
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
-}
-.container-3 input#search-box{
-    width: 100%;
-    height: 50px;
-    background: #fff;
-    border: none;
-    font-size: 10pt;
-    float: left;
-    color: #262626;
-    padding-left: 45px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    color: black;
-    box-shadow: 0 0 10px #585a5a;
+.content-wrap{
+    border: 1px solid black;
+    background-color: lightgrey;
 }
 
-.container-3 input#search-box::-webkit-input-placeholder {
-   color: #65737e;
-}
-
-.container-3 .icon{
-    position: absolute;
-    top: 50%;
-    margin-left: 17px;
-    margin-top: 10px;
-    z-index: 1;
-    color: #4f5b66;
-    transition: all .55s ease;
-}
-
-/* ANIMATION EFFECTS */
-.container-3:hover .icon{
-    color: #585a5a;
-    -webkit-transform:scale(1.5);
-    transform:scale(1.5);
-}
-
-.button-wrapper{
-    margin-top: 25px;
-}
-
-#search{
-    width: 200px;
+#steps-progress{
+    display: block;
     margin: 0 auto;
-    color: #585a5a;
-    height: 45px;
-    background-color: #fff;
-    border: 1.1px solid #585a5a;
+    border: 1px solid black;
+}
+
+#stepCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#step-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+}
+
+#sleep-progress{
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+#sleepCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#sleep-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+}
+
+#bpCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#bp-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#vitDCount{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#vitD-heading-wrap{
+    width: 400px;
+    display: block;
+    margin:0 auto;
+    margin-top: 15px;
+}
+
+.big-text{
+    font-size: 16px;
+}
+
+.bp-rating{
+    padding-left: 20px;
+}
+
+
+.diary-wrap{
+    border:1px solid black;
+    background-color: white;
+}
+
+.heading{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+#meetup-wrap{
+    background-color: lightblue;
+}
+
+.icon-background1{
+    font-size: 25px;
+    color: grey;
+}
+
+.fa-exclamation{
+    color: red;
+}
+
+.fa-stack{
+    margin-left: -5px;
+}
+
+#info-section{
+    padding-left: 30px;
+}
+
+#map{
+    width: 200px;
+    height: 150px;
+}
+
+#feelingLabel{
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.box-wrap{
+    width: 75%;
+    display: block;
+    margin:0 auto;
+    margin-top: 5px;
+}
+
+
+#happyRange{
+    width: 75%;
+    margin: 0 auto;
+}
+
+#feeling-wrap{
+    padding-bottom: 20px;
+}
+
+#happy-comments{
+    width: 75%;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+#save{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
