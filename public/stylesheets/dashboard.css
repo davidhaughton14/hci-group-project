@@ -30,52 +30,10 @@
 }
 
 
-#bpCount{
-    font-size: 15px;
-    margin-bottom: 0;
-}
-
-#bp-heading-wrap{
-    width: 400px;
-    display: block;
-    margin:0 auto;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-#vitDCount{
-    font-size: 15px;
-    margin-bottom: 0;
-}
-
-#vitD-heading-wrap{
-    width: 400px;
-    display: block;
-    margin:0 auto;
-    margin-top: 15px;
-}*/
-
-.big-text{
-    font-size: 16px;
-}
-
-.bp-rating{
-    padding-left: 20px;
-}
-
-
 .diary-wrap{
     border:1px solid black;
     box-shadow: 0 0 25px grey;
     padding-bottom: 20px;
-}
-
-.heading{
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-    width: 75%;
-    margin: 0 auto;
-    margin-top: 15px;
 }
 
 #meetup-wrap{
@@ -98,18 +56,21 @@
     margin-left: -5px;
 }
 
-#info-section{
-    padding-left: 30px;
-}
-
 #map{
     width: 200px;
     height: 150px;
 }
 
-#feelingLabel{
-    font-size: 15px;
-    margin-bottom: 0;
+#info-section{
+    padding-left: 30px;
+}
+
+.heading{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
 .box-wrap{
@@ -189,4 +150,36 @@
     padding-right: 50px;
     padding-top:20px;
     padding-bottom:20px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin: 0;
+    background-color: white;
+    border: none;
 }
