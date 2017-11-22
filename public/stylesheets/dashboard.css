@@ -1,10 +1,21 @@
 .summary-wrap{
     border:1px solid black;
     padding-bottom: 20px;
+    box-shadow: 0 0 25px grey;
 }
 
 .tab-wrap{
     box-shadow: 0 0 25px grey;
+}
+
+.progress{
+    background-image: none;
+    box-shadow: none;
+    background-color: #f7f7f7;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .content-wrap{
@@ -12,11 +23,8 @@
     background-color: lightgrey;
 }
 
-#steps-progress{
-    display: block;
-    margin: 0 auto;
-    border: 1px solid black;
-    background-color: white;
+.sleep-wrap{
+    padding-left: 50px;
 }
 
 #stepCount{
@@ -29,13 +37,6 @@
     display: block;
     margin:0 auto;
     margin-top: 15px;
-}
-
-#sleep-progress{
-    display: block;
-    margin: 0 auto;
-    border: 1px solid black;
-    background-color: white;s
 }
 
 #sleepCount{
@@ -73,7 +74,7 @@
     display: block;
     margin:0 auto;
     margin-top: 15px;
-}
+}*/
 
 .big-text{
     font-size: 16px;
@@ -205,5 +206,8 @@
     border: 1px solid #ccc;
     border-top: none;
     background-color: white;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top:20px;
+    padding-bottom:20px;
 }

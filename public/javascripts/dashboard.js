@@ -1,46 +1,48 @@
 $( document ).ready(function() {
     fillSteps();
     fillSleep();
-
     $("#happyRange").bootstrapSlider({
         ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
     });
-
     document.getElementById("defaultOpen").click();
-
 });
 
 function fillSteps(){
-    var stepCanvas = document.getElementById('steps-progress');
-    var context = stepCanvas.getContext('2d');
     var steps = 7342;
-    var stepsDifference = (10000-steps);
-    var percentLeft = stepsDifference/10000;
-    var fillValue = (400-(percentLeft*400));
-    var grd=context.createLinearGradient(0,0,fillValue,0);
-    grd.addColorStop(0,"#DCEABE");
-    grd.addColorStop(1,"#95d10a");
-    context.beginPath();
-    context.rect(0, 0, fillValue, 40);
-    context.fillStyle = grd;
-    context.fill();
-}
+    var bar = new ProgressBar.Circle("#stepProgress", {
+        color: '#FFEA82',
+        trailColor: '#eee',
+        trailWidth: 4,
+        duration: 2000,
+        easing: 'bounce',
+        strokeWidth: 4,
+        from: {color: '#DCEABE', a:0},
+        to: {color: '#95d10a', a:1},
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+        }
+    });
+    bar.animate((steps/10000));
+};
 
 function fillSleep(){
-    var sleepCanvas = document.getElementById('sleep-progress');
-    var context = sleepCanvas.getContext('2d');
-    var steps = 6.8;
-    var stepsDifference = (8-steps);
-    var percentLeft = stepsDifference/8;
-    var fillValue = (400-(percentLeft*400));
-    var grd=context.createLinearGradient(0,0,fillValue,0);
-    grd.addColorStop(0,"#DCEABE");
-    grd.addColorStop(1,"#95d10a");
-    context.beginPath();
-    context.rect(0, 0, fillValue, 40);
-    context.fillStyle = grd;
-    context.fill();
+    var hours_slept = 6.8;
+    var bar = new ProgressBar.Circle("#sleepProgress", {
+        color: '#ED6A5A',
+        trailColor: '#eee',
+        trailWidth: 4,
+        duration: 2000,
+        easing: 'bounce',
+        strokeWidth: 4,
+        from: {color: '#DCEABE', a:0},
+        to: {color: '#95d10a', a:1},
+        // Set default step function for all animate calls
+        step: function(state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+        }
+    });
+    bar.animate(hours_slept/8);  // Number from 0.0 to 1.0
 }
 
 function openCity(evt, panelname) {
