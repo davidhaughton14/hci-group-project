@@ -1,7 +1,9 @@
 .summary-wrap{
     border:1px solid black;
-    background-color: white;
     padding-bottom: 20px;
+}
+
+.tab-wrap{
     box-shadow: 0 0 25px grey;
 }
 
@@ -14,6 +16,7 @@
     display: block;
     margin: 0 auto;
     border: 1px solid black;
+    background-color: white;
 }
 
 #stepCount{
@@ -32,6 +35,7 @@
     display: block;
     margin: 0 auto;
     border: 1px solid black;
+    background-color: white;s
 }
 
 #sleepCount{
@@ -82,7 +86,6 @@
 
 .diary-wrap{
     border:1px solid black;
-    background-color: white;
     box-shadow: 0 0 25px grey;
     padding-bottom: 20px;
 }
@@ -97,6 +100,9 @@
 
 #meetup-wrap{
     background-color: lightblue;
+    width:70%;
+    display: block;
+    margin: 0 auto;
 }
 
 .icon-background1{
@@ -162,4 +168,42 @@
 
 #ex1Slider .slider-selection {
 	background: #BABABA;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    width: 50%;
+    float: left;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: white;
+    padding: 50px;
 }
