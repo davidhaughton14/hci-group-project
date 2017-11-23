@@ -14,7 +14,7 @@ router.get('/dashboard', function(req, res, next) {
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
-/* GET habits page. 
+/* GET habits page.
 router.get('/habits', function(req, res, next) {
     res.render('habits', { title: 'HappyHelper - Habits' });
 });*/
@@ -22,6 +22,12 @@ router.get('/habits', function(req, res, next) {
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
     res.render('meetups', { title: 'HappyHelper - Meetups' });
+});
+
+router.post('/meetups-search', function(req,res,next){
+    var query = req.body.search;
+    console.log(query);
+    res.render('search_results', {title:'HappyHelper - Search results', query:query});
 });
 
 
