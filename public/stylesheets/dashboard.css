@@ -43,22 +43,15 @@
     margin: 0 auto;
 }
 
-.icon-background1{
-    font-size: 25px;
-    color: grey;
-}
-
 .fa-exclamation{
-    color: red;
+    color: #DC4C46;
+    margin-top: 5px;
 }
 
-.fa-stack{
-    margin-left: -5px;
-}
 
 #map{
-    width: 200px;
-    height: 150px;
+    height: 300px;
+    border: 1px solid black;
 }
 
 #info-section{
@@ -157,13 +150,14 @@ button.accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
     width: 100%;
+    padding:10px;
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
-    font-size: 15px;
+    font-size: 25px;
+    text-align: center;
     margin-bottom: 10px;
 }
 
@@ -173,13 +167,20 @@ button.accordion.active, button.accordion:hover {
 }
 
 /* Style the accordion panel. Note: hidden by default */
-div.panel {
-    padding: 0 18px;
+.panel {
     background-color: white;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: 0.2s ease-out;
     margin: 0;
-    background-color: white;
     border: none;
+    background-color: lightblue;
+}
+
+.fa-angle-double-down{
+    margin-top: 5px;
+}
+
+.panel-wrapper{
+        padding-bottom: 10px;
 }

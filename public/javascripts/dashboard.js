@@ -9,6 +9,26 @@ $( document ).ready(function() {
         ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
     });
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight +30+ "px";
+                panel.style.paddingBottom = "15px"
+                panel.style.paddingTop = "15px"
+            }
+            if(!(this.classList.contains("active"))){
+                panel.style.paddingBottom = "0px"
+                panel.style.paddingTop = "0px"
+            }
+        }
+    }
     document.getElementById("defaultOpen").click();
 });
 
