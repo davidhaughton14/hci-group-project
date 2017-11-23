@@ -1,8 +1,16 @@
 var Habit = require('../models/habit');
 var User = require('../models/user');
+var passport = require('passport');
+
+// User.findOne({_id:req.session.passport.user}).then(function(record){
+//     record.habits.push("Smoking");
+//     record.save();
+// });
+
 
 // Display list of all Habits
 exports.habit_list = function(req, res, next) {
+    console.log(req.session.passport);
     Habit.find()
     .exec(function (err, habits_list) {
       if (err) { return next(err); }
@@ -17,7 +25,7 @@ var async = require('async');
 // Display detail page for a specific Habit
 exports.habit_detail = function(req, res) {
     async.parallel({
-    habit: function(callback) {     
+    habit: function(callback) {
       Habit.findById(req.params.id)
         .exec(callback);
     },
@@ -37,61 +45,27 @@ exports.habit_create_get = function(req, res) {
 // Handle Habit create on POST
 exports.habit_create_post = function(req, res) {
     //Check that the name field is not empty
-    req.checkBody('name', 'Habit name required').notEmpty(); 
-    
-    //Trim and escape the name field. 
+    req.checkBody('name', 'Habit name required').notEmpty();
+
+    //Trim and escape the name field.
     req.sanitize('name').escape();
     req.sanitize('name').trim();
-    
+
     //Run the validators
     var errors = req.validationErrors();
 
-    //Create a habit object with escaped and trimmed data.
-    var habit = new Habit(
-      { name: req.body.name }
-    );
-   
-    var habitToAdd = { id: 1, name: 'Potter' };
-    User.findByIdAndUpdate(req.session.passport.user, { $set: {$push: {"habits": habitToAdd}}}, {upsert: true}, function(err, docs){
-      console.log(docs);
+    var name = req.body.name
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push(name);
+        record.save();
     });
-
-    
-    if (errors) {
-        //If there are errors render the form again, passing the previously entered values and errors
-        res.render('habit_form', { title: 'Create Habit', habit: habit, errors: errors});
-    return;
-    } 
-    else {
-        // Data from form is valid.
-        //Check if Habit with same name already exists
-        Habit.findOne({ 'name': req.body.name })
-            .exec( function(err, found_habit) {
-
-                 if (err) { return next(err); }
-                 
-                 if (found_habit) { 
-                     //Habit exists, redirect to its detail page
-                     res.redirect(found_habit.url);
-                 }
-                 else {
-                     
-                     habit.save(function (err) {
-                       if (err) { return next(err); }
-                       //Habit saved. Redirect to habit detail page
-                       res.redirect(habit.url);
-                     });
-                     
-                 }
-                 
-             });
-    }
 };
 
 // Display Habit delete form on GET
 exports.habit_delete_get = function(req, res) {
      async.parallel({
-    habit: function(callback) {     
+    habit: function(callback) {
       Habit.findById(req.params.id)
         .exec(callback);
     },
@@ -105,15 +79,15 @@ exports.habit_delete_get = function(req, res) {
 
 // Handle Habit delete on POST
 exports.habit_delete_post = function(req, res) {
-    req.checkBody('habitid', 'Habit id must exist').notEmpty();  
-    
+    req.checkBody('habitid', 'Habit id must exist').notEmpty();
+
     async.parallel({
-        author: function(callback) {     
+        author: function(callback) {
             Habit.findById(req.body.habitid).exec(callback);
         }
     }, function(err, results) {
         if (err) { return next(err); }
-        //Success   
+        //Success
 
             Habit.findByIdAndRemove(req.body.habitid, function deleteHabit(err) {
                 if (err) { return next(err); }
@@ -121,7 +95,7 @@ exports.habit_delete_post = function(req, res) {
                 res.redirect('/habits');
             });
 
-        
+
     });
 };
 

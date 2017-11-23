@@ -4,6 +4,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
+
+// User.findOne({_id:req.session.passport.user}).then(function(record){
+//     record.habits.push("Smoking");
+//     record.save();
+// });
+
 /* GET the login page. */
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Sign in to HappyHelper!' });
@@ -11,17 +17,16 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push("Smoking");
-        record.save();
-    });
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
-/* GET habits page.
+/* GET habits page. */
 router.get('/habits', function(req, res, next) {
-    res.render('habits', { title: 'HappyHelper - Habits' });
-});*/
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        var habitsNames = record.habits;
+        res.render('habits', { title: 'HappyHelper - Habits', habits:habitsNames });
+    });
+});
 
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
