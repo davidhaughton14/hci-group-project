@@ -10,20 +10,19 @@
                         <div class = "row">
                             <div class="col-md-12">
                                 <div class = "panel-wrapper">
-                                    <button class="accordion"><span class="pull-left small">0.9 Mi away</span> Hill Walking <i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
+                                    <button class="accordion"><span class="pull-left small">0.9 Mi away</span> Hill Walking <i class="fa fa-angle-double-down pull-right"></i></button>                                    <div class="panel">
                                         <div class="col-md-6">
                                             <div class="info-div">
-                                                <p>14 Attending</p>
-                                                <p>14th May 2017</p>
-                                                <p>11:00am</p>
-                                                <p>Kelburn Country Park</p>
+                                                <h4>14th May 2017</h4>
+                                                <h4>11:00am</h4>
+                                                <h4>Kelburn Country Park</h4>
+                                                <h4> 14 Attending </h4>
+
+                                                <button id="view" type="button" class="btn btn-success">View Meetup!</button>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="button-div">
-                                                <button id="view" type="button" class="btn btn-success">View Meetup!</button>
-                                            </div>
+                                            <div id="map"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -38,3 +37,19 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="/javascripts/search-results.js"></script>
+<script>
+  function initMap() {
+    var uluru = {lat: 55.7708, lng: -4.8433};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">
+</script>
