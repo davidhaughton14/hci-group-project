@@ -12,7 +12,11 @@ var User = require('../models/user');
 
 /* GET the login page. */
 router.get('/', function(req, res, next) {
-    res.render('login', { title: 'Sign in to HappyHelper!' });
+    if(req.isAuthenticated()){
+        res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+    } else {
+        res.render('login', { title: 'Sign in to HappyHelper!' });
+    }
 });
 
 /* GET dashboard page. */
@@ -159,6 +163,7 @@ function ensureAuthenticated(req, res, next){
 		res.redirect('/');
 	}
 }
+
 
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
