@@ -16,11 +16,13 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
+    "jquery-circle-progress": "^1.2.2",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.3",
     "morgan": "~1.7.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "progressbar.js": "^1.0.1",
     "pug": "~2.0.0-beta10",
     "serve-favicon": "~2.3.2"
   }
