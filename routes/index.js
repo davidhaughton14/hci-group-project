@@ -24,7 +24,6 @@ router.get('/dashboard', function(req, res, next) {
 router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var habitsNames = record.habits;
-        console.log(record);
         res.render('habits', { title: 'HappyHelper - Habits', habits:habitsNames });
     });
 });
@@ -75,8 +74,29 @@ router.post('/update/:habit', function(req,res,next){
     var year = d.getFullYear();
     var date = day+"/"+month+"/"+year;
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.tracked_stats.push({name:name, date:date, value:value});
-        record.save();
+        var tracked_stats = record.tracked_stats;
+        var sameDate = [];
+        for (var i=0;i<tracked_stats.length;i++){
+            if(tracked_stats[0].date == date){
+                sameDate.push(tracked_stats[i])
+            }
+        }
+        console.log(sameDate);
+
+        var update = -1;
+        for (var i=0;i<sameDate.length;i++){
+            if(sameDate[0].name == name){
+                update = i;
+            }
+        }
+        console.log("Need to update entry " + update)
+        if (update>-1){
+            record.tracked_stats[update].value = value;
+            record.save();
+        } else {
+            record.tracked_stats.push({name:name, date:date, value:value});
+            record.save();
+        }
         res.redirect('/habits');
     });
 });
@@ -134,4 +154,7 @@ function ensureAuthenticated(req, res, next){
 	}
 }
 
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
 module.exports = router;
