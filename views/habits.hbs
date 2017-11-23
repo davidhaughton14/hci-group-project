@@ -7,10 +7,10 @@
         <div class="row">
             {{#each habits}}
                 <div class="col-md-4">
-                    <div class="habit">
+                    <a href ="habits/{{this}}"><div class="habit">
                         <p>{{this}}</p>
                         <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                    </div>
+                    </div></a>
                 </div>
             {{/each}}
             <div class="col-md-4">

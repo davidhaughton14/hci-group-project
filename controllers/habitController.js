@@ -2,10 +2,7 @@ var Habit = require('../models/habit');
 var User = require('../models/user');
 var passport = require('passport');
 
-// User.findOne({_id:req.session.passport.user}).then(function(record){
-//     record.habits.push("Smoking");
-//     record.save();
-// });
+
 
 
 // Display list of all Habits
@@ -37,30 +34,15 @@ exports.habit_detail = function(req, res) {
   });
 };
 
-// Display Habit create form on GET
-exports.habit_create_get = function(req, res) {
-    res.render('habit_form', { title: 'Add Habit' });
-};
+// // Display Habit create form on GET
+// exports.habit_create_get = function(req, res) {
+//     res.render('habit_form', { title: 'Add Habit' });
+// };
 
 // Handle Habit create on POST
-exports.habit_create_post = function(req, res) {
-    //Check that the name field is not empty
-    req.checkBody('name', 'Habit name required').notEmpty();
-
-    //Trim and escape the name field.
-    req.sanitize('name').escape();
-    req.sanitize('name').trim();
-
-    //Run the validators
-    var errors = req.validationErrors();
-
-    var name = req.body.name
-
-    User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push(name);
-        record.save();
-    });
-};
+// exports.habit_create_post = function(req, res) {
+//     //Check that the name field is not empty
+// };
 
 // Display Habit delete form on GET
 exports.habit_delete_get = function(req, res) {

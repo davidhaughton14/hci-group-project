@@ -28,6 +28,35 @@ router.get('/habits', function(req, res, next) {
     });
 });
 
+router.post('/habits/create', function(req,res,next){
+    req.checkBody('name', 'Habit name required').notEmpty();
+
+    //Trim and escape the name field.
+    req.sanitize('name').escape();
+    req.sanitize('name').trim();
+
+    //Run the validators
+    var errors = req.validationErrors();
+
+    var name = req.body.name
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push(name);
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+router.get('/habits/create', function(req,res,next){
+    res.render('habit_form', { title: 'HappyHelper - add custom habit' });
+});
+
+router.get('/habits/:this', function(req,res,next){
+    var name = req.params.this;
+    console.log(name);
+    res.render('habit_detail', {habit: name});
+});
+
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
     res.render('meetups', { title: 'HappyHelper - Meetups' });
