@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
 var User = require('../models/user');
+
 
 // Register
 router.get('/register', function(req, res, next) {

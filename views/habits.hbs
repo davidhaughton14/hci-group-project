@@ -4,53 +4,21 @@
 
     <div class="content">
     	<h2>Your tracked habits</h2>
-
-        
-    	<!-- for each row of habits.. !-->
-    	<div class="row">
-    		<div class="col-md-4">
-    			<div class="habit">
-    				<p>SLEEP</p>
-    				<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-    			</div>
-    		</div>
-
-    		<div class="col-md-4">
-    			<div class="habit">
-    				<p>STEPS</p>
-    				<i class="fa fa-paw fa-3x" aria-hidden="true"></i>
-    			</div>
-    		</div>
-
-    		<div class="col-md-4">
-    			<div class="habit">
-    				<p>VITAMIN D</p>
-    				<i class="fa fa-sun-o fa-3x" aria-hidden="true"></i>
-    			</div>
-    		</div>
-    	</div>
         <div class="row">
-
             {{#each habits}}
                 <div class="col-md-4">
-                    <a href="{{this.url}}"><div class="habit">
-                        <p>{{this.name}}</p>
-                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                    <a href ="habits/{{this}}"><div class="habit">
+                        <p>{{this}}</p>
+                        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
                     </div></a>
                 </div>
-            <div></div>
             {{/each}}
-
+            <div class="col-md-4">
+                <a href="habits/create"><div class="habit-new">
+                    <i class="fa fa-plus fa-4x" aria-hidden="true"></i>
+                    <h4>Add new habit</h4>
+                </div></a>
+            </div>
         </div>
-
-    	<div class="row">
-    		<div class="col-md-4">
-    			<a href="habits/create"><div class="habit-new">
-    				<i class="fa fa-plus fa-4x" aria-hidden="true"></i>
-    				<h4>Add new habit</h4>
-    			</div></a>
-    		</div>
-
-    	</div>
     </div>
 </div>

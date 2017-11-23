@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const DiarySchema = mongoose.Schema({
 	date:{
-		type:Number
+		type:String
 	},
 	rating:{
 		type:Number
@@ -15,23 +15,16 @@ const DiarySchema = mongoose.Schema({
 	_id:false
 });
 
-const HabitDaySchema = mongoose.Schema({
-	 date: {
-		type:Number
-	},
-	value: {
-		type: String
-	},
-	_id: false
-});
-
 const HabitSchema = new Schema({
     name: {
     	type: String
 	},
-	day: {
-		type: [HabitDaySchema]
-	},
+	date: {
+	   type:String
+    },
+    value: {
+	   type: String
+    },
 	_id: false
 });
 
