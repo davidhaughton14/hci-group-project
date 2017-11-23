@@ -1,16 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/habit_details.css">
 
 <div class="text-center" id="nav-wrapper">
-    <h1 id="title"> HappyHelper <i class="fa fa-smile-o"></i></h1>
-    <nav id="nav" class="navbar" role="navigation">
-        <ul class="nav navbar-nav">
-            <li id="first"><a href="/">DASHBOARD</a></li>
-            <li><a href="/habits">HABITS</a></li>
-            <li><a href="/meetups">MEETUPS</a></li>
-            <li id="last"><a href="/recomendations">RECOMENDATIONS</a></li>
-        </ul>
-    </nav>
-
     <div class="content">
     	<div class="row">
     		<div class="col-md-2">
@@ -18,7 +8,7 @@
     		</div>
 
     		<div class="col-md-8">
-    			<h1>{{habit.name}}</h1>
+    			<h1>{{habit}}</h1>
     		</div>
 
     		<div class="col-md-2">
@@ -31,15 +21,10 @@
 
     			<i class="pull-left fa fa-arrow-left" aria-hidden="true"></i>Today<i class="pull-right fa fa-arrow-right" aria-hidden="true"></i>
 
-    			
-    				
-    					
-
 				<form>
-					<label>Enter {{habit.name}} units</label>
+					<label>Enter {{habit}} units</label>
 					<div class="row">
     					<input type="text"> units
-
     					<div class="row">
     						<button class="update-button btn btn-success" type="submit">Update</button>
     					</div>
@@ -53,13 +38,10 @@
 	    	</div>
     	</div>
 
-
-
-
     </div>
 
-    		
+
     	</div>
-    	
+
     </div>
 </div>
