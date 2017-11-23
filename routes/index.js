@@ -24,6 +24,7 @@ router.get('/dashboard', function(req, res, next) {
 router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var habitsNames = record.habits;
+        console.log(record);
         res.render('habits', { title: 'HappyHelper - Habits', habits:habitsNames });
     });
 });
@@ -53,7 +54,6 @@ router.get('/habits/create', function(req,res,next){
 
 router.get('/habits/:this', function(req,res,next){
     var name = req.params.this;
-    console.log(name);
     res.render('habit_detail', {habit: name});
 });
 
@@ -61,6 +61,21 @@ router.get('/delete/:habit', function(req,res,next){
     var name = req.params.habit;
     User.findOne({_id:req.session.passport.user}).then(function(record){
         record.habits.pull(name);
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+router.post('/update/:habit', function(req,res,next){
+    var name = req.params.habit;
+    var value = req.body.habitVal;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.tracked_stats.push({name:name, date:date, value:value});
         record.save();
         res.redirect('/habits');
     });
@@ -118,6 +133,5 @@ function ensureAuthenticated(req, res, next){
 		res.redirect('/');
 	}
 }
-
 
 module.exports = router;

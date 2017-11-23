@@ -21,10 +21,10 @@
 
     			<i class="pull-left fa fa-arrow-left" aria-hidden="true"></i>Today<i class="pull-right fa fa-arrow-right" aria-hidden="true"></i>
 
-				<form>
+				<form class="update-habit" form method="POST" action="/update/{{habit}}">
 					<label>Enter {{habit}} units</label>
 					<div class="row">
-    					<input type="text"> units
+    					<input name="habitVal" type="text"> units
     					<div class="row">
     						<button class="update-button btn btn-success" type="submit">Update</button>
     					</div>
