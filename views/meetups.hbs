@@ -1,109 +1,118 @@
 <link rel="stylesheet" href="/stylesheets/meetups.css">
 <div class="row">
     <div class="col-md-12">
-        <div class="your-meetups-wrap">
-            <h3 class="text-center heading"> Your upcoming meetups </h3>
+        <div class = "tab-wrap">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'upcoming')" id="defaultOpen">Upcoming meetups</button>
+                <button class="tablinks" onclick="openTab(event, 'find')">Find new meetups</button>
+            </div>
+        </div>
+
+        <div id="upcoming" class="tabcontent">
             <div class = "row">
-                <div class = "col-md-12">
+                <div class="col-md-12">
                     <div class = "panel-wrapper">
-                        <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                        <div class="panel">
-                            <div class="col-md-6">
-                                <div class="info-div">
-                                    <p>14 Attending</p>
-                                    <p>14th May 2017</p>
-                                    <p>11:00am</p>
-                                    <p>Kelburn Country Park</p>
+                            <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                            <div class="panel">
+                                <div class="col-md-6">
+                                    <div class="info-div">
+                                        <p>14 Attending</p>
+                                        <p>14th May 2017</p>
+                                        <p>11:00am</p>
+                                        <p>Kelburn Country Park</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="button-div">
+                                        <button id="view" type="button" class="btn btn-success">View Meetup!</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="button-div">
-                                    <button id="view" type="button" class="btn btn-success">View Meetup!</button>
-                                </div>
+
+                            <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                            <div class="panel">
+                                <p>Lorem ipsum...</p>
+                            </div>
+
+                            <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                            <div class="panel">
+                                <p>Lorem ipsum...</p>
                             </div>
                         </div>
-
-                        <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                        <div class="panel">
-                            <p>Lorem ipsum...</p>
-                        </div>
-
-                        <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                        <div class="panel">
-                            <p>Lorem ipsum...</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="find-new-meetups-wrap">
-            <h3 class="text-center heading"> Find new meetups! </h3>
+
+        <div id="find" class="tabcontent">
             <div class="row">
-                <div class="col-md-6">
-                    <div class = "nearby-wrap">
-                        <h3 class="text-center heading"> Popular in your area </h3>
-                        <div class = "row">
-                            <div class = "col-md-12">
-                                <div class = "panel-wrapper">
-                                    <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
-                                        <div class="col-md-6">
-                                            <div class="info-div">
-                                                <p>14 Attending</p>
-                                                <p>14th May 2017</p>
-                                                <p>11:00am</p>
-                                                <p>Kelburn Country Park</p>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class = "nearby-wrap">
+                                <h3 class="text-center heading"> Popular in your area </h3>
+                                <div class = "row">
+                                    <div class = "col-md-12">
+                                        <div class = "panel-wrapper">
+                                            <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                                            <div class="panel">
+                                                <div class="col-md-6">
+                                                    <div class="info-div">
+                                                        <p>14 Attending</p>
+                                                        <p>14th May 2017</p>
+                                                        <p>11:00am</p>
+                                                        <p>Kelburn Country Park</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="button-div">
+                                                        <button id="view" type="button" class="btn btn-success">View Meetup!</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                                            <div class="panel">
+                                                <p>Lorem ipsum...</p>
+                                            </div>
+
+                                            <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                                            <div class="panel">
+                                                <p>Lorem ipsum...</p>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="button-div">
-                                                <button id="view" type="button" class="btn btn-success">View Meetup!</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
-                                        <p>Lorem ipsum...</p>
-                                    </div>
-
-                                    <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
-                                        <p>Lorem ipsum...</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box">
-                                <div class="container-3">
-                                    <span class="icon"><i class="fa fa-search"></i></span>
-                                    <input type="search" id="search-box" name="search" placeholder="Enter term(s) to search..." />
+                        <form class="search-tweets" form method="POST" action="/meetups-search">
+                            <div class="col-md-6">
+                                <div class = "row">
+                                    <div class = "col-md-12">
+                                        <div class="box">
+                                            <div class="container-3">
+                                                <span class="icon"><i class="fa fa-search"></i></span>
+                                                <input type="search" id="search-box" name="search" placeholder="Enter term(s) to search..." />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class = "row">
+                                    <div class = "col-md-12">
+                                        <div class="button-wrapper">
+                                                <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="button-wrapper">
-                                <button id="search"  name="search-term" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>

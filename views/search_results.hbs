@@ -1,39 +1,55 @@
 <link rel="stylesheet" href="/stylesheets/search_results.css">
 
-<div class="row" id="main-row">
-    <div class = "col-md-3">
-        <div class ="new-search-box">
-            <h1 class="text-center"> New search </h1>
-            <form class="search-tweets" form method="POST" action="/search">
-                <div class = "row">
-                    <div class = "col-md-12">
-                        <div class="box">
-                            <div class="container-3">
-                                <span class="icon"><i class="fa fa-search"></i></span>
-                                <input type="search" id="search-box" name="search" placeholder="Enter term(s) to search..." />
+<div class = "row">
+    <div class="col-md-12">
+        <div class="results-wrap">
+            <h1 class="text-center"> Found 1 Meetup related to "{{query}}"</h1>
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="meetup-container">
+                        <div class = "row">
+                            <div class="col-md-12">
+                                <div class = "panel-wrapper">
+                                    <button class="accordion"><span class="pull-left small">0.9 Mi away</span> Hill Walking <i class="fa fa-angle-double-down pull-right"></i></button>                                    <div class="panel">
+                                        <div class="col-md-6">
+                                            <div class="info-div">
+                                                <h4><i class="fa fa-calendar" aria-hidden="true"></i> 14th May 2017</h4>
+                                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> 11:00am</h4>
+                                                <h4><i class="fa fa-globe" aria-hidden="true"></i> Kelburn Country Park</h4>
+                                                <h4><i class="fa fa-users" aria-hidden="true"></i> 14 Attending </h4>
+
+                                                <button id="view" type="button" class="btn btn-success">View Meetup!</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div id="map"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class = "row">
-                    <div class = "col-md-12">
-                        <div class="button-wrapper">
-                            <button id="search"  name="search-term" class="btn btn-sm btn-primary btn-block" type="submit">Search for Tweets</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class = "col-md-9">
-        <h1 class= "text-center heading"> Results for: "{{query}}" </h1>
-        {{#each tweets}}
-            <div class = "tweet-box text-center">
-                <p>{{this}}</p>
             </div>
-          {{/each}}
+        </div>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/javascripts/search-results.js"></script>
+<script>
+  function initMap() {
+    var uluru = {lat: 55.7708, lng: -4.8433};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">
+</script>

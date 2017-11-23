@@ -106,6 +106,12 @@ router.get('/meetups', function(req, res, next) {
     res.render('meetups', { title: 'HappyHelper - Meetups' });
 });
 
+router.post('/meetups-search', function(req,res,next){
+    var query = req.body.search;
+    console.log(query);
+    res.render('search_results', {title:'HappyHelper - Search results', query:query});
+});
+
 
 passport.use(new LocalStrategy(function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
