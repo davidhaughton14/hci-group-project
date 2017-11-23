@@ -5,10 +5,7 @@ $( document ).ready(function() {
     fillSmoke();
     fillBP();
     fillvitD();
-    $("#happyRange").bootstrapSlider({
-        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-    });
+
     var acc = document.getElementsByClassName("accordion");
     var i;
 
@@ -202,6 +199,13 @@ function fillBP(){
 function openTab(evt, panelname) {
     // Declare all variables
     var i, tabcontent, tablinks;
+
+    $("#happyRange").bootstrapSlider({
+        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    });
+
+    $("#happyRange").click();
 
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
