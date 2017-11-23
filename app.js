@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/credcheck', {
+mongoose.connect('mongodb://localhost/hciapp', {
   useMongoClient: true,
   /* other options */
 });
@@ -84,7 +84,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/habits', habits); 
+app.use('/habits', habits);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));

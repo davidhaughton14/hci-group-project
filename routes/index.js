@@ -11,10 +11,14 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push("Smoking");
+        record.save();
+    });
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
-/* GET habits page. 
+/* GET habits page.
 router.get('/habits', function(req, res, next) {
     res.render('habits', { title: 'HappyHelper - Habits' });
 });*/
