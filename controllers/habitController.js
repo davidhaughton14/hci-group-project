@@ -1,4 +1,5 @@
 var Habit = require('../models/habit');
+var User = require('../models/user');
 
 // Display list of all Habits
 exports.habit_list = function(req, res, next) {
@@ -8,6 +9,8 @@ exports.habit_list = function(req, res, next) {
       //Successful, so render
       res.render('habits', { title: 'Habit List', habits: habits_list });
     });
+
+
 };
 var async = require('async');
 
@@ -47,6 +50,12 @@ exports.habit_create_post = function(req, res) {
     var habit = new Habit(
       { name: req.body.name }
     );
+   
+    var habitToAdd = { id: 1, name: 'Potter' };
+    User.findByIdAndUpdate(req.session.passport.user, { $set: {$push: {"habits": habitToAdd}}}, {upsert: true}, function(err, docs){
+      console.log(docs);
+    });
+
     
     if (errors) {
         //If there are errors render the form again, passing the previously entered values and errors
@@ -58,7 +67,7 @@ exports.habit_create_post = function(req, res) {
         //Check if Habit with same name already exists
         Habit.findOne({ 'name': req.body.name })
             .exec( function(err, found_habit) {
-                 console.log('found_habit: ' + found_habit);
+
                  if (err) { return next(err); }
                  
                  if (found_habit) { 

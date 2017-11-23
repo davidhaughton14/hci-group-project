@@ -9,7 +9,17 @@ var UserSchema = mongoose.Schema({
 	},
 	password: {
 		type: String
-	}
+	},
+
+	habits: [{
+		id: {
+			type: Number,
+			required: true
+		},
+		name: {
+			type: String
+		}
+	}]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
