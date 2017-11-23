@@ -199,7 +199,7 @@ function fillBP(){
     bar.animate(bp/120);  // Number from 0.0 to 1.0
 }
 
-function openCity(evt, panelname) {
+function openTab(evt, panelname) {
     // Declare all variables
     var i, tabcontent, tablinks;
 

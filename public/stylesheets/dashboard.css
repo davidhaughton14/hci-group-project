@@ -36,13 +36,6 @@
     padding-bottom: 20px;
 }
 
-#meetup-wrap{
-    background-color: lightblue;
-    width:70%;
-    display: block;
-    margin: 0 auto;
-}
-
 .fa-exclamation{
     color: #DC4C46;
     margin-top: 5px;
@@ -58,37 +51,19 @@
     padding-left: 30px;
 }
 
-.heading{
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-    width: 75%;
-    margin: 0 auto;
-    margin-top: 15px;
-}
-
-.box-wrap{
+.slider.slider-horizontal{
     width: 75%;
     display: block;
     margin:0 auto;
-    margin-top: 5px;
-}
-
-.slider.slider-horizontal{
-  width:75%; /* sample value - set it as you like*/
-  display: block;
-  margin:0 auto;
 }
 
 .slider-tick-label{
     margin-top: 20px;
 }
-#feeling-wrap{
-    padding-bottom: 20px;
-}
 
 #happy-comments{
     width: 75%;
-    height: 200px;
+    height: 300px;
     display: block;
     margin: 0 auto;
 }
@@ -96,7 +71,9 @@
 #save{
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+    width: 15%;
+    height: 50px;
+    margin-top: 40px;
     margin-bottom: 10px;
 }
 
@@ -185,8 +162,8 @@ button.accordion.active, button.accordion:hover {
     padding-left: 50px;
 }
 
-.info-div h3{
-    margin-bottom: 25px;
+.info-div h4{
+    margin-bottom: 30px;
 }
 
 .fa-angle-double-down{
