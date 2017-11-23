@@ -14,10 +14,10 @@ var habit_controller = require('../controllers/habitController');
 // router.post('/create', habit_controller.habit_create_post);
 
 /* GET request to delete Habit. */
-router.get('/:id/delete', habit_controller.habit_delete_get);
-
-// POST request to delete Habit
-router.post('/:id/delete', habit_controller.habit_delete_post);
+// router.get('/:id/delete', habit_controller.habit_delete_get);
+//
+// // POST request to delete Habit
+// router.post('/:id/delete', habit_controller.habit_delete_post);
 
 /* GET request to update Habit. */
 router.get('/:id/update', habit_controller.habit_update_get);

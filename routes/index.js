@@ -57,6 +57,15 @@ router.get('/habits/:this', function(req,res,next){
     res.render('habit_detail', {habit: name});
 });
 
+router.get('/delete/:habit', function(req,res,next){
+    var name = req.params.habit;
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.pull(name);
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
     res.render('meetups', { title: 'HappyHelper - Meetups' });
