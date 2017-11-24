@@ -24,6 +24,11 @@ router.get('/dashboard', function(req, res, next) {
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
+router.get('/meetupdetails', function(req, res, next) {
+    res.render('meetup_details', { title: 'HappyHelper - Meetup' });
+});
+
+
 /* GET habits page. */
 router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){

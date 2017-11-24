@@ -2,6 +2,24 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
+const MeetupSchema = mongoose.Schema({
+	name:{
+		type: String
+	},
+	date:{
+		type: String
+	},
+	time:{
+		type: String
+	}
+	attending:{
+		type: [String]
+	},
+	location:{
+		type: String
+	}
+});
+
 const DiarySchema = mongoose.Schema({
 	date:{
 		type:String
@@ -39,12 +57,13 @@ const UserSchema = new Schema({
 	},
 	habits:[String],
 	tracked_stats: [HabitSchema],
-	diaryEntries: [DiarySchema]
+	diaryEntries: [DiarySchema],
+	meetups:[MeetupSchema]
 });
 
 var User = mongoose.model('User', UserSchema);
-
 module.exports = User;
+
 
 module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
