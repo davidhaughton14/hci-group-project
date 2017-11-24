@@ -228,8 +228,10 @@ router.post('/helper/create', function(req,res,next){
 
 router.post('/meetups-search', function(req,res,next){
     var query = req.body.search;
-    console.log(query);
-    res.render('search_results', {title:'HappyHelper - Search results', query:query});
+    Meetup.find({ "name": { "$regex": query, "$options": "i" } },function(err,docs) {
+        console.log(docs);
+        res.render('search_results', {title:'HappyHelper - Search results', query:query, meetups:docs});
+    });
 });
 
 router.get('/meetup/details/:name', function(req,res,next){
