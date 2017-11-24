@@ -11,9 +11,10 @@ const MeetupSchema = mongoose.Schema({
 	},
 	time:{
 		type: String
-	}
+	},
 	attending:{
-		type: [String]
+		type: [String],
+		default:[]
 	},
 	location:{
 		type: String
@@ -58,7 +59,7 @@ const UserSchema = new Schema({
 	habits:[String],
 	tracked_stats: [HabitSchema],
 	diaryEntries: [DiarySchema],
-	meetups:[MeetupSchema]
+	meetups:[String]
 });
 
 var User = mongoose.model('User', UserSchema);

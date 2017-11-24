@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
+var Meetup = require('../models/meetup');
+
 
 
 // User.findOne({_id:req.session.passport.user}).then(function(record){
@@ -21,6 +23,23 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
+    var newMeetup= new Meetup({
+        name: "test",
+        date: "now",
+        time: "now",
+        location: "here"
+    });
+
+    newMeetup.save();
+    // User.findOne({_id:req.session.passport.user}).then(function(record){
+    //     record.meetups.push({name:"test", date:"today", time:"now", location:"here"}).then(function(result){
+    //         console.log(result);
+    //     });
+        // // record.meetups.attending.push("Dave");
+        // // record.meetups.attending.push("Frank");
+        // record.save();
+        // console.log(record.meetups);
+    // });
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
