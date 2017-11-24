@@ -23,23 +23,23 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    var newMeetup= new Meetup({
-        name: "test",
-        date: "now",
-        time: "now",
-        location: "here"
-    });
-
-    newMeetup.save();
-    // User.findOne({_id:req.session.passport.user}).then(function(record){
-    //     record.meetups.push({name:"test", date:"today", time:"now", location:"here"}).then(function(result){
-    //         console.log(result);
-    //     });
-        // // record.meetups.attending.push("Dave");
-        // // record.meetups.attending.push("Frank");
-        // record.save();
-        // console.log(record.meetups);
+    // var newMeetup= new Meetup({
+    //     name: "test",
+    //     date: "now",
+    //     time: "now",
+    //     location: "here"
     // });
+    //
+    // newMeetup.attending.push("david");
+    // newMeetup.save().then(function(record){
+    // });
+    //     User.findOne({_id:req.session.passport.user}).then(function(result){
+    //         result.meetups.push("test")
+    //         result.save().then(function(user){
+    //             console.log(user)
+    //         });
+    //     });
+    // // });
     res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
@@ -129,12 +129,23 @@ router.post('/update/:habit', function(req,res,next){
     });
 });
 
-
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var meetups = record.meetups;
-        res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetups});
+        Meetup.find({'name': { $in: meetups }}).then(function(result){
+            var meetupArray = [];
+            for (var i=0; i<result.length;i++){
+                jsonObject = {};
+                jsonObject["name"] = result[i].name;
+                jsonObject["date"] = result[i].date;
+                jsonObject["time"] = result[i].time;
+                jsonObject["attending"] = result[i].attending;
+                jsonObject["location"] = result[i].location;
+                meetupArray.push(jsonObject);
+            }
+            res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+        });
     });
 });
 

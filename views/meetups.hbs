@@ -13,14 +13,14 @@
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
                         {{#each meetups}}
-                            <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
+                            <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
                             <div class="panel">
                                 <div class="col-md-6">
                                     <div class="info-div">
-                                        <p>14 Attending</p>
-                                        <p>14th May 2017</p>
-                                        <p>11:00am</p>
-                                        <p>Kelburn Country Park</p>
+                                        <p>{{this.attending}}</p>
+                                        <p>{{this.date}}</p>
+                                        <p>{{this.time}}</p>
+                                        <p>{{this.location}}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
