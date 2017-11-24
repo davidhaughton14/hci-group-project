@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/stylesheets/meetup-details.css">
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="meetup-wrapper text-center">
+            <div class="header-wrapper">
+                <h1> {{meetup.name}} </h1>
+            </div>
+            <div class="field-wrapper">
+                <h3>{{meetup.date}} at {{meetup.time}}</h3>
+            </div>
+            <div class="field-wrapper">
+                <h3>{{meetup.location}}</h3>
+            </div>
+            <div class="field-wrapper">
+                <h3>Details of meetup</h3>
+            </div>
+            <div class="field-wrapper">
+                {{#each meetup.attending}}
+                    <h3>{{this}}</h3>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
