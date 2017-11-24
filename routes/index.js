@@ -129,9 +129,13 @@ router.post('/update/:habit', function(req,res,next){
     });
 });
 
+
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
-    res.render('meetups', { title: 'HappyHelper - Meetups' });
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        var meetups = record.meetups;
+        res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetups});
+    });
 });
 
 router.post('/meetups-search', function(req,res,next){

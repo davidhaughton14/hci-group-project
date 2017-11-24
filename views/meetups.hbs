@@ -12,6 +12,7 @@
             <div class = "row">
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
+                        {{#each meetups}}
                             <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
                             <div class="panel">
                                 <div class="col-md-6">
@@ -28,17 +29,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                            <div class="panel">
-                                <p>Lorem ipsum...</p>
-                            </div>
-
-                            <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                            <div class="panel">
-                                <p>Lorem ipsum...</p>
-                            </div>
-                        </div>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
