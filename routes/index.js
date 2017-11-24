@@ -140,7 +140,7 @@ router.get('/meetups', function(req, res, next) {
                 jsonObject["name"] = result[i].name;
                 jsonObject["date"] = result[i].date;
                 jsonObject["time"] = result[i].time;
-                jsonObject["attending"] = result[i].attending;
+                jsonObject["attending"] = result[i].attending.length;
                 jsonObject["location"] = result[i].location;
                 meetupArray.push(jsonObject);
             }
@@ -153,6 +153,13 @@ router.post('/meetups-search', function(req,res,next){
     var query = req.body.search;
     console.log(query);
     res.render('search_results', {title:'HappyHelper - Search results', query:query});
+});
+
+router.get('/meetup/details/:name', function(req,res,next){
+    var name = req.params.name;
+    Meetup.findOne({name:name}).then(function(record){
+        res.render('meetup_details', {title:'HappyHelper', meetup:record});
+    });
 });
 
 

@@ -17,16 +17,15 @@
                             <div class="panel">
                                 <div class="col-md-6">
                                     <div class="info-div">
-                                        <p>{{this.attending}}</p>
-                                        <p>{{this.date}}</p>
-                                        <p>{{this.time}}</p>
-                                        <p>{{this.location}}</p>
+                                        <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                        <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                        <h4><i class="fa fa-users" aria-hidden="true"></i>  {{this.attending}} users attending </h4>
+                                        <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="button-div">
-                                        <a href="/meetupdetails" id="#view" class="btn btn-success" role="button">View Meetup!</a>
-                                    </div>
+                                    <div id="map"></div>
                                 </div>
                             </div>
                         {{/each}}
@@ -111,4 +110,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"> </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
-<script src="/javascripts/meetups.js"></script>
+<script src="/javascripts/meetups.js"></script><script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/javascripts/search-results.js"></script>
+<script>
+  function initMap() {
+    var uluru = {lat: 55.7708, lng: -4.8433};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">
+</script>
