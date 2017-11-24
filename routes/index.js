@@ -23,24 +23,20 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    // var newMeetup= new Meetup({
-    //     name: "test",
-    //     date: "now",
-    //     time: "now",
-    //     location: "here"
-    // });
-    //
-    // newMeetup.attending.push("david");
-    // newMeetup.save().then(function(record){
-    // });
-    //     User.findOne({_id:req.session.passport.user}).then(function(result){
-    //         result.meetups.push("test")
-    //         result.save().then(function(user){
-    //             console.log(user)
-    //         });
-    //     });
-    // // });
-    res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+    var newMeetup= new Meetup({
+        name: "Hill Walking",
+        date: "30/11/2017",
+        time: "11:00am-17:00pm",
+        location: "Eglinton Country Park",
+        about: "Group hill walking trip starting from Eglinton Country Park. The trip should take roughly 6 hours, but may over/under run. Suitable for all age groups. Walking equiptment required."
+    });
+    newMeetup.attending.push("david");
+    newMeetup.save();
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        result.meetups.push("Hill Walking")
+        result.save();
+        res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+    });
 });
 
 router.get('/meetupdetails', function(req, res, next) {

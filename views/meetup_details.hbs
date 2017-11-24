@@ -13,12 +13,20 @@
                 <h3>{{meetup.location}}</h3>
             </div>
             <div class="field-wrapper">
-                <h3>Details of meetup</h3>
+                <h3 class="detail-header">Details of meetup</h3>
+                <h5>{{meetup.about}}</h5>
             </div>
             <div class="field-wrapper">
-                {{#each meetup.attending}}
-                    <h3>{{this}}</h3>
-                {{/each}}
+                <h3 class="attending-heading">Users attending</h3>
+                <div class="row">
+                    {{#each meetup.attending}}
+                            <div class="col-md-6">
+                                <div class="person-div">
+                                    <img class="user-img img-circle" src="/images/placeholder.png" /><span class="username">{{this}}</span>
+                                </div>
+                            </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>

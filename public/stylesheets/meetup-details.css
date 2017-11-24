@@ -7,8 +7,8 @@
 
 .header-wrapper{
     border-bottom: 1px solid black;
-    padding-bottom:15px;
-    margin-bottom: 20px;
+    padding-bottom:20px;
+    padding-top: 20px;
 }
 
 .field-wrapper{
@@ -16,5 +16,24 @@
     display: block;
     margin: 0 auto;
     border-bottom: 1px solid black;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+}
+.user-img{
+    width: 64px;
+    height:64px;
+}
+
+.username{
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.detail-header{
+    padding-bottom: 10px;
 }
