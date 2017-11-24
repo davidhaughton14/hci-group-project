@@ -17,6 +17,9 @@ const MeetupSchema = mongoose.Schema({
 	},
 	location:{
 		type: String
+	},
+	about:{
+		type: String
 	}
 });
 
