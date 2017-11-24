@@ -23,20 +23,21 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    var newMeetup= new Meetup({
-        name: "Hill Walking",
-        date: "30/11/2017",
-        time: "11:00am-17:00pm",
-        location: "Eglinton Country Park",
-        about: "Group hill walking trip starting from Eglinton Country Park. The trip should take roughly 6 hours, but may over/under run. Suitable for all age groups. Walking equiptment required."
-    });
-    newMeetup.attending.push("david");
-    newMeetup.save();
-    User.findOne({_id:req.session.passport.user}).then(function(result){
-        result.meetups.push("Hill Walking")
-        result.save();
-        res.render('dashboard', { title: 'HappyHelper - Dashboard' });
-    });
+    // var newMeetup= new Meetup({
+    //     name: "Testing Meetups",
+    //     date: "30/11/2017",
+    //     time: "11:00am-17:00pm",
+    //     location: "Eglinton Country Park",
+    //     about: "Group hill walking trip starting from Eglinton Country Park. The trip should take roughly 6 hours, but may over/under run. Suitable for all age groups. Walking equiptment required."
+    // });
+    // newMeetup.attending.push("test");
+    // newMeetup.save().then(function(record){
+    //     User.findOne({_id:req.session.passport.user}).then(function(result){
+    //         result.meetups.push("Testing Meetups")
+    //         result.save();
+    //     });
+    // });
+    res.render('dashboard', { title: 'HappyHelper - Dashboard' });
 });
 
 router.get('/meetupdetails', function(req, res, next) {
@@ -48,18 +49,33 @@ router.post('/attending/:name', function(req,res,next){
     var attending = req.body.attending;
     if(attending == "on"){
         User.findOne({_id:req.session.passport.user}).then(function(result){
+            var user = result.username;
             result.meetups.push(meetup_name);
-            result.save();
-            Meetup.findOne({name:meetup_name}).then(function(record){
-                res.render('meetup_details', {title:'HappyHelper', meetup:record});
+            result.save().then(function(please){
+                console.log(please);
+                Meetup.findOne({name:meetup_name}).then(function(record){
+                    record.attending.push(user);
+                    record.save().then(function(updatedRecord){
+                        var attending = true;
+                        res.render('meetup_details', {title:'HappyHelper', meetup:updatedRecord, user:user, attending:attending});
+                    });
+                });
             });
+
         });
     } else {
         User.findOne({_id:req.session.passport.user}).then(function(result){
-            record.meetups.pull(meetup_name);
-            result.save();
-            Meetup.findOne({name:meetup_name}).then(function(record){
-                res.render('meetup_details', {title:'HappyHelper', meetup:record});
+            var user = result.username;
+            result.meetups.pull(meetup_name);
+            result.save().then(function(please){
+                console.log(please);
+                Meetup.findOne({name:meetup_name}).then(function(record){
+                    record.attending.pull(user);
+                    record.save().then(function(updatedRecord){
+                        var attending = false;
+                        res.render('meetup_details', {title:'HappyHelper', meetup:updatedRecord, attending:attending});
+                    });
+                });
             });
         });
     }
@@ -151,6 +167,7 @@ router.post('/update/:habit', function(req,res,next){
 router.get('/meetups', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var meetups = record.meetups;
+        console.log(record.meetups);
         Meetup.find({'name': { $in: meetups }}).then(function(result){
             var meetupArray = [];
             for (var i=0; i<result.length;i++){
@@ -162,6 +179,7 @@ router.get('/meetups', function(req, res, next) {
                 jsonObject["location"] = result[i].location;
                 meetupArray.push(jsonObject);
             }
+            console.log(meetupArray);
             res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
         });
     });
@@ -175,9 +193,19 @@ router.post('/meetups-search', function(req,res,next){
 
 router.get('/meetup/details/:name', function(req,res,next){
     var name = req.params.name;
-    Meetup.findOne({name:name}).then(function(record){
-        res.render('meetup_details', {title:'HappyHelper', meetup:record});
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        var username = result.username;
+        Meetup.findOne({name:name}).then(function(record){
+            var attending = false;
+            for (var i=0;i<record.attending.length;i++){
+                if(username == record.attending[i]){
+                    attending = true;
+                }
+            }
+            res.render('meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+        });
     });
+
 });
 
 

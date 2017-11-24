@@ -6,12 +6,13 @@
             <div class="meetup-wrapper text-center">
                 <div class="header-wrapper">
                     <h1> {{meetup.name}} </h1>
+                    <h1> {{attending}} </h1>
                 </div>
                 <div class="field-wrapper">
                     <h3>Attending</h3>
                     <div class="checkbox">
                         <label class="switch">
-                          <input name="attending" onChange="this.form.submit()" type="checkbox">
+                          <input id="attending" data-is-attending= "{{user}}" onChange="this.form.submit()" {{#if attending}} checked="true" {{/if}} type="checkbox">
                           <span class="slider round"></span>
                         </label>
                     </div>
@@ -42,3 +43,6 @@
         </form>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/javascripts/attending.js"></script>
