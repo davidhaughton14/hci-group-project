@@ -43,6 +43,28 @@ router.get('/meetupdetails', function(req, res, next) {
     res.render('meetup_details', { title: 'HappyHelper - Meetup' });
 });
 
+router.post('/attending/:name', function(req,res,next){
+    var meetup_name = req.params.name;
+    var attending = req.body.attending;
+    if(attending == "on"){
+        User.findOne({_id:req.session.passport.user}).then(function(result){
+            result.meetups.push(meetup_name);
+            result.save();
+            Meetup.findOne({name:meetup_name}).then(function(record){
+                res.render('meetup_details', {title:'HappyHelper', meetup:record});
+            });
+        });
+    } else {
+        User.findOne({_id:req.session.passport.user}).then(function(result){
+            record.meetups.pull(meetup_name);
+            result.save();
+            Meetup.findOne({name:meetup_name}).then(function(record){
+                res.render('meetup_details', {title:'HappyHelper', meetup:record});
+            });
+        });
+    }
+})
+
 
 /* GET habits page. */
 router.get('/habits', function(req, res, next) {
