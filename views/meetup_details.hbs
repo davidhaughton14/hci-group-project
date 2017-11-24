@@ -7,6 +7,15 @@
                 <h1> {{meetup.name}} </h1>
             </div>
             <div class="field-wrapper">
+                <h3>Attending</h3>
+                <div class="checkbox">
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="field-wrapper">
                 <h3>{{meetup.date}} at {{meetup.time}}</h3>
             </div>
             <div class="field-wrapper">
@@ -16,7 +25,7 @@
                 <h3 class="detail-header">Details of meetup</h3>
                 <h5>{{meetup.about}}</h5>
             </div>
-            <div class="field-wrapper">
+            <div id="last" class="field-wrapper">
                 <h3 class="attending-heading">Users attending</h3>
                 <div class="row">
                     {{#each meetup.attending}}
