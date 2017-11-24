@@ -195,7 +195,24 @@ router.get('/meetups', function(req, res, next) {
                     jsonObject["location"] = result[i].location;
                     meetupArray.push(jsonObject);
                 }
-                res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+                Meetup.find().then(function(docs){
+                    var allArray = [];
+                    for (var i=0; i<docs.length;i++){
+                        jsonObject = {};
+                        jsonObject["name"] = docs[i].name;
+                        jsonObject["date"] = docs[i].date;
+                        jsonObject["time"] = docs[i].time;
+                        jsonObject["attending"] = docs[i].attending.length;
+                        jsonObject["location"] = docs[i].location;
+                        allArray.push(jsonObject);
+                    }
+                    if (allArray < 3){
+                        var popularArray = allArray;
+                    } else {
+                        var popularArray = allArray.slice(0, 3);
+                    }
+                    res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray, popular:popularArray});
+                });
             });
         }
     });
