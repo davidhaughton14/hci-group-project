@@ -173,7 +173,19 @@ router.post('/update/:habit', function(req,res,next){
 router.get('/meetups', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         if(record.helper_flag == 1){
-            res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups'});
+            Meetup.find().then(function(result){
+                var meetupArray = [];
+                for (var i=0; i<result.length;i++){
+                    jsonObject = {};
+                    jsonObject["name"] = result[i].name;
+                    jsonObject["date"] = result[i].date;
+                    jsonObject["time"] = result[i].time;
+                    jsonObject["attending"] = result[i].attending.length;
+                    jsonObject["location"] = result[i].location;
+                    meetupArray.push(jsonObject);
+                }
+                res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+            });
         } else {
             var meetups = record.meetups;
             console.log(record.meetups);
@@ -211,7 +223,7 @@ router.post('/helper/create', function(req,res,next){
     });
 
     newMeetup.save();
-    res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups'});
+    res.redirect('/meetups')
 });
 
 router.post('/meetups-search', function(req,res,next){

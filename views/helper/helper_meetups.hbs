@@ -27,70 +27,25 @@
         </div>
 
         <div id="viewAll" class="tabcontent">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
+            <div class = "panel-wrapper">
+                {{#each meetups}}
+                    <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                    <div class="panel">
                         <div class="col-md-6">
-                            <div class = "nearby-wrap">
-                                <h3 class="text-center heading"> Popular in your area </h3>
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <div class = "panel-wrapper">
-                                            <button class="accordion">Hill Walking | 0.9Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                            <div class="panel">
-                                                <div class="col-md-6">
-                                                    <div class="info-div">
-                                                        <p>14 Attending</p>
-                                                        <p>14th May 2017</p>
-                                                        <p>11:00am</p>
-                                                        <p>Kelburn Country Park</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="button-div">
-                                                        <a href="/meetupdetails" id="#view" class="btn btn-success" role="button">View Meetup!</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <button class="accordion">Five-aside football Tournament | 4.3Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                            <div class="panel">
-                                                <p>Lorem ipsum...</p>
-                                            </div>
-
-                                            <button class="accordion">Bad move night | 3.6Mi away <i class="fa fa-angle-double-down pull-right"></i></button>
-                                            <div class="panel">
-                                                <p>Lorem ipsum...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="info-div">
+                                <p>{{this.attending}}</p>
+                                <p>{{this.date}}</p>
+                                <p>{{this.time}}</p>
+                                <p>{{this.location}}</p>
                             </div>
                         </div>
-                        <form class="search-tweets" form method="POST" action="/meetups-search">
-                            <div class="col-md-6">
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <div class="box">
-                                            <div class="container-3">
-                                                <span class="icon"><i class="fa fa-search"></i></span>
-                                                <input type="search" id="search-box" name="search" placeholder="Enter term(s) to search..." />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class = "row">
-                                    <div class = "col-md-12">
-                                        <div class="button-wrapper">
-                                                <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="button-div">
+                                <a href="/meetupdetails" id="#view" class="btn btn-success" role="button">View Meetup!</a>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
