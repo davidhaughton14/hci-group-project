@@ -110,3 +110,9 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.fa-trash{
+    padding-right: 20px;
+    font-size: 40px;
+    margin-top:-40px;
+}

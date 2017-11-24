@@ -1,0 +1,160 @@
+.nearby-wrap{
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+.heading{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin: 0;
+    background-color: white;
+    border: none;
+}
+
+.panel-wrapper{
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+
+.container-3{
+    margin-top: 100px;
+    width: 75%;
+    left: 12.5%;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+.container-3 input#search-box{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #262626;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: black;
+    box-shadow: 0 0 10px #585a5a;
+}
+
+.container-3 input#search-box::-webkit-input-placeholder {
+   color: #65737e;
+}
+
+.container-3 .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 14px;
+    z-index: 1;
+    color: #4f5b66;
+    transition: all .55s ease;
+}
+
+/* ANIMATION EFFECTS */
+.container-3:hover .icon{
+    color: #585a5a;
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
+}
+
+.button-wrapper{
+    margin-top: 25px;
+}
+
+#search{
+    width: 200px;
+    margin: 0 auto;
+    height: 45px;
+    border: 1.1px solid #585a5a;
+}
+
+.info-div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.button-div{
+    padding-top: 60px;
+}
+
+#view{
+    display: block;
+    margin: 0 auto;
+}
+
+.your-meetups-wrap{
+    border-radius: 5px;
+    margin-bottom: 40px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    padding: 20px;
+}
+
+.find-new-meetups-wrap{
+    border-radius: 5px;
+    box-shadow: 0 0 25px grey;
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: white;
+}
+
+#map{
+    height: 300px;
+    border: 1px solid black;
+}
+
+.info-div{
+    padding-left: 50px;
+}
+
+.info-div h4{
+    margin-bottom: 30px;
+}
+
+.form-control{
+    margin-bottom: 20px;
+}
+
+#about{
+    height: 200px;
+    resize: none;
+}

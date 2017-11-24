@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/stylesheets/helper_meetups.css">
+<div class="row">
+    <div class="col-md-12">
+        <h1> YOU ARE A HELPER - MEETUPS </h1>
+        <div class = "tab-wrap">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'create')" id="defaultOpen">Create new meetup</button>
+                <button class="tablinks" onclick="openTab(event, 'viewAll')">View all meetups</button>
+            </div>
+        </div>
+
+        <div id="create" class="tabcontent">
+            <div class = "row">
+                <div class="col-md-12">
+                    <div class = "panel-wrapper">
+                        <form class="create-meetup" form method="POST" action="/helper/create">
+                            <input type="text" class="form-control" name ="name" placeholder="Meetup name..." required autofocus>
+                            <input type="text" class="form-control" name= "date" placeholder="Meetup date..." required>
+                            <input type="text" class="form-control" name ="time" placeholder="Meetup time..." required>
+                            <input type="text" class="form-control" name= "location" placeholder="Meetup location..." required>
+                            <textarea id="about" class="form-control" name="about" placeholder="About meetup..."></textarea>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">create meetup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="viewAll" class="tabcontent">
+            <div class = "panel-wrapper">
+                {{#each meetups}}
+                    <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                    <div class="panel">
+                        <div class="col-md-6">
+                            <div class="info-div">
+                                <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                <h4><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attendingwrhgefkg</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="button-div">
+                                <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+<script src="/javascripts/meetups.js"></script><script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/javascripts/search-results.js"></script>

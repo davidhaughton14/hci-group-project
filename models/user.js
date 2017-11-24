@@ -37,10 +37,14 @@ const UserSchema = new Schema({
 	password: {
 		type: String
 	},
+	helper_flag:{
+		type: Number
+	},
 	habits:[String],
 	tracked_stats: [HabitSchema],
 	diaryEntries: [DiarySchema],
-	meetups:[String]
+	meetups:[String],
+	assigned:[String]
 });
 
 var User = mongoose.model('User', UserSchema);

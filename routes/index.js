@@ -32,12 +32,18 @@ router.get('/dashboard', function(req, res, next) {
     // });
     // newMeetup.attending.push("test");
     // newMeetup.save().then(function(record){
-    //     User.findOne({_id:req.session.passport.user}).then(function(result){
     //         result.meetups.push("Testing Meetups")
     //         result.save();
     //     });
     // });
-    res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        if(result.helper_flag == 1){
+            var assigned = result.assigned;
+            res.render('helper/helper_dash', { title: 'HappyHelper - Dashboard', assigned:assigned});
+        } else {
+            res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+        }
+    });
 });
 
 router.get('/meetupdetails', function(req, res, next) {
@@ -166,23 +172,58 @@ router.post('/update/:habit', function(req,res,next){
 /* GET meetups page. */
 router.get('/meetups', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        var meetups = record.meetups;
-        console.log(record.meetups);
-        Meetup.find({'name': { $in: meetups }}).then(function(result){
-            var meetupArray = [];
-            for (var i=0; i<result.length;i++){
-                jsonObject = {};
-                jsonObject["name"] = result[i].name;
-                jsonObject["date"] = result[i].date;
-                jsonObject["time"] = result[i].time;
-                jsonObject["attending"] = result[i].attending.length;
-                jsonObject["location"] = result[i].location;
-                meetupArray.push(jsonObject);
-            }
-            console.log(meetupArray);
-            res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
-        });
+        if(record.helper_flag == 1){
+            Meetup.find().then(function(result){
+                var meetupArray = [];
+                for (var i=0; i<result.length;i++){
+                    jsonObject = {};
+                    jsonObject["name"] = result[i].name;
+                    jsonObject["date"] = result[i].date;
+                    jsonObject["time"] = result[i].time;
+                    jsonObject["attending"] = result[i].attending.length;
+                    jsonObject["location"] = result[i].location;
+                    meetupArray.push(jsonObject);
+                }
+                res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+            });
+        } else {
+            var meetups = record.meetups;
+            console.log(record.meetups);
+            Meetup.find({'name': { $in: meetups }}).then(function(result){
+                var meetupArray = [];
+                for (var i=0; i<result.length;i++){
+                    jsonObject = {};
+                    jsonObject["name"] = result[i].name;
+                    jsonObject["date"] = result[i].date;
+                    jsonObject["time"] = result[i].time;
+                    jsonObject["attending"] = result[i].attending.length;
+                    jsonObject["location"] = result[i].location;
+                    meetupArray.push(jsonObject);
+                }
+                console.log(meetupArray);
+                res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+            });
+        }
     });
+});
+
+router.post('/helper/create', function(req,res,next){
+    var meetup_name = req.body.name;
+    var meetup_date = req.body.date;
+    var meetup_time = req.body.time;
+    var meetup_location = req.body.location;
+    var about_meetup = req.body.about;
+
+    var newMeetup= new Meetup({
+        name: meetup_name,
+        date: meetup_date,
+        time: meetup_time,
+        location: meetup_location,
+        about: about_meetup
+    });
+
+    newMeetup.save();
+    res.redirect('/meetups')
 });
 
 router.post('/meetups-search', function(req,res,next){
@@ -202,12 +243,22 @@ router.get('/meetup/details/:name', function(req,res,next){
                     attending = true;
                 }
             }
-            res.render('meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+            if(result.helper_flag==1){
+                res.render('helper/helper_meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+
+            } else {
+                res.render('meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+            }
         });
     });
-
 });
 
+router.get('/meetups/delete/:name', function(req,res,next){
+    var name = req.params.name;
+    Meetup.remove({name:name}).then(function(result){
+        res.redirect('/meetups')
+    });
+});
 
 passport.use(new LocalStrategy(function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
