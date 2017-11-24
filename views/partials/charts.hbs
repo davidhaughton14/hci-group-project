@@ -7,6 +7,8 @@
 google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
+
+		// Sleep chart
        var data = google.visualization.arrayToDataTable([
         ['Sleep Type', 'REM', 'Light', 'Deep', { role: 'annotation' } ],
         ['Monday', 2.1, 5, 0.5, ''],
@@ -33,10 +35,42 @@ function drawAxisTickColors() {
         bar: { groupWidth: '75%' },
         isStacked: true,
 
-        colors: ['#4f9070','#2e8a6a', '#0d4950']
+        colors: ['#4f9070','#2e8a6a', '#0d4950'],
+        series: {5: {
+      type: "steppedArea", 
+      color: '#FF0000', 
+      visibleInLegend: false, 
+      areaOpacity: 0}
+    }
       };
 
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      var chart = new google.visualization.ColumnChart(document.getElementById('sleep_div'));
+      chart.draw(data, options);
+
+      var data = google.visualization.arrayToDataTable([
+          ['Date', 'Heart rate'],
+          ['24/11',  65],
+          ['23/11',  66],
+          ['22/11',  63],
+          ['20/11',  64],
+          ['19/11',  61],
+          ['18/11',  63],
+          ['17/11',  69],
+          ['16/11',  65],
+          ['15/11',  61],
+          ['14/11',  56]
+        ]);
+
+        var options = {
+          title: 'Your average heart rate',
+          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+          vAxis: {title: 'Heart rate', minValue: 0},
+          colors: ['red'],
+          areaOpacity: 0.3,
+          legend: {position: 'none'}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
       chart.draw(data, options);
     }
     </script>
