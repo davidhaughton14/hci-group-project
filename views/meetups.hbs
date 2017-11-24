@@ -12,23 +12,27 @@
             <div class = "row">
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
-                        {{#each meetups}}
-                            <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
-                            <div class="panel">
-                                <div class="col-md-6">
-                                    <div class="info-div">
-                                        <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
-                                        <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
-                                        <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
-                                        <h4><i class="fa fa-users" aria-hidden="true"></i>  {{this.attending}} users attending </h4>
-                                        <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                        {{#if meetups}}
+                            {{#each meetups}}
+                                <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                                <div class="panel">
+                                    <div class="col-md-6">
+                                        <div class="info-div">
+                                            <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                            <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                            <h4><i class="fa fa-users" aria-hidden="true"></i>  {{this.attending}} users attending </h4>
+                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="map"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div id="map"></div>
-                                </div>
-                            </div>
                         {{/each}}
+                        {{else}}
+                            <h2> You have no upcoming meetups </h2>
+                        {{/if}}
                     </div>
                 </div>
             </div>
