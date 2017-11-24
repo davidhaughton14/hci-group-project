@@ -195,6 +195,25 @@ router.get('/meetups', function(req, res, next) {
     });
 });
 
+router.post('/helper/create', function(req,res,next){
+    var meetup_name = req.body.name;
+    var meetup_date = req.body.date;
+    var meetup_time = req.body.time;
+    var meetup_location = req.body.location;
+    var about_meetup = req.body.about;
+
+    var newMeetup= new Meetup({
+        name: meetup_name,
+        date: meetup_date,
+        time: meetup_time,
+        location: meetup_location,
+        about: about_meetup
+    });
+
+    newMeetup.save();
+    res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups'});
+});
+
 router.post('/meetups-search', function(req,res,next){
     var query = req.body.search;
     console.log(query);
