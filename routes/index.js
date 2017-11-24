@@ -58,7 +58,6 @@ router.post('/attending/:name', function(req,res,next){
             var user = result.username;
             result.meetups.push(meetup_name);
             result.save().then(function(please){
-                console.log(please);
                 Meetup.findOne({name:meetup_name}).then(function(record){
                     record.attending.push(user);
                     record.save().then(function(updatedRecord){
@@ -74,7 +73,6 @@ router.post('/attending/:name', function(req,res,next){
             var user = result.username;
             result.meetups.pull(meetup_name);
             result.save().then(function(please){
-                console.log(please);
                 Meetup.findOne({name:meetup_name}).then(function(record){
                     record.attending.pull(user);
                     record.save().then(function(updatedRecord){
@@ -149,7 +147,6 @@ router.post('/update/:habit', function(req,res,next){
                 sameDate.push(tracked_stats[i])
             }
         }
-        console.log(sameDate);
 
         var update = -1;
         for (var i=0;i<sameDate.length;i++){
@@ -157,7 +154,6 @@ router.post('/update/:habit', function(req,res,next){
                 update = i;
             }
         }
-        console.log("Need to update entry " + update)
         if (update>-1){
             record.tracked_stats[update].value = value;
             record.save();
@@ -188,7 +184,6 @@ router.get('/meetups', function(req, res, next) {
             });
         } else {
             var meetups = record.meetups;
-            console.log(record.meetups);
             Meetup.find({'name': { $in: meetups }}).then(function(result){
                 var meetupArray = [];
                 for (var i=0; i<result.length;i++){
@@ -200,8 +195,24 @@ router.get('/meetups', function(req, res, next) {
                     jsonObject["location"] = result[i].location;
                     meetupArray.push(jsonObject);
                 }
-                console.log(meetupArray);
-                res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
+                Meetup.find().then(function(docs){
+                    var allArray = [];
+                    for (var i=0; i<docs.length;i++){
+                        jsonObject = {};
+                        jsonObject["name"] = docs[i].name;
+                        jsonObject["date"] = docs[i].date;
+                        jsonObject["time"] = docs[i].time;
+                        jsonObject["attending"] = docs[i].attending.length;
+                        jsonObject["location"] = docs[i].location;
+                        allArray.push(jsonObject);
+                    }
+                    if (allArray < 3){
+                        var popularArray = allArray;
+                    } else {
+                        var popularArray = allArray.slice(0, 3);
+                    }
+                    res.render('meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray, popular:popularArray});
+                });
             });
         }
     });
@@ -228,8 +239,9 @@ router.post('/helper/create', function(req,res,next){
 
 router.post('/meetups-search', function(req,res,next){
     var query = req.body.search;
-    console.log(query);
-    res.render('search_results', {title:'HappyHelper - Search results', query:query});
+    Meetup.find({ "name": { "$regex": query, "$options": "i" } },function(err,docs) {
+        res.render('search_results', {title:'HappyHelper - Search results', query:query, meetups:docs});
+    });
 });
 
 router.get('/meetup/details/:name', function(req,res,next){

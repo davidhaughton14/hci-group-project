@@ -107,11 +107,6 @@ div.panel {
     border: 1.1px solid #585a5a;
 }
 
-.info-div{
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 .button-div{
     padding-top: 60px;
 }
@@ -143,7 +138,8 @@ div.panel {
 }
 
 .info-div{
-    padding-left: 50px;
+    padding:5px;
+    padding-left: 30px;
 }
 
 .info-div h4{
