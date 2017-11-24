@@ -243,12 +243,22 @@ router.get('/meetup/details/:name', function(req,res,next){
                     attending = true;
                 }
             }
-            res.render('meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+            if(result.helper_flag==1){
+                res.render('helper/helper_meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+
+            } else {
+                res.render('meetup_details', {title:'HappyHelper', meetup:record, attending:attending});
+            }
         });
     });
-
 });
 
+router.get('/meetups/delete/:name', function(req,res,next){
+    var name = req.params.name;
+    Meetup.remove({name:name}).then(function(result){
+        res.redirect('/meetups')
+    });
+});
 
 passport.use(new LocalStrategy(function(username, password, done) {
     User.getUserByUsername(username, function(err, user){

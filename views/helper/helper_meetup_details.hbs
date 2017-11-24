@@ -5,16 +5,7 @@
         <form class="attending" form method="POST" action="/attending/{{meetup.name}}">
             <div class="meetup-wrapper text-center">
                 <div class="header-wrapper">
-                    <h1> {{meetup.name}} </h1>
-                </div>
-                <div class="field-wrapper">
-                    <h3>Attending</h3>
-                    <div class="checkbox">
-                        <label class="switch">
-                          <input id="attending" data-is-attending= "{{user}}" onChange="this.form.submit()" {{#if attending}} checked="true" {{/if}} type="checkbox">
-                          <span class="slider round"></span>
-                        </label>
-                    </div>
+                    <h1> {{meetup.name}}</h1><a href="/meetups/delete/{{meetup.name}}"><i class="fa fa-trash pull-right" aria-hidden="true"></i></a>
                 </div>
                 <div class="field-wrapper">
                     <h3><i class="fa fa-calendar" aria-hidden="true"></i> {{meetup.date}} at {{meetup.time}}</h3>
