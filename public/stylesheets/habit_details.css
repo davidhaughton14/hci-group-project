@@ -126,3 +126,9 @@ div.panel {
     margin-left: 70px;
     border: 1.1px solid #585a5a;
 }
+
+.beerMonday, .beerTuesday{
+    height: 100px;
+    width: 35px;
+
+}
