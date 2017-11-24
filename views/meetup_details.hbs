@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/stylesheets/meetup-details.css">
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <form class="attending" form method="POST" action="/attending/{{meetup.name}}">
+            <div class="meetup-wrapper text-center">
+                <div class="header-wrapper">
+                    <h1> {{meetup.name}} </h1>
+                    <h1> {{attending}} </h1>
+                </div>
+                <div class="field-wrapper">
+                    <h3>Attending</h3>
+                    <div class="checkbox">
+                        <label class="switch">
+                          <input id="attending" data-is-attending= "{{user}}" onChange="this.form.submit()" {{#if attending}} checked="true" {{/if}} type="checkbox">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="field-wrapper">
+                    <h3><i class="fa fa-calendar" aria-hidden="true"></i> {{meetup.date}} at {{meetup.time}}</h3>
+                </div>
+                <div class="field-wrapper">
+                    <h3><i class="fa fa-globe" aria-hidden="true"></i> {{meetup.location}}</h3>
+                </div>
+                <div class="field-wrapper">
+                    <h3 class="detail-header"><i class="fa fa-info-circle" aria-hidden="true"></i> Meetup details</h3>
+                    <h5>{{meetup.about}}</h5>
+                </div>
+                <div id="last" class="field-wrapper">
+                    <h3 class="attending-heading"><i class="fa fa-users" aria-hidden="true"></i> Users attending</h3>
+                    <div class="row">
+                        {{#each meetup.attending}}
+                                <div class="col-md-6">
+                                    <div class="person-div">
+                                        <img class="user-img img-circle" src="/images/placeholder.png" /><span class="username">{{this}}</span>
+                                    </div>
+                                </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="/javascripts/attending.js"></script>

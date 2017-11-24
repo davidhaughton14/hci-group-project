@@ -18,7 +18,7 @@ button.accordion {
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     border: none;
     outline: none;
     transition: 0.4s;
@@ -135,4 +135,17 @@ div.panel {
     padding: 20px;
     margin-bottom: 40px;
     background-color: white;
+}
+
+#map{
+    height: 300px;
+    border: 1px solid black;
+}
+
+.info-div{
+    padding-left: 50px;
+}
+
+.info-div h4{
+    margin-bottom: 30px;
 }
