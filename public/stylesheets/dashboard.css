@@ -178,3 +178,9 @@ button.accordion.active, button.accordion:hover {
 .panel-wrapper{
         padding-bottom: 10px;
 }
+
+.nav-justified{
+	padding-top: 20px;
+	padding-bottom: 30px;
+	background: rgba(255, 255, 255, 0.3);
+}
