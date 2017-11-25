@@ -151,6 +151,27 @@ router.get('/habits', function(req, res, next) {
     });
 });
 
+router.get('/helper/view/:username', function(req,res,next){
+    var username = req.params.username;
+    User.findOne({username:username}).then(function(record){
+        res.render('helper/view-user', { title: 'HappyHelper', user:record});
+    });
+});
+
+router.post('/helper/recommendation/:username/create', function(req,res,next){
+    var username = req.params.username;
+    var recommendationName = req.body.name;
+    var recommendationDescription = req.body.description;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
+    console.log(recommendationName);
+    User.findOne({username:username}).then(function(record){
+    });
+});
+
 router.post('/habits/create', function(req,res,next){
     req.checkBody('name', 'Habit name required').notEmpty();
 
