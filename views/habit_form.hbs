@@ -3,35 +3,70 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="habit-wrap">
+            <h3 class="add-habit-heading"> Add pre-set habit </h3>
+            <h5> These habits have capabilities to link with a device you may own, click one to find out more! </h5>
+            <div class = "row">
+                <div class = "col-md-3">
+                    <div class="smoking-wrap text-center">
+                        <div class="habit-add-preset text-center">
+                            <div class="icon">
+                                <i class="fa fa-heartbeat fa-3x"></i>                                
+                                <h4> Blood pressure </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                    <div class="smoking-wrap text-center">
+                        <div class="habit-add-preset text-center">
+                            <div class="icon">
+                                <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                                <h4> Sleep </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                    <div class="smoking-wrap text-center">
+                        <div class="habit-add-preset text-center">
+                            <div class="icon">
+                                <i class="fa fa-paw fa-3x" aria-hidden="true"></i>
+                                <h4> Steps </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-3">
+                    <div class="smoking-wrap text-center">
+                        <div class="habit-add-preset text-center">
+                            <div class="icon">
+                                <i class="fa fa-sun-o fa-3x" aria-hidden="true"></i>
+                                <h4> Vitamin D </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="form-wrap" method="POST" action="">
+
+            </form>
+            <form class="form-wrap" method="POST" action="">
+
+            </form>
+            <form class="form-wrap" method="POST" action="">
+
+            </form>
+            <h3> Create custom habit </h3>
             <form class="form-wrap" method="POST">
                 <label for="name"> Habit name </label>
-                <input name="name" class="name form-control" type="text">
+                <input name="name" class="name form-control" type="text" required>
                 <label for="name"> Habit unit </label>
-                <input name="name" class="name form-control" type="text">
+                <input name="name" class="name form-control" type="text" required>
                 <label for="name"> Habit daily limit </label>
-                <input name="name" class="name form-control" type="text">
+                <input name="name" class="name form-control" type="text" required>
                 <button class="btn btn-primary" type="submit">Create habit</button>
             </form>
         </div>
-    </div>
-</div>
-<div class="text-center" id="nav-wrapper">
-    <div class="content">
-			<div class="form-group">
-			<label for="name"> Name </label>
-			<input name="name" class="name form-control" type="text" placeholder="habit name">
-
-
-			</div>
-
-			{{#if errors}}
-		        {{#each errors}}
-		        <div class="animated tada alert alert-danger">
-		            {{msg}}
-		        </div>
-		        {{/each}}
-		    {{/if}}
-
-		</form>
     </div>
 </div>
