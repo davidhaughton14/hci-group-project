@@ -37,17 +37,57 @@ router.get('/dashboard', function(req, res, next) {
     //     });
     // });
     User.findOne({_id:req.session.passport.user}).then(function(result){
+        var d = new Date();
+        var day = d.getDate();
+        var month = d.getMonth();
+        var year = d.getFullYear();
+        var date = day+"/"+month+"/"+year;
         if(result.helper_flag == 1){
             var assigned = result.assigned;
             res.render('helper/helper_dash', { title: 'HappyHelper - Dashboard', assigned:assigned});
         } else {
-            res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+            var today = "";
+            var diaryEntries = result.diaryEntries;
+            for (var i=0; i<diaryEntries.length; i++){
+                if(diaryEntries[i].date == date){
+                    today = diaryEntries[i];
+                }
+            }
+            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today });
         }
     });
 });
 
 router.get('/meetupdetails', function(req, res, next) {
     res.render('meetup_details', { title: 'HappyHelper - Meetup' });
+});
+
+router.post('/save-diary', function(req,res,next){
+    var rating = req.body.happyRating;
+    var text = req.body.happyComments;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        var diaryEntries = result.diaryEntries;
+        var sameDate = [];
+        var update = 0;
+        for (var i=0;i<diaryEntries.length;i++){
+            if(diaryEntries[0].date == date){
+                result.diaryEntries[i].rating = rating;
+                result.diaryEntries[i].text = text;
+                result.save();
+                update = 1;
+            }
+        }
+        if (update ==0){
+            result.diaryEntries.push({date:date, rating:rating, text:text});
+            result.save();
+        }
+        res.redirect('/dashboard');
+    });
 });
 
 router.post('/attending/:name', function(req,res,next){
