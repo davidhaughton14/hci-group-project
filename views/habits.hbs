@@ -1,24 +1,51 @@
 <link rel="stylesheet" href="/stylesheets/habits.css">
 
-<div class="text-center" id="nav-wrapper">
-
-    <div class="content">
-    	<h2>Your tracked habits</h2>
-        <div class="row">
-            {{#each habits}}
-                <div class="col-md-4">
-                    <a href ="habits/{{this}}"><div class="habit">
-                        <p>{{this}}</p>
-                        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                    </div></a>
+<div class="row">
+    <div class="col-md-12">
+        <div class="habit-wrap">
+            {{#if habits}}
+            	<h2 class="text-center heading">Your tracked habits</h2>
+                <div class="row">
+                    {{#each habits}}
+                    <div class="col-md-4">
+                        <a href ="habits/{{this}}">
+                            <div class="habit text-center">
+                                <div class="icon">
+                                    <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                                    <h4> {{this}} </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {{/each}}
+                    <div class="col-md-4">
+                        <div class="new-habit text-center">
+                            <div class="icon">
+                                <a href="habits/create"><i class="fa fa-plus fa-4x" aria-hidden="true"></i>
+                                <h4>Add new habit</h4></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            {{/each}}
-            <div class="col-md-4">
-                <a href="habits/create"><div class="habit-new">
-                    <i class="fa fa-plus fa-4x" aria-hidden="true"></i>
-                    <h4>Add new habit</h4>
-                </div></a>
-            </div>
+            {{else}}
+                <h2 class="text-center"> You are currently not tracking any habits, add some!</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="new-habit text-center">
+                            <a href="habits/create"><i class="fa fa-plus fa-4x" aria-hidden="true"></i>
+                            <h4>Add new habit</h4></a>
+                        </div>
+                    </div>
+                </div>
+
+            {{/if}}
         </div>
     </div>
 </div>
+
+<!-- <div class="col-md-4">
+    <a href ="habits/{{this}}"><div class="habit">
+        <p>{{this}}</p>
+        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+    </div></a>
+</div> -->
