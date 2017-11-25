@@ -63,7 +63,12 @@ router.get('/meetupdetails', function(req, res, next) {
 });
 
 router.get('/recommendations', function(req,res,next){
-    res.render('recommendations', { title: 'HappyHelper - Recommendations' });
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        var helper = result.assigned;
+        User.findOne({username:helper}).then(function(record){
+            res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:record});
+        });
+    });
 });
 
 router.post('/save-diary', function(req,res,next){
