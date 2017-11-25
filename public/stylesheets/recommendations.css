@@ -1,0 +1,23 @@
+.user-img{
+    height: 50px;
+}
+
+.username{
+    font-size: 20px;
+    padding-left: 20px;
+}
+.helper-wrap{
+    border: 1px solid black;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    padding: 20px;
+}
+
+.about{
+    padding-top: 10px;
+}
+
+.about-heading{
+    padding-top:10px;
+    margin: 0;
+}

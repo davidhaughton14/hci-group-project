@@ -62,6 +62,10 @@ router.get('/meetupdetails', function(req, res, next) {
     res.render('meetup_details', { title: 'HappyHelper - Meetup' });
 });
 
+router.get('/recommendations', function(req,res,next){
+    res.render('recommendations', { title: 'HappyHelper - Recommendations' });
+});
+
 router.post('/save-diary', function(req,res,next){
     var rating = req.body.happyRating;
     var text = req.body.happyComments;
