@@ -29,7 +29,7 @@ router.get('/dashboard', function(req, res, next) {
         var date = day+"/"+month+"/"+year;
         if(result.helper_flag == 1){
             var assigned = result.assigned;
-            res.render('helper/helper_dash', { title: 'HappyHelper - Dashboard', assigned:assigned});
+            res.redirect('/meetups')
         } else {
             var habits = result.habits;
             var tracked = result.tracked_stats;
