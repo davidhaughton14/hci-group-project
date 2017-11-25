@@ -5,8 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 var Meetup = require('../models/meetup');
 
-
-
 // User.findOne({_id:req.session.passport.user}).then(function(record){
 //     record.habits.push("Smoking");
 //     record.save();
@@ -23,19 +21,6 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    // var newMeetup= new Meetup({
-    //     name: "Testing Meetups",
-    //     date: "30/11/2017",
-    //     time: "11:00am-17:00pm",
-    //     location: "Eglinton Country Park",
-    //     about: "Group hill walking trip starting from Eglinton Country Park. The trip should take roughly 6 hours, but may over/under run. Suitable for all age groups. Walking equiptment required."
-    // });
-    // newMeetup.attending.push("test");
-    // newMeetup.save().then(function(record){
-    //         result.meetups.push("Testing Meetups")
-    //         result.save();
-    //     });
-    // });
     User.findOne({_id:req.session.passport.user}).then(function(result){
         var d = new Date();
         var day = d.getDate();
@@ -46,6 +31,8 @@ router.get('/dashboard', function(req, res, next) {
             var assigned = result.assigned;
             res.redirect('/meetups')
         } else {
+            var habits = result.habits;
+            var tracked = result.tracked_stats;
             var today = "";
             var diaryEntries = result.diaryEntries;
             for (var i=0; i<diaryEntries.length; i++){
@@ -53,7 +40,26 @@ router.get('/dashboard', function(req, res, next) {
                     today = diaryEntries[i];
                 }
             }
-            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today });
+
+            var todaysHabits = [];
+            console.log(result.habits[0]);
+            console.log(tracked[0].name);
+            // console.log(result.habits.tracked[0].name.unit)
+            for (var j=0;j<result.habits.length;j++){
+                for (var i=0; i<tracked.length; i++){
+                if(tracked[i].date == date){
+                        if (result.habits[j].name == tracked[i].name){
+                            jsonObject = {};
+                            jsonObject["name"] = tracked[i].name;
+                            jsonObject["value"] = tracked[i].value;
+                            jsonObject["unit"] = result.habits[j].unit;
+                            jsonObject["limit"] = result.habits[j].limit;
+                            todaysHabits.push(jsonObject);
+                        }
+                    }
+                }
+            }
+            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today, habits:habits, todaysHabits:todaysHabits });
         }
     });
 });
@@ -186,10 +192,12 @@ router.post('/habits/create', function(req,res,next){
     //Run the validators
     var errors = req.validationErrors();
 
-    var name = req.body.name
+    var name = req.body.name;
+    var limit = req.body.limit;
+    var unit = req.body.unit;
 
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push(name);
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:false});
         record.save();
         res.redirect('/habits');
     });
@@ -199,22 +207,34 @@ router.get('/habits/create', function(req,res,next){
     res.render('habit_form', { title: 'HappyHelper - add custom habit' });
 });
 
-router.get('/habits/:this', function(req,res,next){
-    var name = req.params.this;
-    res.render('habit_detail', {habit: name});
+router.get('/habits/:name', function(req,res,next){
+    var name = req.params.name;
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        for(var i=0; i<record.habits.length;i++){
+            if(record.habits[i].name == name){
+                var habit = record.habits[i];
+            }
+        }
+        res.render('habit_detail', {habit: habit});
+    });
 });
 
 router.get('/delete/:habit', function(req,res,next){
     var name = req.params.habit;
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.pull(name);
+        for(var i=0; i<record.habits.length;i++){
+            if(record.habits[i].name == name){
+                var habit = record.habits[i];
+            }
+        }
+        record.habits.pull(habit);
         record.save();
         res.redirect('/habits');
     });
 });
 
-router.post('/update/:habit', function(req,res,next){
-    var name = req.params.habit;
+router.post('/update/:name', function(req,res,next){
+    var name = req.params.name;
     var value = req.body.habitVal;
     var d = new Date();
     var day = d.getDate();

@@ -63,24 +63,11 @@
                             </div>
                         </div>
                         <div class = "row">
-                            <div class = "col-md-4">
-                                <div class="progress" id="stepProgress"></div>
-                            </div>
-                            <div class = "col-md-4">
-                                <div class="progress" id="sleepProgress"></div>
-                            </div>
-                            <div class = "col-md-4">
-                                <div class="progress" id="BpProgress"></div>
-                            </div>
-                            <div class = "col-md-4">
-                                <div class="progress" id="vitDProgress"></div>
-                            </div>
-                            <div class = "col-md-4">
-                                <div class="progress" id="drinkProgress"></div>
-                            </div>
-                            <div class = "col-md-4">
-                                <div class="progress" id="smokeDProgress"></div>
-                            </div>
+                            {{#each todaysHabits}}
+                                <div class = "col-md-4">
+                                    <div class="progress" id="{{this.name}}"></div>
+                                </div>
+                            {{/each}}
                         </div>
                     </div>
                 </div>
@@ -155,6 +142,30 @@
       map: map
     });
   }
+</script>
+<script>
+{{#each todaysHabits}}
+var habitVal = {{this.value}};
+var bar = new ProgressBar.Circle("#{{this.name}}", {
+    color: '#95d10a',
+    trailColor: '#eee',
+    trailWidth: 4,
+    duration: 2000,
+    text: {
+        autoStyleContainer: true,
+    },
+    easing: 'bounce',
+    strokeWidth: 4,
+    from: {color: '#DCEABE', a:0},
+    to: {color: '#95d10a', a:1},
+    step: function(state, circle) {
+        circle.path.setAttribute('stroke', state.color);
+        var value = (circle.value()*{{this.limit}}).toFixed(2);
+        circle.setText(value + " out of {{this.limit}} {{this.unit}}s");
+    }
+});
+bar.animate((habitVal/{{this.limit}}));
+{{/each}}
 </script>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">

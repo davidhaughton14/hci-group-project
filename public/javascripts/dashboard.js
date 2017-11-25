@@ -1,10 +1,4 @@
 $( document ).ready(function() {
-    fillSteps();
-    fillSleep();
-    fillDrink();
-    fillSmoke();
-    fillBP();
-    fillvitD();
 
     var acc = document.getElementsByClassName("accordion");
     var i;

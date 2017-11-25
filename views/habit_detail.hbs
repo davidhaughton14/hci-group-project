@@ -23,11 +23,11 @@
     		</div>
 
     		<div class="col-md-8">
-    			<h1>{{habit}}</h1>
+    			<h1>{{habit.name}}</h1>
     		</div>
 
     		<div class="col-md-2">
-    			<a href="/delete/{{habit}}"><h5>Delete habit</h5></a>
+    			<a href="/delete/{{habit.name}}"><h5>Delete habit</h5></a>
     		</div>
     	</div>
 
@@ -36,10 +36,10 @@
 
     			<i class="pull-left fa fa-arrow-left" aria-hidden="true"></i>Today<i class="pull-right fa fa-arrow-right" aria-hidden="true"></i>
 
-				<form class="update-habit" form method="POST" action="/update/{{habit}}">
-					<label>Enter {{habit}} units</label>
+				<form class="update-habit" form method="POST" action="/update/{{habit.name}}">
+					<label>Enter {{habit.name}} units</label>
 					<div class="row">
-    					<input name="habitVal" type="text"> units
+    					<input name="habitVal" type="text"> {{habit.unit}}'s
     					<div class="row">
     						<button class="update-button btn btn-success" type="submit">Update</button>
     					</div>
