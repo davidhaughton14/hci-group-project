@@ -203,6 +203,59 @@ router.post('/habits/create', function(req,res,next){
     });
 });
 
+router.post('/add/sleep', function(req,res,next){
+    var name = req.body.name;
+    var limit = req.body.limit;
+    var unit = req.body.units;
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+router.post('/add/steps', function(req,res,next){
+    var name = req.body.name;
+    var limit = req.body.limit;
+    var unit = req.body.units;
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+router.post('/add/bp', function(req,res,next){
+    var name = req.body.name;
+    var limit1 = req.body.limit1;
+    var unit = req.body.units;
+
+    console.log(limit1);
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push({name:name, unit:unit, limit:limit1, uses_api:true});
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+router.post('/add/vitD', function(req,res,next){
+    var name = req.body.name;
+    var limit = req.body.limit;
+    var unit = req.body.units;
+
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.save();
+        res.redirect('/habits');
+    });
+});
+
+
+
+
 router.get('/habits/create', function(req,res,next){
     res.render('habit_form', { title: 'HappyHelper - add custom habit' });
 });
