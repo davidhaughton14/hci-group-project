@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/stylesheets/helper-recommendations.css">
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="assigned-user-wrap">
+            <h1 class="text-center heading"> Your assigned users </h1>
+            <div class="row">
+                {{#each users}}
+                    <div class="col-md-12">
+                        <a href="/helper/view/{{this.username}}" id="#view" class="btn btn-success" role="button">View {{this.username}}'s account</a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>

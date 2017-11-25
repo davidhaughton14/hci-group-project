@@ -2,6 +2,18 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
+const RecommendationsSchema = mongoose.Schema({
+	date:{
+		type:String
+	},
+	name:{
+		type:String
+	},
+	description:{
+		type:String
+	}
+});
+
 const DiarySchema = mongoose.Schema({
 	date:{
 		type:String
@@ -40,11 +52,15 @@ const UserSchema = new Schema({
 	helper_flag:{
 		type: Number
 	},
+	about:{
+		type: String
+	},
 	habits:[String],
 	tracked_stats: [HabitSchema],
 	diaryEntries: [DiarySchema],
 	meetups:[String],
-	assigned:[String]
+	assigned:[String],
+	recommendations:[RecommendationsSchema]
 });
 
 var User = mongoose.model('User', UserSchema);

@@ -62,6 +62,25 @@ router.get('/meetupdetails', function(req, res, next) {
     res.render('meetup_details', { title: 'HappyHelper - Meetup' });
 });
 
+router.get('/recommendations', function(req,res,next){
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        if(record.helper_flag == 1){
+            var users = record.assigned;
+            User.find({'username': { $in: users }}).then(function(result){
+                res.render('helper/helper_recommendations', { title: 'HappyHelper - Recommendations', users:result});
+            });
+        }
+        else{
+            var helper = record.assigned;
+            User.findOne({username:helper}).then(function(result){
+                var recs = record.recommendations;
+                console.log(recs);
+                res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:result, recommendations:recs});
+            });
+        }
+    });
+});
+
 router.post('/save-diary', function(req,res,next){
     var rating = req.body.happyRating;
     var text = req.body.happyComments;
@@ -131,6 +150,29 @@ router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var habitsNames = record.habits;
         res.render('habits', { title: 'HappyHelper - Habits', habits:habitsNames });
+    });
+});
+
+router.get('/helper/view/:username', function(req,res,next){
+    var username = req.params.username;
+    User.findOne({username:username}).then(function(record){
+        res.render('helper/view-user', { title: 'HappyHelper', user:record});
+    });
+});
+
+router.post('/helper/recommendation/:username/create', function(req,res,next){
+    var username = req.params.username;
+    var recommendationName = req.body.name;
+    var recommendationDescription = req.body.description;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
+    User.findOne({username:username}).then(function(record){
+        record.recommendations.push({date:date, name:recommendationName, description:recommendationDescription});
+        record.save();
+        res.redirect('/helper/view/'+username);
     });
 });
 

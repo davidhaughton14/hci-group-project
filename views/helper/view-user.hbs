@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/stylesheets/helper-view-user.css">
+
+<div class="row">
+    <div class="col-md-12">
+        <h1> {{user.username}} </h1>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make a recommendation for {{user.username}}</button>
+
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Recommendation for {{user.username}}</h4>
+              </div>
+              <div class="modal-body">
+                  <form class="create-meetup" form method="POST" action="/helper/recommendation/{{user.username}}/create">
+                      <input type="text" class="form-control" name ="name" placeholder="recommendation name..." required autofocus>
+                      <textarea id="about" class="form-control" name="description" placeholder="recommendation description..."></textarea>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Create recommendation</button>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
