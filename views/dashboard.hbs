@@ -146,6 +146,7 @@
 <script>
 {{#each todaysHabits}}
 var habitVal = {{this.value}};
+console.log(habitVal);
 var bar = new ProgressBar.Circle("#{{this.name}}", {
     color: '#95d10a',
     trailColor: '#eee',
@@ -161,7 +162,7 @@ var bar = new ProgressBar.Circle("#{{this.name}}", {
     step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color);
         var value = (circle.value()*{{this.limit}}).toFixed(2);
-        circle.setText(value + " out of {{this.limit}} {{this.unit}}s");
+        circle.setText(value + " out of {{this.limit}}" + " {{this.unit}}");
     }
 });
 bar.animate((habitVal/{{this.limit}}));
