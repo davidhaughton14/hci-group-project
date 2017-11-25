@@ -169,6 +169,9 @@ router.post('/helper/recommendation/:username/create', function(req,res,next){
     var date = day+"/"+month+"/"+year;
     console.log(recommendationName);
     User.findOne({username:username}).then(function(record){
+        record.recommendations.push({date:date, name:recommendationName, description:recommendationDescription});
+        record.save();
+        res.redirect('/helper/view/'+username);
     });
 });
 
