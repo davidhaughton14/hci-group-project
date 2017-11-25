@@ -85,7 +85,7 @@
                         <div class = "row">
                             <div class = "col-md-12">
                                 <div class="box-wrap">
-                                    <input id="happyRange" type="text"  name="happyRating" data-slider-ticks="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-slider-ticks-labels="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"/>
+                                    <input id="happyRange" type="text"  value="7" name="happyRating" data-slider-ticks="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-slider-ticks-labels="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"/>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                         <div class = "row">
                             <div class = "col-md-12">
                                 <div class="box-wrap">
-                                    <textarea id="happy-comments" name="happyComments"></textarea>
+                                    <textarea id="happy-comments" name="happyComments">{{#if todaysDiary}} {{todaysDiary.text}} {{/if}}</textarea>
                                 </div>
                             </div>
                         </div>

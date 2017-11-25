@@ -37,11 +37,23 @@ router.get('/dashboard', function(req, res, next) {
     //     });
     // });
     User.findOne({_id:req.session.passport.user}).then(function(result){
+        var d = new Date();
+        var day = d.getDate();
+        var month = d.getMonth();
+        var year = d.getFullYear();
+        var date = day+"/"+month+"/"+year;
         if(result.helper_flag == 1){
             var assigned = result.assigned;
             res.render('helper/helper_dash', { title: 'HappyHelper - Dashboard', assigned:assigned});
         } else {
-            res.render('dashboard', { title: 'HappyHelper - Dashboard' });
+            var today = "";
+            var diaryEntries = result.diaryEntries;
+            for (var i=0; i<diaryEntries.length; i++){
+                if(diaryEntries[i].date == date){
+                    today = diaryEntries[i];
+                }
+            }
+            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today });
         }
     });
 });
