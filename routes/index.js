@@ -5,8 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 var Meetup = require('../models/meetup');
 
-
-
 // User.findOne({_id:req.session.passport.user}).then(function(record){
 //     record.habits.push("Smoking");
 //     record.save();
@@ -33,6 +31,8 @@ router.get('/dashboard', function(req, res, next) {
             var assigned = result.assigned;
             res.render('helper/helper_dash', { title: 'HappyHelper - Dashboard', assigned:assigned});
         } else {
+            var habits = result.habits;
+            var tracked = result.tracked_stats;
             var today = "";
             var diaryEntries = result.diaryEntries;
             for (var i=0; i<diaryEntries.length; i++){
@@ -40,7 +40,26 @@ router.get('/dashboard', function(req, res, next) {
                     today = diaryEntries[i];
                 }
             }
-            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today });
+
+            var todaysHabits = [];
+            console.log(result.habits[0]);
+            console.log(tracked[0].name);
+            // console.log(result.habits.tracked[0].name.unit)
+            for (var j=0;j<result.habits.length;j++){
+                for (var i=0; i<tracked.length; i++){
+                if(tracked[i].date == date){
+                        if (result.habits[j].name == tracked[i].name){
+                            jsonObject = {};
+                            jsonObject["name"] = tracked[i].name;
+                            jsonObject["value"] = tracked[i].value;
+                            jsonObject["unit"] = result.habits[j].unit;
+                            jsonObject["limit"] = result.habits[j].limit;
+                            todaysHabits.push(jsonObject);
+                        }
+                    }
+                }
+            }
+            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today, habits:habits, todaysHabits:todaysHabits });
         }
     });
 });
@@ -214,8 +233,8 @@ router.get('/delete/:habit', function(req,res,next){
     });
 });
 
-router.post('/update/:habit', function(req,res,next){
-    var name = req.params.habit;
+router.post('/update/:name', function(req,res,next){
+    var name = req.params.name;
     var value = req.body.habitVal;
     var d = new Date();
     var day = d.getDate();
