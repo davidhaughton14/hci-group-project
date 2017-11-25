@@ -72,8 +72,10 @@ router.get('/recommendations', function(req,res,next){
         }
         else{
             var helper = record.assigned;
-            User.findOne({username:helper}).then(function(record){
-                res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:record});
+            User.findOne({username:helper}).then(function(result){
+                var recs = record.recommendations;
+                console.log(recs);
+                res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:result, recommendations:recs});
             });
         }
     });
@@ -167,7 +169,6 @@ router.post('/helper/recommendation/:username/create', function(req,res,next){
     var month = d.getMonth();
     var year = d.getFullYear();
     var date = day+"/"+month+"/"+year;
-    console.log(recommendationName);
     User.findOne({username:username}).then(function(record){
         record.recommendations.push({date:date, name:recommendationName, description:recommendationDescription});
         record.save();
