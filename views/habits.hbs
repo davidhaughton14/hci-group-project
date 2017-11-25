@@ -8,11 +8,11 @@
                 <div class="row">
                     {{#each habits}}
                     <div class="col-md-4">
-                        <a href ="habits/{{this}}">
+                        <a href ="habits/{{this.name}}">
                             <div class="habit text-center">
                                 <div class="icon">
                                     <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                                    <h4> {{this}} </h4>
+                                    <h4> {{this.name}} </h4>
                                 </div>
                             </div>
                         </a>

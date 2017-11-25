@@ -23,19 +23,6 @@ router.get('/', function(req, res, next) {
 
 /* GET dashboard page. */
 router.get('/dashboard', function(req, res, next) {
-    // var newMeetup= new Meetup({
-    //     name: "Testing Meetups",
-    //     date: "30/11/2017",
-    //     time: "11:00am-17:00pm",
-    //     location: "Eglinton Country Park",
-    //     about: "Group hill walking trip starting from Eglinton Country Park. The trip should take roughly 6 hours, but may over/under run. Suitable for all age groups. Walking equiptment required."
-    // });
-    // newMeetup.attending.push("test");
-    // newMeetup.save().then(function(record){
-    //         result.meetups.push("Testing Meetups")
-    //         result.save();
-    //     });
-    // });
     User.findOne({_id:req.session.passport.user}).then(function(result){
         var d = new Date();
         var day = d.getDate();
@@ -186,10 +173,12 @@ router.post('/habits/create', function(req,res,next){
     //Run the validators
     var errors = req.validationErrors();
 
-    var name = req.body.name
+    var name = req.body.name;
+    var limit = req.body.limit;
+    var unit = req.body.unit;
 
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push(name);
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:false});
         record.save();
         res.redirect('/habits');
     });
@@ -199,15 +188,27 @@ router.get('/habits/create', function(req,res,next){
     res.render('habit_form', { title: 'HappyHelper - add custom habit' });
 });
 
-router.get('/habits/:this', function(req,res,next){
-    var name = req.params.this;
-    res.render('habit_detail', {habit: name});
+router.get('/habits/:name', function(req,res,next){
+    var name = req.params.name;
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        for(var i=0; i<record.habits.length;i++){
+            if(record.habits[i].name == name){
+                var habit = record.habits[i];
+            }
+        }
+        res.render('habit_detail', {habit: habit});
+    });
 });
 
 router.get('/delete/:habit', function(req,res,next){
     var name = req.params.habit;
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.pull(name);
+        for(var i=0; i<record.habits.length;i++){
+            if(record.habits[i].name == name){
+                var habit = record.habits[i];
+            }
+        }
+        record.habits.pull(habit);
         record.save();
         res.redirect('/habits');
     });

@@ -8,9 +8,12 @@ const HabitTypeSchema = mongoose.Schema({
 	},
 	unit:{
 		type:String
-	}
+	},
 	limit:{
 		type:Number
+	},
+	uses_api:{
+		type: Boolean
 	},
 	_id:false
 });
