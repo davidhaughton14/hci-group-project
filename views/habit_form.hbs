@@ -7,18 +7,34 @@
             <h5> These habits have capabilities to link with a device you may own, click one to find out more! </h5>
             <div class = "row">
                 <div class = "col-md-3">
-                    <div class="smoking-wrap text-center">
+                    <div class="smoking-wrap text-center" data-toggle="modal" data-target="#bpModal">
                         <div class="habit-add-preset text-center">
                             <div class="icon">
-                                <i class="fa fa-heartbeat fa-3x"></i>                                
+                                <i class="fa fa-heartbeat fa-3x"></i>
                                 <h4> Blood pressure </h4>
                             </div>
                         </div>
                     </div>
+
+                    <div id="bpModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title text-center">Add blood pressure habit</h4>
+                          </div>
+                          <div class="modal-body">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                 </div>
                 <div class = "col-md-3">
                     <div class="smoking-wrap text-center">
-                        <div class="habit-add-preset text-center">
+                        <div class="habit-add-preset text-center" data-toggle="modal" data-target="#sleepModal">
                             <div class="icon">
                                 <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
                                 <h4> Sleep </h4>
@@ -26,9 +42,24 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="sleepModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Add sleep habit</h4>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class = "col-md-3">
                     <div class="smoking-wrap text-center">
-                        <div class="habit-add-preset text-center">
+                        <div class="habit-add-preset text-center" data-toggle="modal" data-target="#stepModal">
                             <div class="icon">
                                 <i class="fa fa-paw fa-3x" aria-hidden="true"></i>
                                 <h4> Steps </h4>
@@ -36,8 +67,23 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="stepModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Add step count habit</h4>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class = "col-md-3">
-                    <div class="smoking-wrap text-center">
+                    <div class="smoking-wrap text-center" data-toggle="modal" data-target="#vitdModal">
                         <div class="habit-add-preset text-center">
                             <div class="icon">
                                 <i class="fa fa-sun-o fa-3x" aria-hidden="true"></i>
@@ -46,6 +92,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="vitdModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Add vitamin d habit</h4>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </div>
 
             <form class="form-wrap" method="POST" action="">
@@ -70,3 +131,26 @@
         </div>
     </div>
 </div>
+
+<div id="bpmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
