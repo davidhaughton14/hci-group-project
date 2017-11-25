@@ -73,45 +73,47 @@
             <div id="diary" class="tabcontent">
             <div class = "row">
                 <div class="col-md-12">
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box-wrap">
-                                <h3 class="pull-left" id="feelingLabel">How are you feeling today? </h3>
+                    <form class="save-diary" form method="POST" action="/save-diary">
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box-wrap">
+                                    <h3 class="pull-left" id="feelingLabel">How are you feeling today? </h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box-wrap">
-                                <input id="happyRange" type="text" data-slider-ticks="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-slider-ticks-labels="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"/>
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box-wrap">
+                                    <input id="happyRange" type="text"  name="happyRating" data-slider-ticks="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" data-slider-ticks-labels="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box-wrap">
-                                <h3 class="pull-left" id="feelingLabel">Any comments? </h3>
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box-wrap">
+                                    <h3 class="pull-left" id="feelingLabel">Any comments? </h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box-wrap">
-                                <textarea id="happy-comments" name="happy-comments"></textarea>
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box-wrap">
+                                    <textarea id="happy-comments" name="happyComments"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class = "row">
-                        <div class = "col-md-12">
-                            <div class="box-wrap">
-                                <button id="save" type="button" class="btn btn-success">Save todays entry!</button>
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box-wrap">
+                                    <button id="save" class="update-button btn btn-success" type="submit">Save todays entry</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

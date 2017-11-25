@@ -50,6 +50,34 @@ router.get('/meetupdetails', function(req, res, next) {
     res.render('meetup_details', { title: 'HappyHelper - Meetup' });
 });
 
+router.post('/save-diary', function(req,res,next){
+    var rating = req.body.happyRating;
+    var text = req.body.happyComments;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
+    User.findOne({_id:req.session.passport.user}).then(function(result){
+        var diaryEntries = result.diaryEntries;
+        var sameDate = [];
+        var update = 0;
+        for (var i=0;i<diaryEntries.length;i++){
+            if(diaryEntries[0].date == date){
+                result.diaryEntries[i].rating = rating;
+                result.diaryEntries[i].text = text;
+                result.save();
+                update = 1;
+            }
+        }
+        if (update ==0){
+            result.diaryEntries.push({date:date, rating:rating, text:text});
+            result.save();
+        }
+        res.redirect('/dashboard');
+    });
+});
+
 router.post('/attending/:name', function(req,res,next){
     var meetup_name = req.params.name;
     var attending = req.body.attending;
