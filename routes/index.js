@@ -63,11 +63,19 @@ router.get('/meetupdetails', function(req, res, next) {
 });
 
 router.get('/recommendations', function(req,res,next){
-    User.findOne({_id:req.session.passport.user}).then(function(result){
-        var helper = result.assigned;
-        User.findOne({username:helper}).then(function(record){
-            res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:record});
-        });
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        if(record.helper_flag == 1){
+            var users = record.assigned;
+            User.find({'username': { $in: users }}).then(function(result){
+                res.render('helper/helper_recommendations', { title: 'HappyHelper - Recommendations', users:result});
+            });
+        }
+        else{
+            var helper = record.assigned;
+            User.findOne({username:helper}).then(function(record){
+                res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:record});
+            });
+        }
     });
 });
 
