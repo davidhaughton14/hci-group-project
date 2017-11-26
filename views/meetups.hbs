@@ -21,15 +21,13 @@
                 <button class="tablinks" onclick="openTab(event, 'upcoming')" id="defaultOpen">Upcoming meetups</button>
                 <button class="tablinks" onclick="openTab(event, 'find')">Find new meetups</button>
             </div>
-        </div>
-
-        <div id="upcoming" class="tabcontent">
+            <div id="upcoming" class="tabcontent">
             <div class = "row">
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
                         {{#if meetups}}
                             {{#each meetups}}
-                                <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                                <button class="accordion"><span class="pull-left">{{this.date}}</span>{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
                                 <div class="panel">
                                     <div class="col-md-6">
                                         <div class="info-div">
@@ -52,6 +50,7 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div id="find" class="tabcontent">
             <div class="row">
@@ -72,7 +71,7 @@
                                                             <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</p>
                                                             <p><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</p>
                                                             <p><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending </p>
-                                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-primary" role="button">View Meetup!</a>
                                                         </div>
                                                     </div>
                                                 </div>
