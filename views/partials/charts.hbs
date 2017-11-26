@@ -40,7 +40,42 @@ function drawAxisTickColors() {
 
       chart.draw(data, options);
 
+    // calendar for all habits
 
+      var dataTable = new google.visualization.DataTable();
+       dataTable.addColumn({ type: 'date', id: 'Date' });
+       dataTable.addColumn({ type: 'number', id: 'Units drank' });
+       dataTable.addRows([
+          [ new Date(2017, 2, 13), 55 ],
+          [ new Date(2017, 2, 14), 44 ],
+          [ new Date(2017, 2, 15), 33 ],
+          [ new Date(2017, 2, 16), 77 ],
+          [ new Date(2017, 2, 17), 55 ],
+          [ new Date(2017, 2, 18), 55 ],
+          [ new Date(2017, 2, 19), 22 ],
+          [ new Date(2017, 2, 20), 44 ],
+          [ new Date(2017, 2, 21), 77 ],
+          [ new Date(2017, 2, 22), 55 ],
+          [ new Date(2017, 2, 23), 22 ],
+
+
+        ]);
+
+       var chart = new google.visualization.Calendar(document.getElementById('calendar_general_div'));
+
+       var options = {
+         title: "Habit Calendar View",
+         height: 350,
+         yearLabel: {
+          fontName: 'Times-Roman',
+          fontSize: 32,
+          color: '#1A8763',
+          bold: true,
+          italic: true
+        }
+       };
+
+       chart.draw(dataTable, options);
 
 		// Sleep chart
        var data = google.visualization.arrayToDataTable([

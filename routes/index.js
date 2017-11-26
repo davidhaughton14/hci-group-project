@@ -43,7 +43,7 @@ router.get('/dashboard', function(req, res, next) {
 
             var todaysHabits = [];
             console.log(result.habits[0]);
-            console.log(tracked[0].name);
+
             // console.log(result.habits.tracked[0].name.unit)
             for (var j=0;j<result.habits.length;j++){
                 for (var i=0; i<tracked.length; i++){
