@@ -6,3 +6,36 @@
     height: 200px;
     resize: none;
 }
+
+.user-profile-wrap{
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    border-radius: 5px;
+}
+
+.heading-wrap{
+    text-align: center;
+}
+
+.heading-wrap h1{
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.diary-wrap{
+    border: 1px solid black;
+}
+
+.habits-wrap{
+    border: 1px solid red;
+}
+
+.diary-entry-wrap{
+    margin-top: 10px;
+}
+
+.diaries{
+    font-size: 15px!important;
+}
