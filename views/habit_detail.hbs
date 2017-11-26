@@ -2,7 +2,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
-            <h1 id="title"> HappyHelper <i class="fa fa-smile-o"></i></h1>
             <nav id="nav" class="navbar" role="navigation">
                 <ul class="nav navbar-nav">
                     <li id="first"><a href="/dashboard">DASHBOARD</a></li>
@@ -15,151 +14,165 @@
         </div>
     </div>
 </div>
-<div class="text-center" id="nav-wrapper">
-    <div class="content">
-    	<div class="row">
-    		<div class="col-md-2">
-    			<a href="/habits"><h5><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to all habits</h5></a>
-    		</div>
 
-    		<div class="col-md-8">
-    			<h1>{{habit.name}}</h1>
-    		</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="habit-wrapper">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="/habits"><h5><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to all habits</h5></a>
+                </div>
 
-    		<div class="col-md-2">
-    			<a href="/delete/{{habit.name}}"><h5>Delete habit</h5></a>
-    		</div>
-    	</div>
+        		<div class="col-md-8">
+        			<h1 class="heading">{{habit.name}}</h1>
+        		</div>
 
-    	<div class="row">
-    		<div class="day-calendar">
+        		<div class="col-md-2">
+        			<a href="/delete/{{habit.name}}"><h5>Delete habit</h5></a>
+        		</div>
+            </div>
 
-    			<i class="pull-left fa fa-arrow-left" aria-hidden="true"></i>Today<i class="pull-right fa fa-arrow-right" aria-hidden="true"></i>
+            <div class="row">
 
-				<form class="update-habit" form method="POST" action="/update/{{habit.name}}">
-					<label>Enter {{habit.name}} units</label>
-					<div class="row">
-    					<input name="habitVal" type="text"> {{habit.unit}}'s
-    					<div class="row">
-    						<button class="update-button btn btn-success" type="submit">Update</button>
-    					</div>
-					</div>
-				</form>
-    		</div>
+                <div class=" col-md-4">
+                    <div class="update-habit-wrap">
+                        <div class="date-wrap">
+                            <h3 class="heading"> {{today}} </h3>
+                        </div>
+                        <form class="update-habit" form method="POST" action="/update/{{habit.name}}">
+                            <h4 class="text-center"> Update todays {{habit.name}} value: </h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="inputContainer">
+                                        <input format="dd/MM/yyyy" type="date" name="date">
+                                        <label>{{habit.unit}}</label>
+                                        <div><input id="update-val" name="habitVal" {{#if todaysHab}} value={{todaysHab.value}} {{/if}} type="number"></div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="button-wrap">
+                                        <button class="update-button btn btn-success" type="submit">Update</button>
+                                    </div>
+                                </div>
+                            </div>
 
-	    	<div class="habit-graph">
-
-                <h3>General chart for all habits</h3>
-
-                <div id="general_div"></div>
-                <div id="calendar_general_div"></div>
-                <h3> Type of sleep quality and mood level </h3>
-                <div id="sleep_div"></div>
-                
-                <h3>  Heart rate chart </h3>
-                <div id="heartrate_div"></div>
-
-
-               <h3>Alcohol consumed in the past week</h3>
-
-                <table class="bottle-table">
-                    <tr>
-                        <th>Monday</th>
-                        <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 25%"></div></div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Tuesday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 65%"></div></div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Wednesday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 40%"></div></div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Thursday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 50%"></div></div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Friday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                            <div class="cover"><div style="background-color: white; height: 33%"></div></div>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Saturday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 0%"></div></div>
-
-                          
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Sunday</th>
-                         <td>
-
-                            <div class="cover"><div style="background-color: white; height: 25%"></div></div>
-
-                        </td>
-                    </tr>
-                </table>
-                <h4> Congratulations, you have been sober for x days </h4>
-                
-                <div id="alcohol_div"></div>
+                        </form>
+                    </div>
+                </div>
 
 
-                <h3>Blood pressure, it's calculated by the difference between Systolic and Diastolic values</h3>
+                <div class=" col-md-8">
+                    <div class="habit-graph">
+                        <h3>General chart for all habits</h3>
 
-                <div id="blood_div"></div>
+                        <div id="general_div"></div>
+                        <div id="calendar_general_div"></div>
+                        <h3> Type of sleep quality and mood level </h3>
+                        <div id="sleep_div"></div>
+
+                        <h3>  Heart rate chart </h3>
+                        <div id="heartrate_div"></div>
 
 
-                <h3>Number of steps</h3>
-                <div id="steps_div"></div>
-	    	</div>
-    	</div>
+                       <h3>Alcohol consumed in the past week</h3>
 
-    </div>
+                        <table>
+                            <tr>
+                                <th>Monday</th>
+                                <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 25%"></div></div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tuesday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 65%"></div></div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Wednesday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 40%"></div></div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Thursday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 50%"></div></div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Friday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+
+                                    <div class="cover"><div style="background-color: white; height: 33%"></div></div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Saturday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
 
 
-    	</div>
 
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Sunday</th>
+                                 <td>
+
+                                    <div class="cover"><div style="background-color: white; height: 25%"></div></div>
+
+                                </td>
+                            </tr>
+                        </table>
+                        <h4> Congratulations, you have been sober for x days </h4>
+
+                        <div id="alcohol_div"></div>
+
+
+                        <h3>Blood pressure, it's calculated by the difference between Systolic and Diastolic values</h3>
+
+                        <div id="blood_div"></div>
+
+
+                        <h3>Number of steps</h3>
+                        <div id="steps_div"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
