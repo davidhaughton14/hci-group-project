@@ -67,11 +67,17 @@
                             </div>
                         </div>
                         <div class = "row">
-                            {{#each todaysHabits}}
-                                <div class = "col-md-4">
-                                    <div class="progress" id="{{this.name}}"></div>
+                            {{#if todaysHabits}}
+                                {{#each todaysHabits}}
+                                    <div class = "col-md-4">
+                                        <div class="progress" id="{{this.name}}"></div>
+                                    </div>
+                                {{/each}}
+                            {{else}}
+                                <div class="col-md-10 col-md-offset-1">
+                                    <h3> You are not tracking any habits yet, go add some! </h3>
                                 </div>
-                            {{/each}}
+                            {{/if}}
                         </div>
                     </div>
                 </div>
