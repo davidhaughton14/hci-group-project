@@ -31,26 +31,31 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class = "panel-wrapper">
-                                    <button class="accordion meetup"><i class="fa fa-exclamation pull-left"></i>Hill Walking (in 1 hour)<i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
-                                        <div class="col-md-6">
-                                            <div class="info-div">
-                                                <h4>14th May 2017</h4>
-                                                <h4>11:00am</h4>
-                                                <h4>Kelburn Country Park</h4>
-                                                <h4> 14 Attending </h4>
-
-                                                <button id="view" type="button" class="btn btn-success">View Meetup!</button>
+                            {{#if todaysMeetup}}
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class = "panel-wrapper">
+                                        <button class="accordion meetup"><i class="fa fa-exclamation pull-left"></i>{{todaysMeetup.name}} (at {{todaysMeetup.time}})<i class="fa fa-angle-double-down pull-right"></i></button>
+                                        <div class="panel">
+                                            <div class="col-md-6">
+                                                <div class="info-div">
+                                                    <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{todaysMeetup.date}}</h4>
+                                                    <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{todaysMeetup.time}}</h4>
+                                                    <h4><i class="fa fa-globe" aria-hidden="true"></i> {{todaysMeetup.location}}</h4>
+                                                    <h4><i class="fa fa-users" aria-hidden="true"></i> {{todaysMeetup.attending.length}} users attending </h4>
+                                                    <button id="view" type="button" class="btn btn-success">View Meetup!</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div id="map"></div>
+                                            <div class="col-md-6">
+                                                <div id="map"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {{else}}
+                                <div class="col-md-10 col-md-offset-1">
+                                    <h3> You have no meetups scheduled for today! </h3>
+                                </div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

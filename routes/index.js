@@ -68,8 +68,15 @@ router.get('/dashboard', function(req, res, next) {
                     todaysHabits.push(jsonObject);
                 }
             }
-            console.log(todaysHabits);
-            res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today, habits:habits, todaysHabits:todaysHabits });
+            var todaysMeetup;
+            Meetup.find({'name': { $in: result.meetups }}).then(function(record){
+                for (var x=0; x<record.length; x++){
+                    if(record[x].date == date){
+                        todaysMeetup = record[x];
+                    }
+                }
+                res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today, habits:habits, todaysHabits:todaysHabits, todaysMeetup:todaysMeetup });
+            });
         }
     });
 });
