@@ -42,9 +42,7 @@ router.get('/dashboard', function(req, res, next) {
             }
 
             var todaysHabits = [];
-            console.log(result.habits[0]);
 
-            // console.log(result.habits.tracked[0].name.unit)
             for (var j=0;j<result.habits.length;j++){
                 for (var i=0; i<tracked.length; i++){
                 if(tracked[i].date == date){
@@ -80,7 +78,6 @@ router.get('/recommendations', function(req,res,next){
             var helper = record.assigned;
             User.findOne({username:helper}).then(function(result){
                 var recs = record.recommendations;
-                console.log(recs);
                 res.render('recommendations', { title: 'HappyHelper - Recommendations', helper:result, recommendations:recs});
             });
         }
@@ -232,8 +229,6 @@ router.post('/add/bp', function(req,res,next){
     var limit1 = req.body.limit1;
     var unit = req.body.units;
 
-    console.log(limit1);
-
     User.findOne({_id:req.session.passport.user}).then(function(record){
         record.habits.push({name:name, unit:unit, limit:limit1, uses_api:true});
         record.save();
@@ -262,13 +257,33 @@ router.get('/habits/create', function(req,res,next){
 
 router.get('/habits/:name', function(req,res,next){
     var name = req.params.name;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
     User.findOne({_id:req.session.passport.user}).then(function(record){
         for(var i=0; i<record.habits.length;i++){
             if(record.habits[i].name == name){
                 var habit = record.habits[i];
             }
         }
-        res.render('habit_detail', {habit: habit});
+
+        var tracked = record.tracked_stats;
+        todays = []
+        for (var i=0; i<tracked.length; i++){
+            if(tracked[i].date == date){
+                todays.push(tracked[i]);
+            }
+        }
+
+        for (var j=0;j<todays.length;j++){
+            if (todays[j].name == name){
+                var todaysHab = todays[j];
+            }
+        }
+
+        res.render('habit_detail', {habit: habit, today:date, todaysHab:todaysHab});
     });
 });
 
@@ -305,13 +320,16 @@ router.post('/update/:name', function(req,res,next){
 
         var update = -1;
         for (var i=0;i<sameDate.length;i++){
-            if(sameDate[0].name == name){
+            if(sameDate[i].name == name){
                 update = i;
             }
         }
         if (update>-1){
             record.tracked_stats[update].value = value;
-            record.save();
+            record.save().then(function(req,res,next){
+                console.log("updated "+record.tracked_stats[update])
+                console.log(record);
+            });
         } else {
             record.tracked_stats.push({name:name, date:date, value:value});
             record.save();

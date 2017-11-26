@@ -1,124 +1,58 @@
-
-/* Style the buttons that are used to open and close the accordion panel */
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.accordion.active, button.accordion:hover {
-    background-color: #ccc;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-div.panel {
-    padding: 0 18px;
+.habit-wrapper{
+    padding:20px;
+    box-shadow: 0 0 25px grey;
     background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
-.panel-wrapper{
-    background-color: #fff;
-    height: 100%;
-    border: 1px solid #d0d0d0;
-    box-shadow: 0 0 5px #585a5a;
-}
-
-#heading{
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-/* Search 3 - zoom in looking glass */
-.container-3{
-    margin-top: 50px;
-    width: 75%;
-    left: 12.5%;
-    vertical-align: middle;
-    white-space: nowrap;
-    position: relative;
-}
-.container-3 input#search-box{
-    width: 100%;
-    height: 50px;
-    background: #fff;
-    border: none;
-    font-size: 10pt;
-    float: left;
-    color: #262626;
-    padding-left: 45px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
-    color: black;
-    box-shadow: 0 0 10px #585a5a;
 }
 
-.container-3 input#search-box::-webkit-input-placeholder {
-   color: #65737e;
+.heading{
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
-.container-3 .icon{
-    position: absolute;
-    top: 50%;
-    margin-left: 17px;
-    margin-top: 10px;
-    z-index: 1;
-    color: #4f5b66;
-    transition: all .55s ease;
+.update-habit-wrap{
+    padding: 10px;
+    border: 1px solid black;
 }
 
-/* ANIMATION EFFECTS */
-.container-3:hover .icon{
-    color: #585a5a;
-    -webkit-transform:scale(1.5);
-    transform:scale(1.5);
+.graph-wrap{
+    border: 1px solid blue;
 }
 
-.button-wrapper{
-    margin-top: 25px;
-}
-
-#search{
-    width: 200px;
+.date-wrap{
+    width: 75%;
+    border-bottom: 1px solid black;
+    display: block;
     margin: 0 auto;
-    color: #585a5a;
-    height: 45px;
-    background-color: #fff;
-    border: 1.1px solid #585a5a;
 }
 
-.content{
-     border: 1.1px solid #585a5a;
-     background-color: white;
-     padding-bottom: 20px;
+.inputContainer {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
 }
-
-.day-calander{
-
-    margin-left: 5%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1.1px solid #585a5a;
+.inputContainer label {
+    float: right;
+    padding-left: 5px;
+    margin-top: 2px;
 }
-
-.unit-form{
-
-    padding-top:20px;
+.inputContainer div {
+    overflow: hidden;
+}
+.inputContainer input {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block
 }
 
 .update-button{
-    margin-top: 20px;
-
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    margin-top: 10px;
 }
 
 .habit-graph{
