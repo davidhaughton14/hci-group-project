@@ -42,8 +42,6 @@ router.get('/dashboard', function(req, res, next) {
             }
 
             var todaysHabits = [];
-            console.log(result.habits[0]);
-            console.log(tracked[0].name);
             // console.log(result.habits.tracked[0].name.unit)
             for (var j=0;j<result.habits.length;j++){
                 for (var i=0; i<tracked.length; i++){
@@ -262,13 +260,35 @@ router.get('/habits/create', function(req,res,next){
 
 router.get('/habits/:name', function(req,res,next){
     var name = req.params.name;
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = day+"/"+month+"/"+year;
     User.findOne({_id:req.session.passport.user}).then(function(record){
         for(var i=0; i<record.habits.length;i++){
             if(record.habits[i].name == name){
                 var habit = record.habits[i];
             }
         }
-        res.render('habit_detail', {habit: habit});
+
+        var tracked = record.tracked_stats;
+        todays = []
+        for (var i=0; i<tracked.length; i++){
+            if(tracked[i].date == date){
+                todays.push(tracked[i]);
+            }
+        }
+
+        for (var j=0;j<todays.length;j++){
+            if (todays[j].name == name){
+                var todaysHab = todays[j];
+            }
+        }
+
+        console.log(todaysHab);
+
+        res.render('habit_detail', {habit: habit, today:date, todaysHab:todaysHab});
     });
 });
 

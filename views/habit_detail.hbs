@@ -38,7 +38,7 @@
                 <div class=" col-md-4">
                     <div class="update-habit-wrap">
                         <div class="date-wrap">
-                            <h3 class="heading"> 26/11/2017 </h3>
+                            <h3 class="heading"> {{today}} </h3>
                         </div>
                         <form class="update-habit" form method="POST" action="/update/{{habit.name}}">
                             <h4 class="text-center"> Update todays {{habit.name}} value: </h4>
@@ -46,7 +46,7 @@
                                 <div class="col-md-12">
                                     <div class="inputContainer">
                                         <label>{{habit.unit}}</label>
-                                        <div><input id="update-val" name="habitVal" type="number"></div>
+                                        <div><input id="update-val" name="habitVal" {{#if todaysHab}} value={{todaysHab.value}} {{/if}} type="number"></div>
                                     </div>
                                 </div>
                             </div>
