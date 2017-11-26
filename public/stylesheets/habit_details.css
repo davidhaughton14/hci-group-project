@@ -37,8 +37,14 @@
     padding-left: 5px;
     margin-top: 2px;
 }
-.inputContainer div {
-    overflow: hidden;
+
+.day-calendar{
+
+    margin: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1.1px solid #585a5a;
+
 }
 .inputContainer input {
     width: 100%;
@@ -70,4 +76,8 @@
     background-size:20px 61px;
     display: inherit;
 
+}
+
+.bottle-table{
+    margin: 0 auto;
 }
