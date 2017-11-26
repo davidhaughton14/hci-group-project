@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/habit_details.css">
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
@@ -25,6 +27,11 @@
 
         		<div class="col-md-8">
         			<h1 class="heading">{{habit.name}}</h1>
+
+                    <p>
+                        
+                    </p>
+                        
         		</div>
 
         		<div class="col-md-2">
@@ -34,7 +41,7 @@
 
             <div class="row">
 
-                <div class=" col-md-4">
+                <div>
                     <div class="update-habit-wrap">
                         <div class="date-wrap">
                             <h3 class="heading"> {{today}} </h3>
@@ -46,7 +53,7 @@
                                     <div class="inputContainer">
                                         <input format="dd/MM/yyyy" type="date" name="date">
                                         <label>{{habit.unit}}</label>
-                                        <div><input id="update-val" name="habitVal" {{#if todaysHab}} value={{todaysHab.value}} {{/if}} type="number"></div>
+                                        <div><input id="update-val" name="habitVal" {{#if todaysHab}} value={{todaysHab.value}} {{/if}} type="number" step="0.01"></div>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +71,7 @@
                 </div>
 
 
-                <div class=" col-md-8">
+                <div>
                     <div class="habit-graph">
                         <h3>General chart for all habits</h3>
 
@@ -79,18 +86,22 @@
 
                        <h3>Alcohol consumed in the past week</h3>
 
-                        <table>
+                        <table class="bottle-table">
                             <tr>
-                                <th>Monday</th>
-                                <td>
+                                {{#each trackedAndMood}}
+                                    <th>{{this.date}}</th>
 
-                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+                                    <td>
+                                        <div class="cover"><div style="background-color: white; height: 0%"></div></div>
 
-                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+                                        <div class="cover"><div style="background-color: white; height: 0%"></div></div>
 
-                                    <div class="cover"><div style="background-color: white; height: 25%"></div></div>
+                                        <div class="cover"><div style="background-color: white; height: 25%"></div></div>
 
-                                </td>
+                                    </td>
+                                {{/each}}
+                                
+                                
                             </tr>
                             <tr>
                                 <th>Tuesday</th>
