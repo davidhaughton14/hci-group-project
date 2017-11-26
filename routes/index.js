@@ -290,7 +290,7 @@ router.get('/habits/:name', function(req,res,next){
         // match the habit
         for (var i=0; i<tracked.length; i++){
             if(tracked[i].name == name){
-                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0"});   
+                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0", "wholeValue":(tracked[i].value - (tracked[i].value % 1)), "remainderValue": (tracked[i].value % 1)});   
             }
         }
 
@@ -299,9 +299,12 @@ router.get('/habits/:name', function(req,res,next){
                 if((trackedAndMood[i].date == diaryEntries[j].date) && (trackedAndMood[i].name == name)){
                     trackedAndMood[i].rating = diaryEntries[j].rating;
                 } 
-            }    
+            }
+
+
         }
 
+     
        
 
         console.log(trackedAndMood);
