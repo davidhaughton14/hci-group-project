@@ -24,9 +24,9 @@ router.get('/dashboard', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(result){
         var d = new Date();
         var day = d.getDate();
-        var month = d.getMonth();
+        var month = d.getMonth()+1;
         var year = d.getFullYear();
-        var date = day+"/"+month+"/"+year;
+        var date = year+"-"+month+"-"+day;
         if(result.helper_flag == 1){
             var assigned = result.assigned;
             res.redirect('/meetups')
@@ -91,7 +91,7 @@ router.post('/save-diary', function(req,res,next){
     var day = d.getDate();
     var month = d.getMonth();
     var year = d.getFullYear();
-    var date = day+"/"+month+"/"+year;
+    var date = year+"-"+month+"-"+day;
     User.findOne({_id:req.session.passport.user}).then(function(result){
         var diaryEntries = result.diaryEntries;
         var sameDate = [];
@@ -171,7 +171,7 @@ router.post('/helper/recommendation/:username/create', function(req,res,next){
     var day = d.getDate();
     var month = d.getMonth();
     var year = d.getFullYear();
-    var date = day+"/"+month+"/"+year;
+    var date = year+"-"+month+"-"+day;
     User.findOne({username:username}).then(function(record){
         record.recommendations.push({date:date, name:recommendationName, description:recommendationDescription});
         record.save();
@@ -261,7 +261,7 @@ router.get('/habits/:name', function(req,res,next){
     var day = d.getDate();
     var month = d.getMonth();
     var year = d.getFullYear();
-    var date = day+"/"+month+"/"+year;
+    var date = year+"-"+month+"-"+day;
     User.findOne({_id:req.session.passport.user}).then(function(record){
         for(var i=0; i<record.habits.length;i++){
             if(record.habits[i].name == name){
