@@ -295,7 +295,7 @@ router.get('/habits/:name', function(req,res,next){
                 var todaysHab = todays[j];
             }
         }
-        res.render('habit_detail', {habit: habit, today:date, todaysHab:todaysHab});
+        res.render('habit_detail', {habit: habit, today:date, todaysHab:todaysHab, tracked_stat:tracked_stat, diaryEntry:diaryEntry});
 
     });
 });
