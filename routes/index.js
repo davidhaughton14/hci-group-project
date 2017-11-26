@@ -290,6 +290,7 @@ router.get('/habits/:name', function(req,res,next){
         // match the habit
         for (var i=0; i<tracked.length; i++){
             if(tracked[i].name == name){
+                // need remainder and whole value for alcohol unit bottles
                 trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0", "wholeValue":(tracked[i].value - (tracked[i].value % 1)), "remainderValue": (tracked[i].value % 1)});   
             }
         }
