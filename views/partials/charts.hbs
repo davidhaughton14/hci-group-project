@@ -176,9 +176,9 @@ function drawAxisTickColors() {
           title: 'Levels (unit)'
         },
         chartArea: {
-   top: 55,
-   height: '40%' 
-}
+           top: 55,
+           height: '40%' 
+        }
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('general_div'));
@@ -186,6 +186,75 @@ function drawAxisTickColors() {
       chart.draw(data, options);
     
 
-    }
+    // Number of steps chart
+    
+      var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Date');
+    data.addColumn('number', 'Steps');
+    data.addRows([
+        ['Monday', 5000],
+        ['Tuesday', 4000],
+        ['Wednesday', 6000],
+        ['Thursday', 4000],
+        ['Friday', 1999],
+        ['Saturday', 1000],
+        ['Sunday', 900],
+    ]);
+    
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) < 2000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 3000 && dt.getValue(row, 1) < 5000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 5000 && dt.getValue(row, 1) < 7000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 7000 && dt.getValue(row, 1) < 9000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 9000) ? dt.getValue(row, 1) : null;
+        }
+    }]);
+    
+    var chart = new google.visualization.ColumnChart(document.getElementById('steps_div'));
+
+
+    var options = {
+        legend: 'none',
+        hAxis: {
+          title: 'Day'
+        },
+        vAxis: {
+          title: 'Number of steps'
+        },
+        isStacked: true,
+        chartArea: {
+           top: 55,
+           height: '40%' 
+        }
+      };
+    
+    chart.draw(view, options);
+
+
+  }
     </script>
   </head>
