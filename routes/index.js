@@ -42,13 +42,14 @@ router.get('/dashboard', function(req, res, next) {
             }
 
             var todaysHabits = [];
-
+            var todaysHabitsNames = [];
             for (var j=0;j<result.habits.length;j++){
                 for (var i=0; i<tracked.length; i++){
                 if(tracked[i].date == date){
                         if (result.habits[j].name == tracked[i].name){
                             jsonObject = {};
                             jsonObject["name"] = tracked[i].name;
+                            todaysHabitsNames.push(tracked[i].name);
                             jsonObject["value"] = tracked[i].value;
                             jsonObject["unit"] = result.habits[j].unit;
                             jsonObject["limit"] = result.habits[j].limit;
@@ -57,6 +58,17 @@ router.get('/dashboard', function(req, res, next) {
                     }
                 }
             }
+            for (var x=0;x<result.habits.length;x++){
+                if (todaysHabitsNames.indexOf(result.habits[x].name) == -1){
+                    jsonObject = {};
+                    jsonObject["name"] = result.habits[x].name;
+                    jsonObject["value"] = 0;
+                    jsonObject["unit"] = result.habits[x].unit;
+                    jsonObject["limit"] = result.habits[x].limit;
+                    todaysHabits.push(jsonObject);
+                }
+            }
+            console.log(todaysHabits);
             res.render('dashboard', { title: 'HappyHelper - Dashboard', todaysDiary:today, habits:habits, todaysHabits:todaysHabits });
         }
     });
@@ -247,7 +259,7 @@ router.post('/add/vitD', function(req,res,next){
         res.redirect('/habits');
     });
 });
- 
+
 
 
 
@@ -281,7 +293,7 @@ router.get('/habits/:name', function(req,res,next){
                 var diaryEntry = record.diaryEntries[i];
             }
         }
-      
+
         var tracked = record.tracked_stats;
         todays = []
         for (var i=0; i<tracked.length; i++){
