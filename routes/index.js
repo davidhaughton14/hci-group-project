@@ -276,13 +276,37 @@ router.get('/habits/:name', function(req,res,next){
             }
         }
 
-        for(var i=0; i<record.diaryEntries.length;i++){
-            if(record.diaryEntries[i].date == tracked_stat.date){
-                var diaryEntry = record.diaryEntries[i];
-            }
-        }
+
       
         var tracked = record.tracked_stats;
+
+        var diaryEntries = record.diaryEntries;
+        
+
+        // hold data required for graphs
+        var trackedAndMood = [];
+
+        for (var i=0; i<tracked.length; i++){
+            trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0"});
+            
+        }
+
+
+        for (var i=0; i<trackedAndMood.length; i++){
+
+            for (var j=0; j<diaryEntries.length; j++){
+
+                if(trackedAndMood[i].date == diaryEntries[j].date){
+                    console.log("match");
+                    trackedAndMood[i].rating = diaryEntries[j].rating;
+
+                } 
+            }
+                
+        }
+
+        console.log(trackedAndMood);
+        console.log(diaryEntries);
         todays = []
         for (var i=0; i<tracked.length; i++){
             if(tracked[i].date == date){
@@ -295,7 +319,7 @@ router.get('/habits/:name', function(req,res,next){
                 var todaysHab = todays[j];
             }
         }
-        res.render('habit_detail', {habit: habit, today:date, todaysHab:todaysHab, tracked_stat:tracked_stat, diaryEntry:diaryEntry});
+        res.render('habit_detail', {trackedAndMood:trackedAndMood, habit: habit, today:date, todaysHab:todaysHab, tracked_stat:tracked_stat});
 
     });
 });
