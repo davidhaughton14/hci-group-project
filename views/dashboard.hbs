@@ -42,7 +42,7 @@
                                                     <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{todaysMeetup.time}}</h4>
                                                     <h4><i class="fa fa-globe" aria-hidden="true"></i> {{todaysMeetup.location}}</h4>
                                                     <h4><i class="fa fa-users" aria-hidden="true"></i> {{todaysMeetup.attending.length}} users attending </h4>
-                                                    <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                                    <a href="/meetup/details/{{todaysMeetup.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -155,8 +155,13 @@
 </script>
 <script>
 {{#each todaysHabits}}
-var habitVal = {{this.value}};
-console.log(habitVal);
+var val = {{this.value}};
+var lim = {{this.limit}};
+if(val > lim){
+    var habitVal = {{this.limit}};
+} else {
+    var habitVal = {{this.value}};
+}
 var bar = new ProgressBar.Circle("#{{this.name}}", {
     color: '#95d10a',
     trailColor: '#eee',
@@ -172,7 +177,7 @@ var bar = new ProgressBar.Circle("#{{this.name}}", {
     step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color);
         var value = (circle.value()*{{this.limit}}).toFixed(2);
-        circle.setText(value + " out of {{this.limit}}" + " {{this.unit}}");
+        circle.setText({{this.value}} + " out of {{this.limit}}" + " {{this.unit}}");
     }
 });
 bar.animate((habitVal/{{this.limit}}));
