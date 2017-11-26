@@ -49,7 +49,8 @@ function drawAxisTickColors() {
         chartArea: {
            top: 55,
            height: '40%' 
-        }
+        },
+        height: 600
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('general_div'));
@@ -112,8 +113,7 @@ function drawAxisTickColors() {
         series:{
            3: {type:'line'}
         },
-        width: 500,
-        height: 500,
+        
        	hAxis: {
           title: 'Day of week',
          },
@@ -126,6 +126,8 @@ function drawAxisTickColors() {
         isStacked: true,
 
         colors: ['#4f9070','#2e8a6a', '#0d4950'],
+        height: 600
+
        
       };
 
@@ -152,7 +154,8 @@ function drawAxisTickColors() {
           vAxis: {title: 'Heart rate', minValue: 0},
           colors: ['red'],
           areaOpacity: 0.3,
-          legend: {position: 'none'}
+          legend: {position: 'none'},
+          height: 600
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
@@ -234,7 +237,8 @@ function drawAxisTickColors() {
           candlestick: {
             fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
             risingColor: { strokeWidth: 0, fill: '#a52714' }   // red
-          }
+          },
+          height: 600
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('blood_div'));
@@ -304,7 +308,8 @@ function drawAxisTickColors() {
         chartArea: {
            top: 55,
            height: '40%' 
-        }
+        },
+        height: 600
       };
     
     chart.draw(view, options);
