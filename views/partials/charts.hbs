@@ -131,19 +131,56 @@ function drawAxisTickColors() {
       var chart = new google.visualization.ComboChart(document.getElementById('sleep_div'));
       chart.draw(data, options);
 
-      var data = google.visualization.arrayToDataTable([
-          ['Date', 'Heart rate'],
-          ['24/11',  65],
-          ['23/11',  66],
-          ['22/11',  63],
-          ['20/11',  64],
-          ['19/11',  61],
-          ['18/11',  63],
-          ['17/11',  69],
-          ['16/11',  65],
-          ['15/11',  61],
-          ['14/11',  56]
-        ]);
+      
+    
+
+   
+      var data = new google.visualization.DataTable();
+
+      var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+      data.addColumn({ type: 'date', id: 'Date' });
+      data.addColumn({ type: 'number', id: 'Units drank' });
+      data.addRows([
+      [ dates[0], 66 ],
+      [ dates[1], 70 ],
+      [ dates[2], 68 ],
+      [ dates[4], 65 ],
+      [ dates[5], 59 ],
+      [ dates[6], 63 ],
+      [ dates[7], 67 ],
+      [ dates[8], 66 ],
+      [ dates[9], 58 ],
+      [ dates[10], 62 ],
+      [ dates[11], 63 ],
+      [ dates[12], 61 ],
+      [ dates[13], 57 ],
+      [ dates[14], 64 ],
+      [ dates[15], 68 ],
+      [ dates[16], 66 ],
+      [ dates[17], 63 ],
+      [ dates[18], 66 ],
+      [ dates[19], 64 ],
+      [ dates[20], 68 ],
+      [ dates[21], 70 ],
+      [ dates[22], 71 ],
+      [ dates[23], 71 ],
+      [ dates[24], 66 ],
+      [ dates[25], 68 ],
+      [ dates[26], 64 ],
+      [ dates[27], 66 ],
+      [ dates[28], 62 ],
+      [ dates[29], 61 ],
+      [ dates[30], 60 ],
+      ]);
 
         var options = {
           title: 'Your average heart rate',
