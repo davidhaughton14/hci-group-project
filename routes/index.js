@@ -42,6 +42,7 @@ router.get('/dashboard', function(req, res, next) {
             }
 
             var todaysHabits = [];
+
             for (var j=0;j<result.habits.length;j++){
                 for (var i=0; i<tracked.length; i++){
                 if(tracked[i].date == date){
