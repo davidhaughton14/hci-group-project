@@ -252,7 +252,7 @@ router.post('/add/vitD', function(req,res,next){
         res.redirect('/habits');
     });
 });
-
+ 
 
 
 
@@ -268,7 +268,20 @@ router.get('/habits/:name', function(req,res,next){
                 var habit = record.habits[i];
             }
         }
-        res.render('habit_detail', {habit: habit});
+
+        for(var i=0; i<record.tracked_stats.length;i++){
+            if(record.tracked_stats[i].name == name){
+                var tracked_stat = record.tracked_stats[i];
+            }
+        }
+
+        for(var i=0; i<record.diaryEntries.length;i++){
+            if(record.diaryEntries[i].date == tracked_stat.date){
+                var diaryEntry = record.diaryEntries[i];
+            }
+        }
+
+        res.render('habit_detail', {habit: habit, tracked_stat:tracked_stat, diaryEntry: diaryEntry});
     });
 });
 
