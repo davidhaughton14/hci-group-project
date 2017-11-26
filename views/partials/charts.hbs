@@ -10,18 +10,23 @@ function drawAxisTickColors() {
 
 		// Sleep chart
        var data = google.visualization.arrayToDataTable([
-        ['Sleep Type', 'REM', 'Light', 'Deep', { role: 'annotation' } ],
-        ['Monday', 2.1, 5, 0.5, ''],
-        ['Tuesday', 1.6, 6, 2,''],
-        ['Wednesday', 2.2, 4, 3,''],
-        ['Thursday', 1.4, 3, 3.7,''],
-        ['Friday', 1.7, 2.6, 4,''],
-        ['Saturday', 1.3, 1.8, 5,''],
-        ['Sunday', 1.8, 3.1, 2.2,'']
+        ['Sleep Type', 'REM', 'Light', 'Deep', 'mood' ],
+        ['Monday', 2.1, 5, 0.5,8],
+        ['Tuesday', 1.6, 6, 2,6],
+        ['Wednesday', 2.2, 4, 3,7],
+        ['Thursday', 1.4, 3, 3.7,8],
+        ['Friday', 1.7, 2.6, 4,9],
+        ['Saturday', 1.3, 1.8, 5,7],
+        ['Sunday', 1.8, 3.1, 2.2,8]
       ]);
 
       var options = {
       	title: 'Hours of sleep based on sleep type',
+        seriesType:'bars',
+        
+        series:{
+           3: {type:'line'}
+        },
         width: 500,
         height: 500,
        	hAxis: {
@@ -36,15 +41,10 @@ function drawAxisTickColors() {
         isStacked: true,
 
         colors: ['#4f9070','#2e8a6a', '#0d4950'],
-        series: {5: {
-      type: "steppedArea", 
-      color: '#FF0000', 
-      visibleInLegend: false, 
-      areaOpacity: 0}
-    }
+       
       };
 
-      var chart = new google.visualization.ColumnChart(document.getElementById('sleep_div'));
+      var chart = new google.visualization.ComboChart(document.getElementById('sleep_div'));
       chart.draw(data, options);
 
       var data = google.visualization.arrayToDataTable([
@@ -139,6 +139,7 @@ function drawAxisTickColors() {
         ]);
 
         var options = {
+          title: 'Blood pressure and heart rate chart',
           legend: 'none',
           seriesType: "candlesticks",
            series: {
