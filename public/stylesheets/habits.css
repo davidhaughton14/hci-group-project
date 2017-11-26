@@ -23,6 +23,15 @@
     margin-left: 50px;
 }
 
+#ultra{
+    margin-left: -30px;
+}
+
+.ultra{
+    height: 50px;
+    margin-top: -45px;
+    margin-left: 200px;
+}
 .habit{
     padding:20px;
     background: #56ab2f;  /* fallback for old browsers */
