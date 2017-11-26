@@ -300,17 +300,28 @@ function drawAxisTickColors() {
 
     // Number of steps chart
 
-      var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Date');
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      } 
+
+
+    var data = new google.visualization.DataTable();
+    
+    data.addColumn('date', 'Date');
     data.addColumn('number', 'Steps');
     data.addRows([
-        ['Monday', 5000],
-        ['Tuesday', 4000],
-        ['Wednesday', 6000],
-        ['Thursday', 4000],
-        ['Friday', 1999],
-        ['Saturday', 1000],
-        ['Sunday', 900],
+        [dates[0], 5000],
+        [dates[1], 4000],
+        [dates[2], 6000],
+        [dates[3], 4000],
+        [dates[4], 1999],
+        [dates[5], 1000],
+        [dates[6], 900],
     ]);
     
     var view = new google.visualization.DataView(data);
