@@ -202,22 +202,16 @@ function drawAxisTickColors() {
       var dataTable = new google.visualization.DataTable();
        dataTable.addColumn({ type: 'date', id: 'Date' });
        dataTable.addColumn({ type: 'number', id: 'Units drank' });
-       dataTable.addRows([
-          [ new Date(2017, 2, 13), 0.5 ],
-          [ new Date(2017, 2, 14), 2 ],
-          [ new Date(2017, 2, 15), 0.3 ],
-          [ new Date(2017, 2, 16), 7 ],
-          [ new Date(2017, 2, 17), 2 ],
-          [ new Date(2017, 2, 18), 4 ],
-          [ new Date(2017, 2, 19), 1 ],
-          [ new Date(2017, 2, 20), 0.5 ],
-          [ new Date(2017, 2, 21), 3 ],
-          [ new Date(2017, 2, 22), 0 ],
-          [ new Date(2017, 2, 23), 0 ],
+       
+       var dates = [];
+       
+       {{#each trackedAndMood}}
+              var arrSplit = "{{this.date}}".split('-');
+              
+              dates.push([ new Date(arrSplit[0], arrSplit[1], arrSplit[2]), {{this.value}}]);
+          {{/each}} 
 
-
-        ]);
-
+       dataTable.addRows(dates);
        var chart = new google.visualization.Calendar(document.getElementById('alcohol_div'));
 
        var options = {

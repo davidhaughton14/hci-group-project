@@ -302,6 +302,8 @@ router.get('/habits/:name', function(req,res,next){
             }    
         }
 
+       
+
         console.log(trackedAndMood);
         todays = []
         for (var i=0; i<tracked.length; i++){

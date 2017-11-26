@@ -86,18 +86,23 @@
 
                        <h3>Alcohol consumed in the past week</h3>
 
-                        <table>
+                        <table class="bottle-table">
                             <tr>
-                                <th>Monday</th>
-                                <td>
+                                {{#each trackedAndMood}}
+                                    <th>{{this.date}}</th>
 
-                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+                                    <td>
 
-                                    <div class="cover"><div style="background-color: white; height: 0%"></div></div>
+                                        <div class="cover"><div style="background-color: white; height: 0%"></div></div>
 
-                                    <div class="cover"><div style="background-color: white; height: 25%"></div></div>
+                                        <div class="cover"><div style="background-color: white; height: 0%"></div></div>
 
-                                </td>
+                                        <div class="cover"><div style="background-color: white; height: 25%"></div></div>
+
+                                    </td>
+                                {{/each}}
+                                
+                                
                             </tr>
                             <tr>
                                 <th>Tuesday</th>
