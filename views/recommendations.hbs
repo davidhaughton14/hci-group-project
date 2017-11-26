@@ -2,7 +2,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
-            <h1 id="title"> HappyHelper <i class="fa fa-smile-o"></i></h1>
             <nav id="nav" class="navbar" role="navigation">
                 <ul class="nav navbar-nav">
                     <li id="first"><a href="/dashboard">DASHBOARD</a></li>
@@ -32,21 +31,29 @@
         <div class="recommendations-wrap">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> This weeks recommendations </h2>
+                    <div class="heading-wrapper">
+                        <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> This weeks recommendations </h2>
+                    </div>
                     <div class = "panel-wrapper">
                         <div class="row">
-                            {{#each recommendations}}
-                                <div class="col-md-12">
-                                    <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
-                                    <div class="panel">
-                                        <div class="col-md-12">
-                                            <div class="info-div">
-                                                <h4> {{this.description}} </h4>
+                            {{#if recommendations}}
+                                {{#each recommendations}}
+                                    <div class="col-md-12">
+                                        <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                                        <div class="panel">
+                                            <div class="col-md-12">
+                                                <div class="info-div">
+                                                    <h4> {{this.description}} </h4>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {{/each}}
+                                {{/each}}
+                            {{else}}
+                            <div class="col-md-12">
+                                <h4 class="text-center"> {{helper.username}} has not provided any recommendations for you this week yet, Check back later. </h4>
+                            </div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

@@ -6,3 +6,68 @@
     height: 200px;
     resize: none;
 }
+
+.user-profile-wrap{
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 25px grey;
+    border-radius: 5px;
+}
+
+.heading-wrap{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.heading-wrap h1{
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.diary-wrap{
+    border: 1px solid black;
+}
+
+.habits-wrap{
+    border: 1px solid red;
+}
+
+.diary-entry-wrap{
+    margin-top: 10px;
+}
+
+.diaries{
+    font-size: 15px!important;
+}
+
+.diary-entry{
+    font-size: 16px;
+    text-align: center;
+}
+
+.habit{
+    padding:20px;
+    background: #56ab2f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 50%;
+height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: table;
+    margin-bottom: 40px;
+}
+
+.habit:hover{
+    box-shadow: 0 0 25px grey;
+}
+
+.habit i {
+    color: black;
+}
+
+.habit h4{
+    color: black;
+}

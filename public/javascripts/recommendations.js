@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     var acc = document.getElementsByClassName("accordion");
     var i;
-
+    alert(';ejfgrfuh');
     for (i = 0; i < acc.length; i++) {
         acc[i].onclick = function() {
             this.classList.toggle("active");
@@ -13,6 +13,6 @@ $( document ).ready(function() {
             }
         }
     }
-    document.getElementById("defaultOpen").click();
+    // document.getElementById("defaultOpen").click();
 
 });
