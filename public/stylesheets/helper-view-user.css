@@ -19,23 +19,20 @@
     padding-bottom: 20px;
 }
 
+.heading{
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
 .heading-wrap h1{
     padding: 0;
     margin: 0;
     padding-bottom: 10px;
 }
 
-.diary-wrap{
-    border: 1px solid black;
-}
-
-.habits-wrap{
-    border: 1px solid red;
-}
-
-.diary-entry-wrap{
-    margin-top: 10px;
-}
 
 .diaries{
     font-size: 15px!important;
@@ -47,19 +44,22 @@
 }
 
 .habit{
-    padding:20px;
+    display: table;
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 75px;
     background: #56ab2f;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to top, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 50%;
-height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%;
-    display: table;
-    margin-bottom: 40px;
+    cursor: pointer;
+    margin-bottom: 30px;
 }
-
+.icon{
+    display: table-cell;
+    vertical-align: middle;
+}
 .habit:hover{
     box-shadow: 0 0 25px grey;
 }
@@ -70,4 +70,8 @@ height: auto;
 
 .habit h4{
     color: black;
+}
+
+.habit-wrapper{
+    margin-left: 70px;
 }

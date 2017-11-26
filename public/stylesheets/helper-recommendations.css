@@ -5,11 +5,13 @@
     padding: 20px;
 }
 
-.heading{
-    margin: 0;
-    padding: 0px;
-    padding-bottom: 20px;
-}
+/*.heading{
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}*/
 
 .user-img{
     width: 64px;

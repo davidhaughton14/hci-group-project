@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="diary-heading-wrap">
-                                    <h2 class="text-center"> Diary entries </h2>
+                                    <h2 class="text-center heading"> Diary entries </h2>
                                 </div>
                             </div>
                         </div>
@@ -45,21 +45,23 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="heading-wrap">
-                                    <h2> Tracked habits </h2>
+                                    <h2 class= "heading"> Tracked habits </h2>
                                 </div>
                                 <div class="row">
-                                    {{#each user.habits}}
-                                        <div class="col-md-6">
-                                            <a href ="habits/{{this.name}}">
-                                                <div class="habit text-center">
-                                                    <div class="icon">
-                                                        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                                                        <h4> {{this.name}} </h4>
+                                    <div class="habit-wrapper">
+                                        {{#each user.habits}}
+                                            <div class="col-md-6">
+                                                <a href ="habits/{{this.name}}">
+                                                    <div class="habit text-center">
+                                                        <div class="icon">
+                                                            <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                                                            <h4> {{this.name}} </h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    {{/each}}
+                                                </a>
+                                            </div>
+                                        {{/each}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
