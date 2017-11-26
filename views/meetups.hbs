@@ -66,12 +66,12 @@
                                                 <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
                                                 <div class="panel">
                                                     <div class="col-md-12">
-                                                        <div class="info-div">
-                                                            <p><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</p>
-                                                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</p>
-                                                            <p><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</p>
-                                                            <p><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending </p>
-                                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-primary" role="button">View Meetup!</a>
+                                                        <div class="info-div-popular">
+                                                            <h4 class="details"><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                                            <h4 class="details"><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                                            <h4 class="details"><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                                            <h4 class="details"><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending </h4>
+                                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,7 +97,7 @@
                                 <div class = "row">
                                     <div class = "col-md-12">
                                         <div class="button-wrapper">
-                                                <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
+                                            <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
                                         </div>
                                     </div>
                                 </div>
