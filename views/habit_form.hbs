@@ -42,19 +42,25 @@
                               <form class="create-meetup" form method="POST" action="/add/bp">
                                   <div class="row">
                                       <div class="col-md-12">
+                                          <label>Habit name</label>
                                           <input type="text" class="form-control" name ="name" value="BloodPressure" required  readonly>
                                       </div>
                                       <div class="col-md-4">
+                                          <label>Habit unit</label>
                                           <input type="text" class="form-control" name ="units" value="mmHg" required  readonly>
                                       </div>
                                       <div class="col-md-4">
+                                           <label>Habit limit (Systolic)</label>
                                           <input type="text" class="form-control" name ="limit1" value="120" required  readonly>
                                       </div>
                                       <div class="col-md-4">
+                                          <label>Habit limit (Diastolic)</label>
                                           <input type="text" class="form-control" name ="limit2" value="80" required  readonly>
                                       </div>
+                                      <div class="col-md-6 col-md-offset-3">
+                                          <input type="checkbox" id="check" name="api_connect"> Connect with fitbit <img class="user-img fitbit" src="/images/fitbit.png"/>
+                                      </div>
                                       <div class="col-md-12">
-                                          <input type="checkbox" name="vehicle" value="Car">Connect with my fitbit<br>
                                           <button class="btn btn-lg btn-primary btn-block" type="submit">Add habit</button>
                                       </div>
                                   </div>

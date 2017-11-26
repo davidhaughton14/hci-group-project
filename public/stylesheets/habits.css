@@ -15,6 +15,14 @@
     display: table;
 }
 
+.fitbit{
+    height: 64px;
+}
+
+#check{
+    margin-left: 50px;
+}
+
 .habit{
     padding:20px;
     background: #56ab2f;  /* fallback for old browsers */
