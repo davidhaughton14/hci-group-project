@@ -25,8 +25,8 @@
                     <div class="diary-wrap">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="heading-wrap">
-                                    <h2> Diary entries </h2>
+                                <div class="diary-heading-wrap">
+                                    <h2 class="text-center"> Diary entries </h2>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="col-md-12">
                                 <ul>
                                     {{#each user.diaryEntries}}
-                                    <a href="#modalDIARY" data-toggle="modal" data-diary-date="{{this.date}}" data-diary-rating="{{this.rating}}" data-diary-text="{{this.text}}"> {{this.date}} - Rating: {{this.rating}}/10</a>
+                                        <p class="diary-entry"><a href="#modalDIARY" data-toggle="modal" data-diary-date="{{this.date}}" data-diary-rating="{{this.rating}}" data-diary-text="{{this.text}}"><i class="fa fa-book" aria-hidden="true"></i> {{this.date}} - Happy rating: {{this.rating}}/10</a></p>
                                     {{/each}}
                                 </ul>
                             </div>
@@ -43,6 +43,27 @@
                 </div>
                 <div class="col-md-6">
                     <div class="habits-wrap">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="heading-wrap">
+                                    <h2> Tracked habits </h2>
+                                </div>
+                                <div class="row">
+                                    {{#each user.habits}}
+                                        <div class="col-md-6">
+                                            <a href ="habits/{{this.name}}">
+                                                <div class="habit text-center">
+                                                    <div class="icon">
+                                                        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                                                        <h4> {{this.name}} </h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,12 +99,29 @@
                 <h3 id="diaryDate" class="modal-title text-center"></h3>
             </div>
             <div class="modal-body">
+                <h4> Daily mood rating </h4>
                 <p id="diaryRating"></p>
+                <h4> Comments on day </h4>
                 <p id="diaryText" ></p>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="habitMODAL">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 id="diaryDate" class="modal-title text-center"></h3>
+            </div>
+            <div class="modal-body">
+                <div id="general_div"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
