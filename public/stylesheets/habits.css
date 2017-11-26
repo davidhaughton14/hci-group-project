@@ -68,7 +68,12 @@ i {
 }
 
 .heading{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dbdbdb;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 40px;
 }
 
 .form-wrap{
