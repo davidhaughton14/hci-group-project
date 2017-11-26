@@ -13,6 +13,46 @@
     padding: 20px;
 }
 
+/* Style the buttons that are used to open and close the accordion panel */
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.2s ease-out;
+    margin: 0;
+    border: none;
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+
+.panel-wrapper{
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
 .about{
     padding-top: 10px;
 }
@@ -22,11 +62,22 @@
     margin: 0;
 }
 
+.helperHeading{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.user-wrap{
+    padding-top: 20px;
+}
+
 .heading-wrapper{
     width: 80%;
     display: block;
     margin: 0 auto;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .recommendations-wrap{
@@ -34,4 +85,8 @@
     background-color: white;
     box-shadow: 0 0 25px grey;
     padding: 20px;
+}
+
+.reco-wrap{
+    margin-top: 20px;
 }

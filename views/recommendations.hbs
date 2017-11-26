@@ -19,9 +19,13 @@
         <div class="helper-wrap">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> Your helper </h2>
-                    <img class="user-img img-circle" src="/images/placeholder.png" /><span class="username">{{helper.username}}</span>
-                    <h3 class="heading"> About {{helper.username}} </h3>
+                    <div class="heading-wrapper">
+                        <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> Your helper </h2>
+                    </div>
+                    <div class="user-wrap">
+                        <img class="user-img img-circle" src="/images/placeholder.png" /><span class="username">{{helper.username}}</span>
+                        <h3 class="heading"> About {{helper.username}} </h3>
+                    </div>
                     <p class="about"> {{helper.about}} </p>
                 </div>
             </div>
@@ -32,18 +36,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-wrapper">
-                        <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> This weeks recommendations </h2>
+                        <h2 class="text-center" style="padding:0; margin:0; padding-bottom:10px;"> {{helper.username}}'s recommendations </h2>
                     </div>
                     <div class = "panel-wrapper">
                         <div class="row">
                             {{#if recommendations}}
                                 {{#each recommendations}}
                                     <div class="col-md-12">
-                                        <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
-                                        <div class="panel">
-                                            <div class="col-md-12">
-                                                <div class="info-div">
-                                                    <h4> {{this.description}} </h4>
+                                        <div class="reco-wrap">
+                                            <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                                            <div class="panel">
+                                                <div class="col-md-12">
+                                                    <div class="info-div">
+                                                        <h4> Your helper says: </h4>
+                                                        <div class="col-md-11 col-md-offset-1">
+                                                            <h5><i> {{this.description}} </i></h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
