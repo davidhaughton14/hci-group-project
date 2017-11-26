@@ -126,3 +126,14 @@ div.panel {
     margin-left: 70px;
     border: 1.1px solid #585a5a;
 }
+
+
+.cover{
+    height: 61px;
+    width: 20px;
+
+    background-image: url('/images/beer.jpeg');
+    background-size:20px 61px;
+    display: inherit;
+
+}
