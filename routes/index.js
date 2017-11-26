@@ -89,6 +89,7 @@ router.get('/recommendations', function(req,res,next){
     User.findOne({_id:req.session.passport.user}).then(function(record){
         if(record.helper_flag == 1){
             var users = record.assigned;
+            console.log(users);
             User.find({'username': { $in: users }}).then(function(result){
                 res.render('helper/helper_recommendations', { title: 'HappyHelper - Recommendations', users:result});
             });
@@ -298,7 +299,7 @@ router.get('/habits/:name', function(req,res,next){
         var tracked = record.tracked_stats;
 
         var diaryEntries = record.diaryEntries;
-        
+
 
         // hold data required for graphs
         var trackedAndMood = [];
@@ -308,7 +309,7 @@ router.get('/habits/:name', function(req,res,next){
         for (var i=0; i<tracked.length; i++){
             if(tracked[i].name == name){
                 // need remainder and whole value for alcohol unit bottles
-                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0", "wholeValue":(tracked[i].value - (tracked[i].value % 1)), "remainderValue": (tracked[i].value % 1)});   
+                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0", "wholeValue":(tracked[i].value - (tracked[i].value % 1)), "remainderValue": (tracked[i].value % 1)});
             }
         }
 
@@ -316,14 +317,14 @@ router.get('/habits/:name', function(req,res,next){
             for (var j=0; j<diaryEntries.length; j++){
                 if((trackedAndMood[i].date == diaryEntries[j].date) && (trackedAndMood[i].name == name)){
                     trackedAndMood[i].rating = diaryEntries[j].rating;
-                } 
+                }
             }
 
 
         }
 
-     
-       
+
+
 
         console.log(trackedAndMood);
         todays = []

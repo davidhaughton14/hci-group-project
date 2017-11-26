@@ -28,7 +28,7 @@ router.post('/register', function(req, res, next) {
             username: username,
             password: password,
             helper_flag: 0,
-            assigned: "testHelper",
+            assigned: ["testHelper"]
         });
 
         User.createUser(newUser, function(err, user){

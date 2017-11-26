@@ -177,6 +177,9 @@ var bar = new ProgressBar.Circle("#{{this.name}}", {
     step: function(state, circle) {
         circle.path.setAttribute('stroke', state.color);
         var value = (circle.value()*{{this.limit}}).toFixed(2);
+        if({{this.name}} == "bloodPressure"){
+            console.log("yass");
+        }
         circle.setText({{this.value}} + " out of {{this.limit}}" + " {{this.unit}}");
     }
 });

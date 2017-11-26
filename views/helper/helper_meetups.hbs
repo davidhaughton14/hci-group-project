@@ -19,9 +19,8 @@
                 <button class="tablinks" onclick="openTab(event, 'viewAll')" id="defaultOpen">View all meetups</button>
                 <button class="tablinks" onclick="openTab(event, 'create')">Create new meetup</button>
             </div>
-        </div>
 
-        <div id="create" class="tabcontent">
+            <div id="create" class="tabcontent">
             <div class = "row">
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
@@ -55,7 +54,7 @@
             </div>
         </div>
 
-        <div id="viewAll" class="tabcontent">
+            <div id="viewAll" class="tabcontent">
             <div class = "panel-wrapper">
                 {{#each meetups}}
                     <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
@@ -76,6 +75,7 @@
                     </div>
                 {{/each}}
             </div>
+        </div>
         </div>
     </div>
 </div>
