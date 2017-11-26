@@ -17,40 +17,71 @@
 <div class = "row">
     <div class="col-md-12">
         <div class="results-wrap">
-            <h1 class="text-center"> Found {{meetups.length}} Meetup(s) related to "{{query}}"</h1>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="meetup-container">
-                        <div class = "row">
-                            <div class="col-md-12">
-                                <div class = "panel-wrapper">
-                                    <div class="row">
-                                        {{#each meetups}}
-                                        <div class="col-md-12">
-                                                <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>                                    <div class="panel">
-                                                    <div class="col-md-6">
-                                                        <div class="info-div">
-                                                            <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
-                                                            <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
-                                                            <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
-                                                            <h4><i class="fa fa-users" aria-hidden="true"></i> {{this.attending.length}} attending </h4>
+            {{#if meetups}}
+                <h2 class="text-center"> Found {{meetups.length}} Meetup(s) related to "{{query}}"</h2>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="meetup-container">
+                            <div class = "row">
+                                <div class="col-md-12">
+                                    <div class = "panel-wrapper">
+                                        <div class="row">
+                                            {{#each meetups}}
+                                            <div class="col-md-12">
+                                                    <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>                                    <div class="panel">
+                                                        <div class="col-md-6">
+                                                            <div class="info-div">
+                                                                <h4><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                                                <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                                                <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                                                <h4><i class="fa fa-users" aria-hidden="true"></i> {{this.attending.length}} attending </h4>
 
-                                                            <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                                                <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div id="map"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div id="map"></div>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                        {{/each}}
+                                            {{/each}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            {{else}}
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 class="text-center">There are currently not any meetups that match your search!</h2>
+                    <h3 class="text-center">Please search again.</h3>
+                </div>
+                <form class="search-tweets" form method="POST" action="/meetups-search">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="box">
+                                    <div class="container-3">
+                                        <span class="icon"><i class="fa fa-search"></i></span>
+                                        <input type="search" id="search-box" name="search" placeholder="Enter term(s) to search..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = "row">
+                            <div class = "col-md-12">
+                                <div class="button-wrapper">
+                                        <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+            {{/if}}
         </div>
     </div>
 </div>

@@ -21,15 +21,13 @@
                 <button class="tablinks" onclick="openTab(event, 'upcoming')" id="defaultOpen">Upcoming meetups</button>
                 <button class="tablinks" onclick="openTab(event, 'find')">Find new meetups</button>
             </div>
-        </div>
-
-        <div id="upcoming" class="tabcontent">
+            <div id="upcoming" class="tabcontent">
             <div class = "row">
                 <div class="col-md-12">
                     <div class = "panel-wrapper">
                         {{#if meetups}}
                             {{#each meetups}}
-                                <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
+                                <button class="accordion"><span class="pull-left">{{this.date}}</span>{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
                                 <div class="panel">
                                     <div class="col-md-6">
                                         <div class="info-div">
@@ -52,6 +50,7 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div id="find" class="tabcontent">
             <div class="row">
@@ -67,11 +66,11 @@
                                                 <button class="accordion">{{this.name}}<i class="fa fa-angle-double-down pull-right"></i></button>
                                                 <div class="panel">
                                                     <div class="col-md-12">
-                                                        <div class="info-div">
-                                                            <p><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</p>
-                                                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</p>
-                                                            <p><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</p>
-                                                            <p><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending </p>
+                                                        <div class="info-div-popular">
+                                                            <h4 class="details"><i class="fa fa-calendar" aria-hidden="true"></i> {{this.date}}</h4>
+                                                            <h4 class="details"><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
+                                                            <h4 class="details"><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
+                                                            <h4 class="details"><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending </h4>
                                                             <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
                                                         </div>
                                                     </div>
@@ -98,7 +97,7 @@
                                 <div class = "row">
                                     <div class = "col-md-12">
                                         <div class="button-wrapper">
-                                                <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
+                                            <button id="search"  name="searchbutton" class="btn btn-sm btn-primary btn-block" type="submit">Search for meetups!</button>
                                         </div>
                                     </div>
                                 </div>

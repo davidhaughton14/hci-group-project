@@ -4,7 +4,7 @@
 }
 
 .heading{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #dbdbdb;
     padding-bottom: 10px;
     width: 75%;
     margin: 0 auto;
@@ -32,16 +32,17 @@ button.accordion.active, button.accordion:hover {
 }
 
 /* Style the accordion panel. Note: hidden by default */
-div.panel {
-    padding: 0 18px;
+.panel {
     background-color: white;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: 0.2s ease-out;
     margin: 0;
-    background-color: white;
     border: none;
+    background-color: #f5f5f5;
+    margin-bottom: 10px;
 }
+
 
 .panel-wrapper{
     width: 75%;
@@ -138,8 +139,16 @@ div.panel {
 }
 
 .info-div{
-    padding:5px;
+    padding-left: 60px;
+    margin-top: 40px;
+}
+
+.info-div-popular{
     padding-left: 30px;
+}
+
+.details{
+    font-size: 15px;
 }
 
 .info-div h4{
