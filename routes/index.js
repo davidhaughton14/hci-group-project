@@ -171,8 +171,28 @@ router.post('/attending/:name', function(req,res,next){
 /* GET habits page. */
 router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        var habitsNames = record.habits;
-        res.render('habits', { title: 'HappyHelper - Habits', habits:habitsNames });
+        var habitsNames = [];
+        if(record.habits.length > 0){
+            hasHabits = true;
+        }
+        for (var x=0; x<record.habits.length; x++){
+            if (record.habits[x].name == "BloodPressure"){
+                var bp = record.habits[x];
+            }
+            else if (record.habits[x].name == "Sleep"){
+                var sleep = record.habits[x];
+            }
+            else if (record.habits[x].name=="StepCount"){
+                var step = record.habits[x];
+            }
+            else if (record.habits[x].name == "VitaminD"){
+                var vitD = record.habits[x];
+            } else {
+                habitsNames.push(record.habits[x]);
+            }
+        }
+        console.log(bp);
+        res.render('habits', { title: 'HappyHelper - Habits', hasHabits:hasHabits, habits:habitsNames, step:step, bp:bp, sleep:sleep, vitD:vitD});
     });
 });
 
@@ -224,9 +244,14 @@ router.post('/add/sleep', function(req,res,next){
     var name = req.body.name;
     var limit = req.body.limit;
     var unit = req.body.units;
-
+    var api_connect = req.body.api_connect;
+    if(api_connect == "on"){
+        uses_api = true;
+    } else {
+        uses_api = false;
+    }
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:uses_api});
         record.save();
         res.redirect('/habits');
     });
@@ -236,9 +261,15 @@ router.post('/add/steps', function(req,res,next){
     var name = req.body.name;
     var limit = req.body.limit;
     var unit = req.body.units;
+    var api_connect = req.body.api_connect;
 
+    if(api_connect == "on"){
+        uses_api = true;
+    } else {
+        uses_api = false;
+    }
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:uses_api});
         record.save();
         res.redirect('/habits');
     });
@@ -248,9 +279,15 @@ router.post('/add/bp', function(req,res,next){
     var name = req.body.name;
     var limit1 = req.body.limit1;
     var unit = req.body.units;
+    var api_connect = req.body.api_connect;
 
+    if(api_connect == "on"){
+        uses_api = true;
+    } else {
+        uses_api = false;
+    }
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push({name:name, unit:unit, limit:limit1, uses_api:true});
+        record.habits.push({name:name, unit:unit, limit:limit1, uses_api:uses_api});
         record.save();
         res.redirect('/habits');
     });
@@ -260,9 +297,15 @@ router.post('/add/vitD', function(req,res,next){
     var name = req.body.name;
     var limit = req.body.limit;
     var unit = req.body.units;
+    var api_connect = req.body.api_connect;
 
+    if(api_connect == "on"){
+        uses_api = true;
+    } else {
+        uses_api = false;
+    }
     User.findOne({_id:req.session.passport.user}).then(function(record){
-        record.habits.push({name:name, unit:unit, limit:limit, uses_api:true});
+        record.habits.push({name:name, unit:unit, limit:limit, uses_api:uses_api});
         record.save();
         res.redirect('/habits');
     });

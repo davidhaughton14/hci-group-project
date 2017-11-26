@@ -17,21 +17,71 @@
 <div class="row">
     <div class="col-md-12">
         <div class="habit-wrap">
-            {{#if habits}}
+            {{#if hasHabits}}
             	<h2 class="text-center heading">Your tracked habits</h2>
                 <div class="row">
-                    {{#each habits}}
-                    <div class="col-md-4">
-                        <a href ="habits/{{this.name}}">
-                            <div class="habit text-center">
-                                <div class="icon">
-                                    <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                                    <h4> {{this.name}} </h4>
+                    {{#if habits}}
+                        {{#each habits}}
+                        <div class="col-md-4">
+                            <a href ="habits/{{this.name}}">
+                                <div class="habit text-center">
+                                    <div class="icon">
+                                        <i class="fa fa-user fa-3x" aria-hidden="true"></i>
+                                        <h4> {{this.name}} </h4>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    {{/each}}
+                            </a>
+                        </div>
+                        {{/each}}
+                    {{/if}}
+                    {{#if bp}}
+                        <div class="col-md-4">
+                            <a href ="habits/{{bp.name}}">
+                                <div class="habit text-center">
+                                    <div class="icon">
+                                        <i class="fa fa-heartbeat fa-3x"></i>
+                                        <h4> {{bp.name}} </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/if}}
+                    {{#if step}}
+                        <div class="col-md-4">
+                            <a href ="habits/{{step.name}}">
+                                <div class="habit text-center">
+                                    <div class="icon">
+                                        <i class="fa fa-paw fa-3x" aria-hidden="true"></i>
+                                        <h4> {{step.name}} </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/if}}
+                    {{#if sleep}}
+                        <div class="col-md-4">
+                            <a href ="habits/{{sleep.name}}">
+                                <div class="habit text-center">
+                                    <div class="icon">
+                                        <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                                        <h4> {{sleep.name}} </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/if}}
+                    {{#if vitD}}
+                        <div class="col-md-4">
+                            <a href ="habits/{{vitD.name}}">
+                                <div class="habit text-center">
+                                    <div class="icon">
+                                        <i class="fa fa-sun-o fa-3x" aria-hidden="true"></i>
+                                        <h4> {{vitD.name}} </h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{/if}}
                     <div class="col-md-4">
                         <div class="new-habit text-center">
                             <div class="icon">
@@ -51,7 +101,6 @@
                         </div>
                     </div>
                 </div>
-
             {{/if}}
         </div>
     </div>
