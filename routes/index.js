@@ -286,18 +286,23 @@ router.get('/habits/:name', function(req,res,next){
         // hold data required for graphs
         var trackedAndMood = [];
 
+
+        // match the habit
         for (var i=0; i<tracked.length; i++){
-            trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0"});   
+            if(tracked[i].name == name){
+                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0"});   
+            }
         }
 
         for (var i=0; i<trackedAndMood.length; i++){
             for (var j=0; j<diaryEntries.length; j++){
-                if(trackedAndMood[i].date == diaryEntries[j].date){
+                if((trackedAndMood[i].date == diaryEntries[j].date) && (trackedAndMood[i].name == name)){
                     trackedAndMood[i].rating = diaryEntries[j].rating;
                 } 
             }    
         }
 
+        console.log(trackedAndMood);
         todays = []
         for (var i=0; i<tracked.length; i++){
             if(tracked[i].date == date){
