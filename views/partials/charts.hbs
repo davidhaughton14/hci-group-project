@@ -92,16 +92,34 @@ function drawAxisTickColors() {
        chart.draw(dataTable, options);
 
 		// Sleep chart
-       var data = google.visualization.arrayToDataTable([
-        ['Sleep Type', 'REM', 'Light', 'Deep', 'mood' ],
-        ['Monday', 2.1, 5, 0.5,8],
-        ['Tuesday', 1.6, 6, 2,6],
-        ['Wednesday', 2.2, 4, 3,7],
-        ['Thursday', 1.4, 3, 3.7,8],
-        ['Friday', 1.7, 2.6, 4,9],
-        ['Saturday', 1.3, 1.8, 5,7],
-        ['Sunday', 1.8, 3.1, 2.2,8]
+
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      }  
+
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'REM');
+      data.addColumn('number', 'Light');
+      data.addColumn('number', 'Deep');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+          [dates[0], 2.1, 5, 0.5,8],
+          [dates[1], 1.6, 6, 2,6],
+          [dates[2], 2.2, 4, 3,7],
+          [dates[3], 1.4, 3, 3.7,8],
+          [dates[4], 1.7, 2.6, 4,9],
+          [dates[5], 1.3, 1.8, 5,7],
+          [dates[6], 1.8, 3.1, 2.2,8],
       ]);
+  
 
       var options = {
       	title: 'Hours of sleep based on sleep type',
@@ -303,9 +321,9 @@ function drawAxisTickColors() {
     var dates = [];
 
       for (i = 0; i < 7; i++) { 
-        var monthago = new Date();
-        monthago.setDate(monthago.getDate() - i);
-        dates.push(monthago);
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
         
       } 
 
