@@ -174,7 +174,7 @@ button.accordion.active, button.accordion:hover {
 }
 
 .info-div-popular{
-    
+
 }
 
 .fa-angle-double-down{
@@ -183,4 +183,11 @@ button.accordion.active, button.accordion:hover {
 
 .panel-wrapper{
     padding-bottom: 10px;
+}
+
+.meetup-heading{
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    width: 100%;
 }

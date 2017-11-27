@@ -5,7 +5,7 @@
             <nav id="nav" class="navbar" role="navigation">
                 <ul class="nav navbar-nav">
                     <li id="first"><a href="/dashboard">DASHBOARD</a></li>
-                    <li><a href="/habits">HABITS</a></li>
+                    <li class="active"><a href="/habits">HABITS</a></li>
                     <li><a href="/meetups">MEETUPS</a></li>
                     <li><a href="/recommendations">RECOMMENDATIONS</a></li>
                     <li id="last"><a href="/logout" target="_self">LOGOUT</a></li>
@@ -224,7 +224,7 @@
             <form class="form-wrap" method="POST" action="">
 
             </form>
-            <h3> Create custom habit </h3>
+            <h3 class="add-habit-heading"> Create custom habit </h3>
             <form class="form-wrap" method="POST">
                 <label for="name"> Habit name </label>
                 <input name="name" class="name form-control" type="text" required>
