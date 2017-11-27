@@ -376,7 +376,7 @@ router.get('/habits/:name', function(req,res,next){
                 var todaysHab = todays[j];
             }
         }
-        
+
         if(habit.name == "BloodPressure"){
             res.render('bp_detail', {trackedAndMood:trackedAndMood, habit: habit, today:date, todaysHab:todaysHab, tracked_stat:tracked_stat});
         } else if(habit.name == "Sleep"){
@@ -453,6 +453,7 @@ router.get('/meetups', function(req, res, next) {
                     jsonObject["time"] = result[i].time;
                     jsonObject["attending"] = result[i].attending.length;
                     jsonObject["location"] = result[i].location;
+                    jsonObject["id"] = result[i]._id;
                     meetupArray.push(jsonObject);
                 }
                 res.render('helper/helper_meetups', { title: 'HappyHelper - Meetups', meetups:meetupArray});
