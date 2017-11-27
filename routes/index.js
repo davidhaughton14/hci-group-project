@@ -469,6 +469,7 @@ router.get('/meetups', function(req, res, next) {
                     jsonObject["time"] = result[i].time;
                     jsonObject["attending"] = result[i].attending.length;
                     jsonObject["location"] = result[i].location;
+                    jsonObject["id"] = result[i]._id;
                     meetupArray.push(jsonObject);
                 }
                 Meetup.find().then(function(docs){

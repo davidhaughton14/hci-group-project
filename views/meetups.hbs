@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div id="map"></div>
+                                        <div class="map" id="{{this.id}}"></div>
                                     </div>
                                 </div>
                         {{/each}}
@@ -120,15 +120,17 @@
 <script src="/javascripts/search-results.js"></script>
 <script>
   function initMap() {
-    var uluru = {lat: 55.7708, lng: -4.8433};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: uluru
-    });
-    var marker = new google.maps.Marker({
-      position: uluru,
-      map: map
-    });
+    {{#each meetups}}
+        var uluru = {lat: 55.7708, lng: -4.8433};
+        var map = new google.maps.Map(document.getElementById('{{this.id}}'), {
+          zoom: 11,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+    {{/each}}
   }
 </script>
 <script async defer

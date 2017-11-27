@@ -133,7 +133,7 @@ button.accordion.active, button.accordion:hover {
     background-color: white;
 }
 
-#map{
+.map{
     height: 300px;
     border: 1px solid black;
 }
