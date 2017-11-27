@@ -31,6 +31,14 @@ $('#habitMODAL').on('show.bs.modal', function (e) {
 	$("#sleeptitle").html("");
 	$("#generaltitle").html("");
 
+	$("#bloodtitle").css("font-weight","Bold");
+	$("#heartratetitle").css("font-weight","Bold");
+	$("#sleeptitle").css("font-weight","Bold");
+	$("#vitdtitle").css("font-weight","Bold");
+	$("#sleeptitle").css("font-weight","Bold");
+	$("#generaltitle").css("font-weight","Bold");
+	
+
    	if (name == "BloodPressure") {
    		$("#bloodtitle").html("Average daily blood pressure vs daily heart rate - past 30 days");
     	$("#blood_div").show();
