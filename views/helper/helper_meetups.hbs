@@ -65,12 +65,13 @@
                                 <h4><i class="fa fa-clock-o" aria-hidden="true"></i> {{this.time}}</h4>
                                 <h4><i class="fa fa-globe" aria-hidden="true"></i> {{this.location}}</h4>
                                 <h4><i class="fa fa-users" aria-hidden="true"></i> {{this.attending}} attending</h4>
+                                <div class="button-div">
+                                    <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="button-div">
-                                <a href="/meetup/details/{{this.name}}" id="#view" class="btn btn-success" role="button">View Meetup!</a>
-                            </div>
+                            <div id="map"></div>
                         </div>
                     </div>
                 {{/each}}
@@ -88,3 +89,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
 <script src="/javascripts/meetups.js"></script>
 <script src="/javascripts/search-results.js"></script>
+
+<script>
+  function initMap() {
+    var uluru = {lat: 55.7708, lng: -4.8433};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBno2dMjm0Ec-IbWJ8xVOc-h5MJn-D1oCg&callback=initMap">
+</script>
