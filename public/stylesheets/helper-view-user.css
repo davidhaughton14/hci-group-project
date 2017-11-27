@@ -75,3 +75,39 @@
 .habit-wrapper{
     margin-left: 70px;
 }
+
+
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+
+#blood_div{
+    width: 1000px;
+    margin:0 auto;
+}
+    
+#heartrate_div{
+    width: 1000px;
+    margin:0 auto;
+} 
+#sleep_div{
+    width: 1000px;
+    margin:0 auto;
+ } 
+#steps_div{
+    width: 1000px;
+    margin:0 auto;
+}
+#vitd_div{
+    width: 1000px;
+    margin:0 auto;
+} 
+#general_div{
+    width: 1000px;
+    margin:0 auto;
+} 
+#calendar_general_div{
+    width: 1000px;
+    margin:0 auto; 
+}

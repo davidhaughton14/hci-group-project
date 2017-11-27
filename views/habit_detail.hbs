@@ -9,7 +9,7 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
 
-
+ 
 
   // general chart for all habits
   var data = new google.visualization.DataTable();
@@ -27,7 +27,9 @@ function drawAxisTickColors() {
 
       var options = {
         hAxis: {
-          title: 'Date'
+          title: 'Date',
+          gridlines: {count: 10},
+          slantedText: true
         },
         vAxis: {
           title: 'Levels (unit)'

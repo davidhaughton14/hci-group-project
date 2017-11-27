@@ -1,4 +1,446 @@
 <link rel="stylesheet" href="/stylesheets/helper-view-user.css">
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    google.charts.load('current', {packages: ['corechart', 'bar', 'calendar']});
+google.charts.setOnLoadCallback(drawAxisTickColors);
+
+function drawAxisTickColors() {
+
+    var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+    var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'Habit');
+      data.addColumn('number', 'Mood');
+      data.addRows([
+      [ dates[0], 22, 7 ],
+      [ dates[1], 15, 8 ],
+      [ dates[2], 17, 6 ],
+      [ dates[4], 20, 7 ],
+      [ dates[5], 31, 8 ],
+      [ dates[6], 22, 4 ],
+      [ dates[7], 27, 5 ],
+      [ dates[8], 34, 7 ],
+      [ dates[9], 39, 8 ],
+      [ dates[10], 22, 3 ],
+      [ dates[11], 40, 8 ],
+      [ dates[12], 37, 6 ],
+      [ dates[13], 33, 7 ],
+      [ dates[14], 33, 7 ],
+      [ dates[15], 39, 8 ],
+      [ dates[16], 41, 9 ],
+      [ dates[17], 26, 4 ],
+      [ dates[18], 30, 7 ],
+      [ dates[19], 33, 8 ],
+      [ dates[20], 33, 8 ],
+      [ dates[21], 16, 3 ],
+      [ dates[22], 27, 7 ],
+      [ dates[23], 27, 7 ],
+      [ dates[24], 23, 5 ],
+      [ dates[25], 27, 6 ],
+      [ dates[26], 42, 9 ],
+      [ dates[27], 50, 10],
+      [ dates[28], 33, 7 ],
+      [ dates[29], 21, 6 ],
+      [ dates[30], 23, 5 ]
+      ]);
+      
+
+      var options = {
+
+        hAxis: {
+          title: 'Date',
+          gridlines: {count: 10},
+          slantedText: true
+
+        },
+        vAxis: {
+          title: 'Levels (unit)'
+        },
+        vAxes: {
+          // Adds titles to each axis.
+          0: {title: 'Habit Units'},
+          1: {title: 'Mood'}
+        },
+        series: {
+          0: {targetAxisIndex: 0},
+          1: {targetAxisIndex: 1}
+        },
+        legend: { position: 'top'},
+        axes: {
+          // Adds labels to each axis; they don't have to match the axis names.
+          y: {
+            Habit: {label: 'Habit Units'},
+            Mood: {label: 'Mood'}
+          }
+        },
+
+        height: 600,
+        width: 1000
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('general_div'));
+
+      chart.draw(data, options);
+
+
+
+    var data = new google.visualization.DataTable();
+
+      var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+      data.addColumn({ type: 'date', id: 'Date' });
+      data.addColumn({ type: 'number', id: 'Units drank' });
+      data.addRows([
+      [ dates[0], 66 ],
+      [ dates[1], 70 ],
+      [ dates[2], 68 ],
+      [ dates[4], 65 ],
+      [ dates[5], 59 ],
+      [ dates[6], 63 ],
+      [ dates[7], 67 ],
+      [ dates[8], 66 ],
+      [ dates[9], 58 ],
+      [ dates[10], 62 ],
+      [ dates[11], 63 ],
+      [ dates[12], 61 ],
+      [ dates[13], 57 ],
+      [ dates[14], 64 ],
+      [ dates[15], 68 ],
+      [ dates[16], 66 ],
+      [ dates[17], 63 ],
+      [ dates[18], 66 ],
+      [ dates[19], 64 ],
+      [ dates[20], 68 ],
+      [ dates[21], 70 ],
+      [ dates[22], 71 ],
+      [ dates[23], 71 ],
+      [ dates[24], 66 ],
+      [ dates[25], 68 ],
+      [ dates[26], 64 ],
+      [ dates[27], 66 ],
+      [ dates[28], 62 ],
+      [ dates[29], 61 ],
+      [ dates[30], 60 ],
+      ]);
+
+        var options = {
+          hAxis: {title: 'Date',
+                  titleTextStyle: {color: '#333'},
+                  gridlines: {count: 10},
+                slantedText: true },
+          vAxis: {title: 'Heart rate', minValue: 0},
+          colors: ['red'],
+          areaOpacity: 0.3,
+          legend: {position: 'none'},
+          height: 600,
+          width: 1000,
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
+      chart.draw(data, options);
+
+      
+
+       var data = new google.visualization.DataTable();
+
+      var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+      data.addColumn({ type: 'date', id: 'Date' });
+      data.addColumn({ type: 'number', id: 'Systolic' });
+      data.addColumn({ type: 'number', id: 'Systolic' });
+      data.addColumn({ type: 'number', id: 'Diastolic' });
+      data.addColumn({ type: 'number', id: 'Diastolic' });
+      data.addColumn({ type: 'number', id: 'Heart rate' });
+      data.addRows([
+        [dates[0], 80, 80, 90, 90,55],
+        [dates[1], 90, 90, 105, 105,58],
+        [dates[2], 75, 75, 100, 100,60],
+        [dates[3], 80, 80, 110, 110,55],
+        [dates[4], 90, 90, 105, 105,70],
+        [dates[5], 90, 90, 105, 105,65],
+        [dates[6], 80, 80, 110, 110,74],
+        [dates[7], 90, 90, 105, 105,67],
+        [dates[8], 90, 90, 105, 105,64],
+        [dates[9], 90, 90, 105, 105,68],
+        [dates[10], 80, 80, 110, 110,61],
+        [dates[11], 90, 90, 105, 105,61],
+        [dates[12], 80, 80, 110, 110,70],
+        [dates[13], 90, 90, 105, 105,65],
+        [dates[14], 80, 80, 110, 110,68],
+        [dates[15], 90, 90, 105, 105,65],
+        [dates[16], 80, 80, 110, 110,72],
+        [dates[17], 90, 90, 105, 105,66],
+        [dates[18], 80, 80, 110, 110,74],
+        [dates[19], 80, 80, 110, 110,61],
+        [dates[20], 90, 90, 105, 105,61],
+        [dates[21], 80, 80, 110, 110,70],
+        [dates[22], 90, 90, 105, 105,65],
+        [dates[23], 80, 80, 110, 110,68],
+        [dates[24], 90, 90, 105, 105,65],
+        [dates[25], 80, 80, 110, 110,72],
+        [dates[26], 90, 90, 105, 105,66],
+        [dates[27], 80, 80, 110, 110,74],
+        [dates[28], 80, 80, 110, 110,61],
+        [dates[29], 90, 90, 105, 105,61],
+        [dates[30], 80, 80, 110, 110,70]
+      ]);
+
+   
+
+        var options = {
+          legend: 'none',
+          hAxis:{
+            gridlines: {count: 10},
+          slantedText: true
+          },
+          seriesType: "candlesticks",
+           series: {
+                1: {type: "line"}
+            },
+          bar: { groupWidth: '3px' }, // Remove space between bars.
+          candlestick: {
+            fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+            risingColor: { strokeWidth: 0, fill: '#a52714' }   // red
+          },
+          height: 600,
+          width: 1000
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('blood_div'));
+        chart.draw(data, options);
+
+        var data = new google.visualization.DataTable();
+        // Sleep chart
+
+    var dates = [];
+
+      for (i = 0; i <= 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      }  
+
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'REM');
+      data.addColumn('number', 'Light');
+      data.addColumn('number', 'Deep');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+
+          [dates[1], 2.1, 5, 0.5,8],
+          [dates[2], 1.6, 6, 2,6],
+          [dates[3], 2.2, 4, 3,7],
+          [dates[4], 1.4, 3, 3.7,8],
+          [dates[5], 1.7, 2.6, 4,9],
+          [dates[6], 1.3, 1.8, 5,7],
+          [dates[7], 1.8, 3.1, 2.2,8],
+      ]);
+  
+
+      var options = {
+
+        seriesType:'bars',
+        
+        series:{
+           3: {type:'line'}
+        },
+        
+        hAxis: {
+          title: 'Day of week',
+          slantedText: true
+         },
+
+        vAxis: {
+          title: 'Hours slept',
+        },
+        isStacked: true,
+        colors: ['#4f9070','#2e8a6a', '#0d4950'],
+        height: 700,
+        width: 1000,
+
+
+       
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('sleep_div'));
+      chart.draw(data, options);
+
+       // Number of steps chart
+
+    var dates = [];
+
+      for (i = 1; i < 8; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      } 
+
+
+    var data = new google.visualization.DataTable();
+    
+    data.addColumn('date', 'Date');
+    data.addColumn('number', 'Steps');
+    data.addRows([
+        [dates[0], 5000],
+        [dates[1], 4000],
+        [dates[2], 6000],
+        [dates[3], 4000],
+        [dates[4], 1999],
+        [dates[5], 1000],
+        [dates[6], 900],
+    ]);
+    
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) < 2000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 3000 && dt.getValue(row, 1) < 5000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 5000 && dt.getValue(row, 1) < 7000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 7000 && dt.getValue(row, 1) < 9000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 9000) ? dt.getValue(row, 1) : null;
+        }
+    }]);
+    
+    var chart = new google.visualization.ColumnChart(document.getElementById('steps_div'));
+
+
+    var options = {
+        legend: 'none',
+        hAxis: {
+          title: 'Day',
+          slantedText: true
+        },
+        vAxis: {
+          title: 'Number of steps'
+        },
+        isStacked: true,
+        height: 600,
+          width: 1000
+      };
+    
+    chart.draw(view, options);
+
+    var data = new google.visualization.DataTable();
+        // Sleep chart
+
+    var dates = [];
+
+      for (i = 1; i < 8; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      }  
+
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'Vitamin D (ng/ml)');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+          [dates[0], 10,8],
+          [dates[1], 13,6],
+          [dates[2], 15,7],
+          [dates[3], 12,8],
+          [dates[4], 13,9],
+          [dates[5], 11,7],
+          [dates[6], 14,8],
+      ]);
+  
+
+      var options = {
+
+        seriesType:'bars',
+        
+        series:{
+           1: {type:'line'}
+        },
+        
+        hAxis: {
+          title: 'Day of week',
+          slantedText: true
+         },
+
+        vAxis: {
+          title: 'Vitamin D level (ng/mL)',
+        },
+        
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+
+        colors: ['#F0E68C','#ff704c'],
+        height: 700,
+          width: 1000
+
+       
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('vitd_div'));
+      chart.draw(data, options);
+
+
+    }
+
+
+    </script>
+  </head>
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
@@ -49,9 +491,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="habit-wrapper">
+
                                         {{#each user.habits}}
+                                         
                                             <div class="col-md-6">
-                                                <a href ="habits/{{this.name}}">
+
+                                                <a href="#habitMODAL" data-toggle="modal" data-habit-name="{{this.name}}">
                                                     <div class="habit text-center">
                                                         <div class="icon">
                                                             <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
@@ -110,14 +555,30 @@
 </div>
 
 <div class="modal fade" id="habitMODAL">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3 id="diaryDate" class="modal-title text-center"></h3>
             </div>
             <div class="modal-body">
+         
+                <h3 style="text-align: center" id="habitName"></h3>
+
+                <h3 style="text-align: center" id="heartratetitle"></h3>
+                <div id="heartrate_div"></div>
+                <h3 style="text-align: center" id="bloodtitle"></h3>
+                <div id="blood_div"></div>
+                <h3 style="text-align: center" id="sleeptitle"></h3>
+                <div id="sleep_div"></div>
+                <h3 style="text-align: center" id="stepstitle"></h3>
+                <div id="steps_div"></div>
+                <h3 style="text-align: center" id="vitdtitle"></h3>
+                <div id="vitd_div"></div>
+                <h3 style="text-align: center" id="generaltitle"></h3>
                 <div id="general_div"></div>
+            
+                
             </div>
         </div>
     </div>

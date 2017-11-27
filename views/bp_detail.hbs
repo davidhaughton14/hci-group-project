@@ -59,7 +59,8 @@ function drawAxisTickColors() {
       ]);
 
         var options = {
-          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}, gridlines: {count: 10},
+          slantedText: true},
           vAxis: {title: 'Heart rate', minValue: 0},
           colors: ['red'],
           areaOpacity: 0.3,
@@ -129,6 +130,8 @@ function drawAxisTickColors() {
 
         var options = {
           legend: 'none',
+          hAxis: {gridlines: {count: 10},
+          slantedText: true},
           seriesType: "candlesticks",
            series: {
                 1: {type: "line"}
