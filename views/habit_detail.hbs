@@ -1,5 +1,100 @@
 <link rel="stylesheet" href="/stylesheets/habit_details.css">
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 
+    google.charts.load('current', {packages: ['corechart', 'bar', 'calendar']});
+google.charts.setOnLoadCallback(drawAxisTickColors);
+
+function drawAxisTickColors() {
+
+
+  // general chart for all habits
+  var data = new google.visualization.DataTable();
+      data.addColumn('string', 'X');
+      data.addColumn('number', 'Habit');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+
+        {{#each trackedAndMood}}
+          ["{{this.date}}", {{this.value}},{{this.rating}}],
+        {{/each}}        
+
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Levels (unit)'
+        },
+        vAxes: {
+          // Adds titles to each axis.
+          0: {title: 'Habit Units'},
+          1: {title: 'Mood'}
+        },
+        series: {
+          0: {targetAxisIndex: 0},
+          1: {targetAxisIndex: 1}
+        },
+        axes: {
+          // Adds labels to each axis; they don't have to match the axis names.
+          y: {
+            Habit: {label: 'Habit Units'},
+            Mood: {label: 'Mood'}
+          }
+        },
+        chartArea: {
+           top: 55,
+           height: '40%' 
+        },
+        height: 600
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('general_div'));
+
+      chart.draw(data, options);
+
+    // calendar for all habits
+
+
+
+      var dataTable = new google.visualization.DataTable();
+       dataTable.addColumn({ type: 'date', id: 'Date' });
+       dataTable.addColumn({ type: 'number', id: 'Units drank' });
+
+       var dates = [];
+
+        {{#each trackedAndMood}}
+              var arrSplit = "{{this.date}}".split('-');
+              
+              dates.push([ new Date(arrSplit[0], arrSplit[1], arrSplit[2]), {{this.value}}]);
+          {{/each}} 
+
+       dataTable.addRows(dates);
+
+       var chart = new google.visualization.Calendar(document.getElementById('calendar_general_div'));
+
+       var options = {
+         title: "Habit Calendar View",
+         height: 350,
+         yearLabel: {
+          fontName: 'Times-Roman',
+          fontSize: 32,
+          color: '#1A8763',
+          bold: true,
+          italic: true
+        }
+       };
+
+       chart.draw(dataTable, options);
+
+  }
+    </script>
+  </head>
 
 <div class="row">
     <div class="col-md-12">
