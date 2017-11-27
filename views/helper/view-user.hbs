@@ -1,4 +1,94 @@
 <link rel="stylesheet" href="/stylesheets/helper-view-user.css">
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    google.charts.load('current', {packages: ['corechart', 'bar', 'calendar']});
+google.charts.setOnLoadCallback(drawAxisTickColors);
+
+function drawAxisTickColors() {
+
+
+
+       var data = new google.visualization.DataTable();
+
+      var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+      data.addColumn({ type: 'date', id: 'Date' });
+      data.addColumn({ type: 'number', id: 'Systolic' });
+      data.addColumn({ type: 'number', id: 'Systolic' });
+      data.addColumn({ type: 'number', id: 'Diastolic' });
+      data.addColumn({ type: 'number', id: 'Diastolic' });
+      data.addColumn({ type: 'number', id: 'Heart rate' });
+      data.addRows([
+        [dates[0], 80, 80, 90, 90,55],
+        [dates[1], 90, 90, 105, 105,58],
+        [dates[2], 75, 75, 100, 100,60],
+        [dates[3], 80, 80, 110, 110,55],
+        [dates[4], 90, 90, 105, 105,70],
+        [dates[5], 90, 90, 105, 105,65],
+        [dates[6], 80, 80, 110, 110,74],
+        [dates[7], 90, 90, 105, 105,67],
+        [dates[8], 90, 90, 105, 105,64],
+        [dates[9], 90, 90, 105, 105,68],
+        [dates[10], 80, 80, 110, 110,61],
+        [dates[11], 90, 90, 105, 105,61],
+        [dates[12], 80, 80, 110, 110,70],
+        [dates[13], 90, 90, 105, 105,65],
+        [dates[14], 80, 80, 110, 110,68],
+        [dates[15], 90, 90, 105, 105,65],
+        [dates[16], 80, 80, 110, 110,72],
+        [dates[17], 90, 90, 105, 105,66],
+        [dates[18], 80, 80, 110, 110,74],
+        [dates[19], 80, 80, 110, 110,61],
+        [dates[20], 90, 90, 105, 105,61],
+        [dates[21], 80, 80, 110, 110,70],
+        [dates[22], 90, 90, 105, 105,65],
+        [dates[23], 80, 80, 110, 110,68],
+        [dates[24], 90, 90, 105, 105,65],
+        [dates[25], 80, 80, 110, 110,72],
+        [dates[26], 90, 90, 105, 105,66],
+        [dates[27], 80, 80, 110, 110,74],
+        [dates[28], 80, 80, 110, 110,61],
+        [dates[29], 90, 90, 105, 105,61],
+        [dates[30], 80, 80, 110, 110,70]
+      ]);
+
+   
+
+        var options = {
+          legend: 'none',
+          seriesType: "candlesticks",
+           series: {
+                1: {type: "line"}
+            },
+          bar: { groupWidth: '3px' }, // Remove space between bars.
+          candlestick: {
+            fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+            risingColor: { strokeWidth: 0, fill: '#a52714' }   // red
+          },
+          height: 600,
+          width: 600
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('blood_div'));
+        chart.draw(data, options);
+    }
+
+
+    </script>
+  </head>
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
@@ -51,7 +141,7 @@
                                     <div class="habit-wrapper">
                                         {{#each user.habits}}
                                             <div class="col-md-6">
-                                                <a href ="habits/{{this.name}}">
+                                                <a href="#habitMODAL" data-toggle="modal" data-habit-name="{{this.name}}">
                                                     <div class="habit text-center">
                                                         <div class="icon">
                                                             <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
@@ -117,7 +207,12 @@
                 <h3 id="diaryDate" class="modal-title text-center"></h3>
             </div>
             <div class="modal-body">
-                <div id="general_div"></div>
+         
+                <h3 id="habitName"></h3>
+                <div id="blood_div"></div>
+   
+            
+                
             </div>
         </div>
     </div>

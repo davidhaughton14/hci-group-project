@@ -9,3 +9,19 @@ $('#modalDIARY').on('show.bs.modal', function (e) {
     $("#diaryText").html(diarytext);
     $("#diaryRating").html(diaryRating);
 })
+
+$('#habitMODAL').on('show.bs.modal', function (e) {
+    var name = $(e.relatedTarget).data('habit-name');
+
+ 	$("#blood_div").hide();
+   	if (name == "BloodPressure") {
+    	$("#blood_div").show();
+	}
+
+
+    $("#habitName").html(name);
+
+    
+
+})
+

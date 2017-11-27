@@ -191,7 +191,6 @@ router.get('/habits', function(req, res, next) {
                 habitsNames.push(record.habits[x]);
             }
         }
-        console.log(bp);
         res.render('habits', { title: 'HappyHelper - Habits', hasHabits:hasHabits, habits:habitsNames, step:step, bp:bp, sleep:sleep, vitD:vitD});
     });
 });
@@ -199,7 +198,27 @@ router.get('/habits', function(req, res, next) {
 router.get('/helper/view/:username', function(req,res,next){
     var username = req.params.username;
     User.findOne({username:username}).then(function(record){
-        res.render('helper/view-user', { title: 'HappyHelper', user:record});
+        var habitsNames = [];
+
+        for (var x=0; x<record.habits.length; x++){
+            if (record.habits[x].name == "BloodPressure"){
+                var bp = record.habits[x];
+            }
+            else if (record.habits[x].name == "Sleep"){
+                var sleep = record.habits[x];
+            }
+            else if (record.habits[x].name=="StepCount"){
+                var step = record.habits[x];
+            }
+            else if (record.habits[x].name == "VitaminD"){
+                var vitD = record.habits[x];
+            } else {
+                habitsNames.push(record.habits[x]);
+            }
+        }
+
+
+        res.render('helper/view-user', { title: 'HappyHelper', user:record, habits:habitsNames, step:step, bp:bp, sleep:sleep, vitD:vitD});
     });
 });
 
