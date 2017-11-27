@@ -75,3 +75,9 @@
 .habit-wrapper{
     margin-left: 70px;
 }
+
+
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }

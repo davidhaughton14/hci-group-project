@@ -8,7 +8,54 @@
 google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
-    
+    var data = new google.visualization.DataTable();
+      data.addColumn('string', 'X');
+      data.addColumn('number', 'Habit');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+
+        {{#each trackedAndMood}}
+          ["{{this.date}}", {{this.value}},{{this.rating}}],
+        {{/each}}        
+
+      ]);
+
+      var options = {
+        hAxis: {
+          title: 'Date'
+        },
+        vAxis: {
+          title: 'Levels (unit)'
+        },
+        vAxes: {
+          // Adds titles to each axis.
+          0: {title: 'Habit Units'},
+          1: {title: 'Mood'}
+        },
+        series: {
+          0: {targetAxisIndex: 0},
+          1: {targetAxisIndex: 1}
+        },
+        axes: {
+          // Adds labels to each axis; they don't have to match the axis names.
+          y: {
+            Habit: {label: 'Habit Units'},
+            Mood: {label: 'Mood'}
+          }
+        },
+        chartArea: {
+           
+        },
+        height: 600,
+          width: 1000
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('general_div'));
+
+      chart.draw(data, options);
+
+
 
     var data = new google.visualization.DataTable();
 
@@ -63,13 +110,14 @@ function drawAxisTickColors() {
           colors: ['red'],
           areaOpacity: 0.3,
           legend: {position: 'none'},
-          height: 600
+          height: 600,
+          width: 1000
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
       chart.draw(data, options);
 
-
+      
 
        var data = new google.visualization.DataTable();
 
@@ -137,7 +185,7 @@ function drawAxisTickColors() {
             risingColor: { strokeWidth: 0, fill: '#a52714' }   // red
           },
           height: 600,
-          width: 600
+          width: 1000
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('blood_div'));
@@ -194,7 +242,8 @@ function drawAxisTickColors() {
         isStacked: true,
 
         colors: ['#4f9070','#2e8a6a', '#0d4950'],
-        height: 600
+        height: 600,
+        width: 1000
 
        
       };
@@ -273,7 +322,8 @@ function drawAxisTickColors() {
           title: 'Number of steps'
         },
         isStacked: true,
-        height: 600
+        height: 600,
+          width: 1000
       };
     
     chart.draw(view, options);
@@ -327,7 +377,8 @@ function drawAxisTickColors() {
         isStacked: true,
 
         colors: ['#F0E68C','#ff704c'],
-        height: 600
+        height: 600,
+          width: 1000
 
        
       };
@@ -454,7 +505,7 @@ function drawAxisTickColors() {
 </div>
 
 <div class="modal fade" id="habitMODAL">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
