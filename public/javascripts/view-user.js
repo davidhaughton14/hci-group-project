@@ -13,6 +13,9 @@ $('#modalDIARY').on('show.bs.modal', function (e) {
 $('#habitMODAL').on('show.bs.modal', function (e) {
     var name = $(e.relatedTarget).data('habit-name');
 
+    $("#habitName").html(name);
+
+    
  	$("#blood_div").hide();
 	$("#heartrate_div").hide();
 	$("#sleep_div").hide();
@@ -37,7 +40,6 @@ $('#habitMODAL').on('show.bs.modal', function (e) {
 	}
 
 
-    $("#habitName").html(name);
 
     
 

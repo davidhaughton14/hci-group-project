@@ -218,6 +218,7 @@ router.get('/helper/view/:username', function(req,res,next){
         }
 
 
+
         res.render('helper/view-user', { title: 'HappyHelper', user:record, habits:habitsNames, step:step, bp:bp, sleep:sleep, vitD:vitD});
     });
 });
@@ -560,6 +561,7 @@ router.get('/meetup/details/:name', function(req,res,next){
         });
     });
 });
+
 
 router.get('/meetups/delete/:name', function(req,res,next){
     var name = req.params.name;

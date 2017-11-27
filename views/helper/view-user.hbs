@@ -8,18 +8,55 @@
 google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
+
+    var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+
     var data = new google.visualization.DataTable();
-      data.addColumn('string', 'X');
+      data.addColumn('date', 'Date');
       data.addColumn('number', 'Habit');
       data.addColumn('number', 'Mood');
-
       data.addRows([
-
-        {{#each trackedAndMood}}
-          ["{{this.date}}", {{this.value}},{{this.rating}}],
-        {{/each}}        
-
+      [ dates[0], 22, 7 ],
+      [ dates[1], 15, 8 ],
+      [ dates[2], 17, 6 ],
+      [ dates[4], 20, 7 ],
+      [ dates[5], 31, 8 ],
+      [ dates[6], 22, 4 ],
+      [ dates[7], 27, 5 ],
+      [ dates[8], 34, 7 ],
+      [ dates[9], 39, 8 ],
+      [ dates[10], 22, 3 ],
+      [ dates[11], 40, 8 ],
+      [ dates[12], 37, 6 ],
+      [ dates[13], 33, 7 ],
+      [ dates[14], 33, 7 ],
+      [ dates[15], 39, 8 ],
+      [ dates[16], 41, 9 ],
+      [ dates[17], 26, 4 ],
+      [ dates[18], 30, 7 ],
+      [ dates[19], 33, 8 ],
+      [ dates[20], 33, 8 ],
+      [ dates[21], 16, 3 ],
+      [ dates[22], 27, 7 ],
+      [ dates[23], 27, 7 ],
+      [ dates[24], 23, 5 ],
+      [ dates[25], 27, 6 ],
+      [ dates[26], 42, 9 ],
+      [ dates[27], 50, 10],
+      [ dates[28], 33, 7 ],
+      [ dates[29], 21, 6 ],
+      [ dates[30], 23, 5 ]
       ]);
+      
 
       var options = {
         hAxis: {
@@ -444,8 +481,11 @@ function drawAxisTickColors() {
                                 </div>
                                 <div class="row">
                                     <div class="habit-wrapper">
+
                                         {{#each user.habits}}
+                                         
                                             <div class="col-md-6">
+
                                                 <a href="#habitMODAL" data-toggle="modal" data-habit-name="{{this.name}}">
                                                     <div class="habit text-center">
                                                         <div class="icon">
