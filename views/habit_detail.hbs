@@ -48,8 +48,7 @@ function drawAxisTickColors() {
           }
         },
         chartArea: {
-           top: 55,
-           height: '40%' 
+           
         },
         height: 600
       };
@@ -79,8 +78,9 @@ function drawAxisTickColors() {
        var chart = new google.visualization.Calendar(document.getElementById('calendar_general_div'));
 
        var options = {
-         title: "Habit Calendar View",
+
          height: 350,
+         width: 930,
          yearLabel: {
           fontName: 'Times-Roman',
           fontSize: 32,
@@ -141,9 +141,11 @@ function drawAxisTickColors() {
             <div class="row">
                 <div class="col-md-12">
                     <div class="habit-graph">
-                    <h3>General chart for all habits</h3>
+                    <h3>Line graph comparing {{habit.name}} vs mood</h3>
 
                     <div id="general_div"></div>
+
+                    <h3>Calendar chart for your {{habit.name}} habit</h3>
                     <div id="calendar_general_div"></div>
                 </div>
                 </div>
