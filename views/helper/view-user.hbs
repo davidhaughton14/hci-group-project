@@ -9,6 +9,65 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
 
+    var data = new google.visualization.DataTable();
+
+      var dates = [];
+
+      for (i = 0; i < 31; i++) { 
+        var monthago = new Date();
+        monthago.setDate(monthago.getDate() - i);
+        dates.push(monthago);
+        
+      }   
+
+
+      data.addColumn({ type: 'date', id: 'Date' });
+      data.addColumn({ type: 'number', id: 'Units drank' });
+      data.addRows([
+      [ dates[0], 66 ],
+      [ dates[1], 70 ],
+      [ dates[2], 68 ],
+      [ dates[4], 65 ],
+      [ dates[5], 59 ],
+      [ dates[6], 63 ],
+      [ dates[7], 67 ],
+      [ dates[8], 66 ],
+      [ dates[9], 58 ],
+      [ dates[10], 62 ],
+      [ dates[11], 63 ],
+      [ dates[12], 61 ],
+      [ dates[13], 57 ],
+      [ dates[14], 64 ],
+      [ dates[15], 68 ],
+      [ dates[16], 66 ],
+      [ dates[17], 63 ],
+      [ dates[18], 66 ],
+      [ dates[19], 64 ],
+      [ dates[20], 68 ],
+      [ dates[21], 70 ],
+      [ dates[22], 71 ],
+      [ dates[23], 71 ],
+      [ dates[24], 66 ],
+      [ dates[25], 68 ],
+      [ dates[26], 64 ],
+      [ dates[27], 66 ],
+      [ dates[28], 62 ],
+      [ dates[29], 61 ],
+      [ dates[30], 60 ],
+      ]);
+
+        var options = {
+          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
+          vAxis: {title: 'Heart rate', minValue: 0},
+          colors: ['red'],
+          areaOpacity: 0.3,
+          legend: {position: 'none'},
+          height: 600
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
+      chart.draw(data, options);
+
 
 
        var data = new google.visualization.DataTable();
@@ -82,6 +141,141 @@ function drawAxisTickColors() {
 
         var chart = new google.visualization.ComboChart(document.getElementById('blood_div'));
         chart.draw(data, options);
+
+        var data = new google.visualization.DataTable();
+        // Sleep chart
+
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      }  
+
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'REM');
+      data.addColumn('number', 'Light');
+      data.addColumn('number', 'Deep');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+          [dates[0], 2.1, 5, 0.5,8],
+          [dates[1], 1.6, 6, 2,6],
+          [dates[2], 2.2, 4, 3,7],
+          [dates[3], 1.4, 3, 3.7,8],
+          [dates[4], 1.7, 2.6, 4,9],
+          [dates[5], 1.3, 1.8, 5,7],
+          [dates[6], 1.8, 3.1, 2.2,8],
+      ]);
+  
+
+      var options = {
+
+        seriesType:'bars',
+        
+        series:{
+           3: {type:'line'}
+        },
+        
+        hAxis: {
+          title: 'Day of week',
+         },
+
+        vAxis: {
+          title: 'Hours slept',
+        },
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+
+        colors: ['#4f9070','#2e8a6a', '#0d4950'],
+        height: 600
+
+       
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('sleep_div'));
+      chart.draw(data, options);
+
+       // Number of steps chart
+
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      } 
+
+
+    var data = new google.visualization.DataTable();
+    
+    data.addColumn('date', 'Date');
+    data.addColumn('number', 'Steps');
+    data.addRows([
+        [dates[0], 5000],
+        [dates[1], 4000],
+        [dates[2], 6000],
+        [dates[3], 4000],
+        [dates[4], 1999],
+        [dates[5], 1000],
+        [dates[6], 900],
+    ]);
+    
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) < 2000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 3000 && dt.getValue(row, 1) < 5000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 5000 && dt.getValue(row, 1) < 7000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 7000 && dt.getValue(row, 1) < 9000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 9000) ? dt.getValue(row, 1) : null;
+        }
+    }]);
+    
+    var chart = new google.visualization.ColumnChart(document.getElementById('steps_div'));
+
+
+    var options = {
+        legend: 'none',
+        hAxis: {
+          title: 'Day'
+        },
+        vAxis: {
+          title: 'Number of steps'
+        },
+        isStacked: true,
+        height: 600
+      };
+    
+    chart.draw(view, options);
     }
 
 
@@ -209,9 +403,11 @@ function drawAxisTickColors() {
             <div class="modal-body">
          
                 <h3 id="habitName"></h3>
+
+                <div id="heartrate_div"></div>
                 <div id="blood_div"></div>
-   
-            
+                <div id="sleep_div"></div>
+                <div id="steps_div"></div>
                 
             </div>
         </div>

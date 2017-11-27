@@ -14,8 +14,23 @@ $('#habitMODAL').on('show.bs.modal', function (e) {
     var name = $(e.relatedTarget).data('habit-name');
 
  	$("#blood_div").hide();
+	$("#heartrate_div").hide();
+	$("#sleep_div").hide();
+
    	if (name == "BloodPressure") {
     	$("#blood_div").show();
+    	$("#heartrate_div").show();
+	} else if (name == "Sleep"){
+		$("#sleep_div").show();
+
+	} else if (name == "vitaminD"){
+
+
+	} else if (name == "StepCount"){
+
+	} else {
+
+
 	}
 
 
