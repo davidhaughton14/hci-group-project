@@ -59,7 +59,6 @@ function drawAxisTickColors() {
       ]);
 
         var options = {
-          title: 'Your average heart rate',
           hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
           vAxis: {title: 'Heart rate', minValue: 0},
           colors: ['red'],
@@ -129,7 +128,6 @@ function drawAxisTickColors() {
    
 
         var options = {
-          title: 'Blood pressure and heart rate chart',
           legend: 'none',
           seriesType: "candlesticks",
            series: {
@@ -175,7 +173,7 @@ function drawAxisTickColors() {
                     </div>
 
                     <div class="col-md-8">
-                        <h1 class="heading">{{habit.name}}</h1>
+                        <h1 class="heading">Blood Pressure</h1>
                     </div>
 
                     <div class="col-md-2 ">
@@ -188,12 +186,11 @@ function drawAxisTickColors() {
             <div class="row">
                 <div class="col-md-12">
 
-                    <h3>  Heart rate chart </h3>
+                    <h3><b>Your average daily heart rate - past 30 days</b></h3>
                     <div id="heartrate_div"></div>
 
 
-                    <h3>Blood pressure, it's calculated by the difference between Systolic and Diastolic values</h3>
-
+                    <h3><b>Your average daily blood pressure vs daily heart rate - past 30 days</b></h3>
                     <div id="blood_div"></div>
                 </div>
                 </div>

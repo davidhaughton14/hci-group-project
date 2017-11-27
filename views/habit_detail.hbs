@@ -10,6 +10,7 @@ google.charts.setOnLoadCallback(drawAxisTickColors);
 function drawAxisTickColors() {
 
 
+
   // general chart for all habits
   var data = new google.visualization.DataTable();
       data.addColumn('string', 'X');
@@ -124,7 +125,6 @@ function drawAxisTickColors() {
                     <div class="col-md-8">
                         <h1 class="heading">{{habit.name}}</h1>
                     </div>
-
                     <div class="col-md-2 ">
                         <a class="pull-right" href="/delete/{{habit.name}}"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
                     </div>
@@ -141,11 +141,11 @@ function drawAxisTickColors() {
             <div class="row">
                 <div class="col-md-12">
                     <div class="habit-graph">
-                    <h3>Line graph comparing {{habit.name}} vs mood</h3>
+                    <h3><b>Your daily tracked values for {{habit.name}} vs mood - past 30 days</b></h3>
 
                     <div id="general_div"></div>
 
-                    <h3>Calendar chart for your {{habit.name}} habit</h3>
+                    <h3><b>Calendar chart for your {{habit.name}} habit</b></h3>
                     <div id="calendar_general_div"></div>
                 </div>
                 </div>
@@ -153,6 +153,7 @@ function drawAxisTickColors() {
         </div>
     </div>
 </div>
+
 
 <div id="recommendationModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
