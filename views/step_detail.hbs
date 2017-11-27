@@ -1,3 +1,99 @@
+<link rel="stylesheet" href="/stylesheets/habit_details.css">
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    google.charts.load('current', {packages: ['corechart', 'bar', 'calendar']});
+google.charts.setOnLoadCallback(drawAxisTickColors);
+
+function drawAxisTickColors() {
+
+    // Number of steps chart
+
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      } 
+
+
+    var data = new google.visualization.DataTable();
+    
+    data.addColumn('date', 'Date');
+    data.addColumn('number', 'Steps');
+    data.addRows([
+        [dates[0], 5000],
+        [dates[1], 4000],
+        [dates[2], 6000],
+        [dates[3], 4000],
+        [dates[4], 1999],
+        [dates[5], 1000],
+        [dates[6], 900],
+    ]);
+    
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) < 2000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 3000 && dt.getValue(row, 1) < 5000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 5000 && dt.getValue(row, 1) < 7000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 7000 && dt.getValue(row, 1) < 9000) ? dt.getValue(row, 1) : null;
+        }
+    }, {
+        type: 'number',
+        label: 'Value',
+        calc: function (dt, row) {
+            return (dt.getValue(row, 1) >= 9000) ? dt.getValue(row, 1) : null;
+        }
+    }]);
+    
+    var chart = new google.visualization.ColumnChart(document.getElementById('steps_div'));
+
+
+    var options = {
+        legend: 'none',
+        hAxis: {
+          title: 'Day'
+        },
+        vAxis: {
+          title: 'Number of steps'
+        },
+        isStacked: true,
+        chartArea: {
+           top: 55,
+           height: '40%' 
+        },
+        height: 600
+      };
+    
+    chart.draw(view, options);
+
+
+  }
+    </script>
+  </head>
+
 <div class="row">
     <div class="col-md-12">
         <div class="text-center" id="nav-wrapper">
@@ -13,3 +109,35 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="habit-wrapper">
+            <div class="heading-wrap">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="/habits"><h5><i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back to all habits</h5></a>
+                    </div>
+
+                    <div class="col-md-8">
+                        <h1 class="heading">{{habit.name}}</h1>
+                    </div>
+
+                    <div class="col-md-2 ">
+                        <a class="pull-right" href="/delete/{{habit.name}}"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Number of steps</h3>
+                    <div id="steps_div"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
