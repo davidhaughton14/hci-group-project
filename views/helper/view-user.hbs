@@ -8,6 +8,7 @@
 google.charts.setOnLoadCallback(drawAxisTickColors);
 
 function drawAxisTickColors() {
+    
 
     var data = new google.visualization.DataTable();
 
@@ -276,6 +277,65 @@ function drawAxisTickColors() {
       };
     
     chart.draw(view, options);
+
+    var data = new google.visualization.DataTable();
+        // Sleep chart
+
+    var dates = [];
+
+      for (i = 0; i < 7; i++) { 
+        var weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - i);
+        dates.push(weekAgo);
+        
+      }  
+
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Date');
+      data.addColumn('number', 'Vitamin D (ng/ml)');
+      data.addColumn('number', 'Mood');
+
+      data.addRows([
+          [dates[0], 10,8],
+          [dates[1], 13,6],
+          [dates[2], 15,7],
+          [dates[3], 12,8],
+          [dates[4], 13,9],
+          [dates[5], 11,7],
+          [dates[6], 14,8],
+      ]);
+  
+
+      var options = {
+
+        seriesType:'bars',
+        
+        series:{
+           1: {type:'line'}
+        },
+        
+        hAxis: {
+          title: 'Day of week',
+         },
+
+        vAxis: {
+          title: 'Vitamin D level (ng/mL)',
+        },
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+
+        colors: ['#F0E68C','#ff704c'],
+        height: 600
+
+       
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('vitd_div'));
+      chart.draw(data, options);
+
+
     }
 
 
@@ -408,6 +468,10 @@ function drawAxisTickColors() {
                 <div id="blood_div"></div>
                 <div id="sleep_div"></div>
                 <div id="steps_div"></div>
+                <div id="vitd_div"></div>
+
+                <div id="general_div"></div>
+                <div id="calendar_general_div"></div>
                 
             </div>
         </div>

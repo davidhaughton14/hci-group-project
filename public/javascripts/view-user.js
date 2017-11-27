@@ -16,21 +16,24 @@ $('#habitMODAL').on('show.bs.modal', function (e) {
  	$("#blood_div").hide();
 	$("#heartrate_div").hide();
 	$("#sleep_div").hide();
+	$("#steps_div").hide();
+	$("#vitd_div").hide();
+	$("#general_div").hide();
+	$("#calendar_general_div").hide();
+	
 
    	if (name == "BloodPressure") {
     	$("#blood_div").show();
     	$("#heartrate_div").show();
 	} else if (name == "Sleep"){
 		$("#sleep_div").show();
-
-	} else if (name == "vitaminD"){
-
-
+	} else if (name == "VitaminD"){
+		$("#vitd_div").show();
 	} else if (name == "StepCount"){
-
+		$("#steps_div").show();
 	} else {
-
-
+		$("#general_div").show();
+		$("#calendar_general_div").show();
 	}
 
 
