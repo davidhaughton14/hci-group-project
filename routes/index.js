@@ -173,7 +173,7 @@ router.get('/habits', function(req, res, next) {
     User.findOne({_id:req.session.passport.user}).then(function(record){
         var habitsNames = [];
         if(record.habits.length > 0){
-            hasHabits = true;
+            var hasHabits = true;
         }
         for (var x=0; x<record.habits.length; x++){
             if (record.habits[x].name == "BloodPressure"){
