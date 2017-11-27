@@ -318,6 +318,68 @@ router.get('/habits/create', function(req,res,next){
     res.render('habit_form', { title: 'HappyHelper - add custom habit' });
 });
 
+router.get('/habits/sleep', function(req,res,next){
+    var d = new Date();
+    var day = d.getDate();
+    var month = d.getMonth();
+    var year = d.getFullYear();
+    var date = year+"-"+month+"-"+day;
+    User.findOne({_id:req.session.passport.user}).then(function(record){
+        for(var i=0; i<record.habits.length;i++){
+            if(record.habits[i].name == "Sleep"){
+                var habit = record.habits[i];
+            }
+        }
+
+        for(var i=0; i<record.tracked_stats.length;i++){
+            if(record.tracked_stats[i].name == name){
+                var tracked_stat = record.tracked_stats[i];
+            }
+        }
+
+        var tracked = record.tracked_stats;
+
+        var diaryEntries = record.diaryEntries;
+
+
+        // hold data required for graphs
+        var trackedAndMood = [];
+
+
+        // match the habit
+        for (var i=0; i<tracked.length; i++){
+            if(tracked[i].name == name){
+                // need remainder and whole value for alcohol unit bottles
+                trackedAndMood.push({"date":tracked[i].date, "value": tracked[i].value, "name":tracked[i].name, "rating":"0", "wholeValue":(tracked[i].value - (tracked[i].value % 1)), "remainderValue": (tracked[i].value % 1)});
+            }
+        }
+
+        for (var i=0; i<trackedAndMood.length; i++){
+            for (var j=0; j<diaryEntries.length; j++){
+                if((trackedAndMood[i].date == diaryEntries[j].date) && (trackedAndMood[i].name == name)){
+                    trackedAndMood[i].rating = diaryEntries[j].rating;
+                }
+            }
+        }
+
+        console.log(trackedAndMood);
+        todays = []
+        for (var i=0; i<tracked.length; i++){
+            if(tracked[i].date == date){
+                todays.push(tracked[i]);
+            }
+        }
+
+        for (var j=0;j<todays.length;j++){
+            if (todays[j].name == name){
+                var todaysHab = todays[j];
+            }
+        }
+        res.render('habit_detail', {trackedAndMood:trackedAndMood, habit: habit, today:date, todaysHab:todaysHab, tracked_stat:tracked_stat});
+    });
+});
+
+
 router.get('/habits/:name', function(req,res,next){
     var name = req.params.name;
     var d = new Date();
