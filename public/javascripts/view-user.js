@@ -13,7 +13,7 @@ $('#modalDIARY').on('show.bs.modal', function (e) {
 $('#habitMODAL').on('show.bs.modal', function (e) {
     var name = $(e.relatedTarget).data('habit-name');
 
-    $("#habitName").html(name);
+    //$("#habitName").html(name);
 
     
  	$("#blood_div").hide();
@@ -32,13 +32,13 @@ $('#habitMODAL').on('show.bs.modal', function (e) {
 	$("#generaltitle").html("");
 
    	if (name == "BloodPressure") {
-   		$("#bloodtitle").html("Users average daily blood pressure vs daily heart rate - past 30 days");
+   		$("#bloodtitle").html("Average daily blood pressure vs daily heart rate - past 30 days");
     	$("#blood_div").show();
 
-    	$("#heartratetitle").html("Users average daily heart rate - past 30 days");
+    	$("#heartratetitle").html("Average daily heart rate - past 30 days");
     	$("#heartrate_div").show();
 	} else if (name == "Sleep"){
-		$("#sleeptitle").html("Breakdown of users sleep vs daily mood - past 7 days");
+		$("#sleeptitle").html("Breakdown of sleep vs daily mood - past 7 days");
 		$("#sleep_div").show();
 	} else if (name == "VitaminD"){
 		$("#vitdtitle").html("Vitamin D levels vs daily mood - past 7 days");
