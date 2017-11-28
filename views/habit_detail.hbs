@@ -140,10 +140,21 @@ function drawAxisTickColors() {
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row"> 
+                       <div class="row">
+
+                      <div class="form-group col-md-offset-5 col-md-2" style="margin-bottom: 25px; text-align: center">
+                        <label for="sel1" style="font-size: 14px; ">View data for last</label>
+                        <select class="form-control" id="sel1">
+                          <option selected="selected">30 days</option>
+                          <option>30 days</option>
+                          <option>90 days</option>
+                        </select>
+                      </div>
+                    </div>
                 <div class="col-md-12">
                     <div class="habit-graph">
-                    <h3><b>Your daily tracked values for {{habit.name}} vs mood - past 30 days</b></h3>
+                    <h3><b>Your daily tracked values for {{habit.name}} vs mood</b></h3>
 
                     <div id="general_div"></div>
 
