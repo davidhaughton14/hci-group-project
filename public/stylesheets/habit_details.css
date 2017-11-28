@@ -2,6 +2,16 @@ h3{
     text-align: center;
 }
 
+.powered-by{
+    width: 180px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+.logo{
+    height: 64px;
+}
+
 .habit-wrapper{
     padding:20px;
     box-shadow: 0 0 25px grey;
