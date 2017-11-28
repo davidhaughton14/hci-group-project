@@ -96,7 +96,7 @@
 
 /* Style the buttons inside the tab */
 .tab button {
-    background-color: inherit;
+    background-color: #ccc;
     border: none;
     outline: none;
     cursor: pointer;
@@ -113,7 +113,7 @@
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ccc;
+    background-color: inherit;
 }
 
 /* Style the tab content */
@@ -190,4 +190,12 @@ button.accordion.active, button.accordion:hover {
     padding-bottom: 10px;
     margin-bottom: 30px;
     width: 100%;
+}
+
+.slider-tick-label-container{
+    margin-left: -38.9px!important;
+}
+
+.slider-tick-label{
+width: 77.8px !important;
 }

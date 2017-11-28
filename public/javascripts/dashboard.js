@@ -194,12 +194,9 @@ function openTab(evt, panelname) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
-    $("#happyRange").bootstrapSlider({
-        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-    });
-
-    $("#happyRange").click();
+    if (panelname=="diary"){
+        setupSlider();
+    }
 
     // Get all elements with class="tabcontent" and hide them
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -216,4 +213,11 @@ function openTab(evt, panelname) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(panelname).style.display = "block";
     evt.currentTarget.className += " active";
+}
+
+function setupSlider(){
+    $("#happyRange").bootstrapSlider({
+        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        ticks_labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    });
 }

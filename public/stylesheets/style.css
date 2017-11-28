@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6,p,i,a, button, li{
 
 /* Style the buttons inside the tab */
 .tab button {
-    background-color: inherit;
+    background-color: #ccc;
     border: none;
     outline: none;
     cursor: pointer;
@@ -65,7 +65,7 @@ h1,h2,h3,h4,h5,h6,p,i,a, button, li{
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ccc;
+    background-color: inherit;
 }
 
 /* Style the tab content */

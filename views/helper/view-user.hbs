@@ -11,50 +11,50 @@ function drawAxisTickColors() {
 
     var dates = [];
 
-      for (i = 0; i < 31; i++) { 
+      for (i = 0; i < 31; i++) {
         var monthago = new Date();
         monthago.setDate(monthago.getDate() - i);
         dates.push(monthago);
-        
-      }   
+
+      }
 
     var data = new google.visualization.DataTable();
       data.addColumn('date', 'Date');
       data.addColumn('number', 'Habit');
       data.addColumn('number', 'Mood');
       data.addRows([
-      [ dates[0], 22, 7 ],
-      [ dates[1], 15, 8 ],
-      [ dates[2], 17, 6 ],
-      [ dates[4], 20, 7 ],
-      [ dates[5], 31, 8 ],
-      [ dates[6], 22, 4 ],
-      [ dates[7], 27, 5 ],
-      [ dates[8], 34, 7 ],
-      [ dates[9], 39, 8 ],
-      [ dates[10], 22, 3 ],
-      [ dates[11], 40, 8 ],
-      [ dates[12], 37, 6 ],
-      [ dates[13], 33, 7 ],
-      [ dates[14], 33, 7 ],
-      [ dates[15], 39, 8 ],
-      [ dates[16], 41, 9 ],
-      [ dates[17], 26, 4 ],
-      [ dates[18], 30, 7 ],
-      [ dates[19], 33, 8 ],
-      [ dates[20], 33, 8 ],
-      [ dates[21], 16, 3 ],
-      [ dates[22], 27, 7 ],
-      [ dates[23], 27, 7 ],
-      [ dates[24], 23, 5 ],
-      [ dates[25], 27, 6 ],
-      [ dates[26], 42, 9 ],
-      [ dates[27], 50, 10],
-      [ dates[28], 33, 7 ],
-      [ dates[29], 21, 6 ],
-      [ dates[30], 23, 5 ]
+      [ dates[0], 2.2, 7 ],
+      [ dates[1], 1.5, 8 ],
+      [ dates[2], 1.7, 6 ],
+      [ dates[4], 2.0, 7 ],
+      [ dates[5], 3.1, 8 ],
+      [ dates[6], 2.2, 4 ],
+      [ dates[7], 2.7, 5 ],
+      [ dates[8], 3.4, 7 ],
+      [ dates[9], 3.9, 8 ],
+      [ dates[10], 2.2, 3 ],
+      [ dates[11], 4.0, 8 ],
+      [ dates[12], 3.7, 6 ],
+      [ dates[13], 3.3, 7 ],
+      [ dates[14], 3.3, 7 ],
+      [ dates[15], 3.9, 8 ],
+      [ dates[16], 4.1, 9 ],
+      [ dates[17], 2.6, 4 ],
+      [ dates[18], 3.0, 7 ],
+      [ dates[19], 3.3, 8 ],
+      [ dates[20], 3.3, 8 ],
+      [ dates[21], 1.6, 3 ],
+      [ dates[22], 2.7, 7 ],
+      [ dates[23], 2.7, 7 ],
+      [ dates[24], 2.3, 5 ],
+      [ dates[25], 2.7, 6 ],
+      [ dates[26], 4.2, 9 ],
+      [ dates[27], 5.0, 10],
+      [ dates[28], 3.3, 7 ],
+      [ dates[29], 2.1, 6 ],
+      [ dates[30], 2.3, 5 ]
       ]);
-      
+
 
       var options = {
 
@@ -69,7 +69,7 @@ function drawAxisTickColors() {
         },
         vAxes: {
           // Adds titles to each axis.
-          0: {title: 'Habit Units'},
+          0: {title: 'Units of alcohol consumed'},
           1: {title: 'Mood'}
         },
         series: {
@@ -99,12 +99,12 @@ function drawAxisTickColors() {
 
       var dates = [];
 
-      for (i = 0; i < 31; i++) { 
+      for (i = 0; i < 31; i++) {
         var monthago = new Date();
         monthago.setDate(monthago.getDate() - i);
         dates.push(monthago);
-        
-      }   
+
+      }
 
 
       data.addColumn({ type: 'date', id: 'Date' });
@@ -158,18 +158,18 @@ function drawAxisTickColors() {
         var chart = new google.visualization.AreaChart(document.getElementById('heartrate_div'));
       chart.draw(data, options);
 
-      
+
 
        var data = new google.visualization.DataTable();
 
       var dates = [];
 
-      for (i = 0; i < 31; i++) { 
+      for (i = 0; i < 31; i++) {
         var monthago = new Date();
         monthago.setDate(monthago.getDate() - i);
         dates.push(monthago);
-        
-      }   
+
+      }
 
 
       data.addColumn({ type: 'date', id: 'Date' });
@@ -212,7 +212,7 @@ function drawAxisTickColors() {
         [dates[30], 80, 80, 110, 110,70]
       ]);
 
-   
+
 
         var options = {
           legend: 'none',
@@ -241,12 +241,12 @@ function drawAxisTickColors() {
 
     var dates = [];
 
-      for (i = 0; i <= 7; i++) { 
+      for (i = 0; i <= 7; i++) {
         var weekAgo = new Date();
         weekAgo.setDate(weekAgo.getDate() - i);
         dates.push(weekAgo);
-        
-      }  
+
+      }
 
 
       var data = new google.visualization.DataTable();
@@ -266,16 +266,16 @@ function drawAxisTickColors() {
           [dates[6], 1.3, 1.8, 5,7],
           [dates[7], 1.8, 3.1, 2.2,8],
       ]);
-  
+
 
       var options = {
 
         seriesType:'bars',
-        
+
         series:{
            3: {type:'line'}
         },
-        
+
         hAxis: {
           title: 'Day of week',
           slantedText: true
@@ -290,7 +290,7 @@ function drawAxisTickColors() {
         width: 1000,
 
 
-       
+
       };
 
       var chart = new google.visualization.ComboChart(document.getElementById('sleep_div'));
@@ -300,16 +300,16 @@ function drawAxisTickColors() {
 
     var dates = [];
 
-      for (i = 1; i < 8; i++) { 
+      for (i = 1; i < 8; i++) {
         var weekAgo = new Date();
         weekAgo.setDate(weekAgo.getDate() - i);
         dates.push(weekAgo);
-        
-      } 
+
+      }
 
 
     var data = new google.visualization.DataTable();
-    
+
     data.addColumn('date', 'Date');
     data.addColumn('number', 'Steps');
     data.addRows([
@@ -321,7 +321,7 @@ function drawAxisTickColors() {
         [dates[5], 1000],
         [dates[6], 900],
     ]);
-    
+
     var view = new google.visualization.DataView(data);
     view.setColumns([0, {
         type: 'number',
@@ -354,7 +354,7 @@ function drawAxisTickColors() {
             return (dt.getValue(row, 1) >= 9000) ? dt.getValue(row, 1) : null;
         }
     }]);
-    
+
     var chart = new google.visualization.ColumnChart(document.getElementById('steps_div'));
 
 
@@ -371,7 +371,7 @@ function drawAxisTickColors() {
         height: 600,
           width: 1000
       };
-    
+
     chart.draw(view, options);
 
     var data = new google.visualization.DataTable();
@@ -379,12 +379,12 @@ function drawAxisTickColors() {
 
     var dates = [];
 
-      for (i = 1; i < 8; i++) { 
+      for (i = 1; i < 8; i++) {
         var weekAgo = new Date();
         weekAgo.setDate(weekAgo.getDate() - i);
         dates.push(weekAgo);
-        
-      }  
+
+      }
 
 
       var data = new google.visualization.DataTable();
@@ -401,16 +401,16 @@ function drawAxisTickColors() {
           [dates[5], 11,7],
           [dates[6], 14,8],
       ]);
-  
+
 
       var options = {
 
         seriesType:'bars',
-        
+
         series:{
            1: {type:'line'}
         },
-        
+
         hAxis: {
           title: 'Day of week',
           slantedText: true
@@ -419,7 +419,7 @@ function drawAxisTickColors() {
         vAxis: {
           title: 'Vitamin D level (ng/mL)',
         },
-        
+
         bar: { groupWidth: '75%' },
         isStacked: true,
 
@@ -427,7 +427,7 @@ function drawAxisTickColors() {
         height: 700,
           width: 1000
 
-       
+
       };
 
       var chart = new google.visualization.ComboChart(document.getElementById('vitd_div'));
@@ -493,7 +493,7 @@ function drawAxisTickColors() {
                                     <div class="habit-wrapper">
 
                                         {{#each user.habits}}
-                                         
+
                                             <div class="col-md-6">
 
                                                 <a href="#habitMODAL" data-toggle="modal" data-habit-name="{{this.name}}">
@@ -562,7 +562,7 @@ function drawAxisTickColors() {
                 <h3 id="diaryDate" class="modal-title text-center"></h3>
             </div>
             <div class="modal-body">
-         
+
                 <h3 style="text-align: center" id="habitName"></h3>
 
                 <h3 style="text-align: center" id="heartratetitle"></h3>
@@ -577,8 +577,8 @@ function drawAxisTickColors() {
                 <div id="vitd_div"></div>
                 <h3 style="text-align: center" id="generaltitle"></h3>
                 <div id="general_div"></div>
-            
-                
+
+
             </div>
         </div>
     </div>
