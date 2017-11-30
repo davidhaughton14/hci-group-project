@@ -24,6 +24,10 @@ h1,h2,h3,h4,h5,h6{
     padding: 0;
     margin: 0;
 }
+
+.person-div{
+    margin-bottom: 20px;
+}
 .user-img{
     width: 64px;
     height:64px;
@@ -36,6 +40,12 @@ h1,h2,h3,h4,h5,h6{
 
 .detail-header{
     padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.attending-heading{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #last{
@@ -49,7 +59,7 @@ h1,h2,h3,h4,h5,h6{
 .checkbox{
     float: right;
     margin-top: -30px;
-    margin-right: 220px;
+    margin-right: 260px;
 }
 
 /* The switch - the box around the slider */
@@ -115,4 +125,12 @@ input:checked + .slider:before {
     padding-right: 20px;
     font-size: 40px;
     margin-top:-40px;
+}
+
+.align{
+    margin-left: 250px!important;
+}
+
+.align-less{
+    margin-left: 230px!important;
 }

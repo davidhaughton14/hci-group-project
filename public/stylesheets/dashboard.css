@@ -196,6 +196,10 @@ button.accordion.active, button.accordion:hover {
     margin-left: -38.9px!important;
 }
 
+.slider{
+    margin-bottom: 44px!important;
+}
+
 .slider-tick-label{
 width: 77.8px !important;
 }

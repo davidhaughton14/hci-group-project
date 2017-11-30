@@ -445,12 +445,12 @@ router.post('/update/:name', function(req,res,next){
             record.tracked_stats[update].value = value;
             record.save().then(function(){
                 console.log(record.tracked_stats);
-                res.redirect('/habits');
+                res.redirect('/habits/'+name);
             });
         } else {
             record.tracked_stats.push({name:name, date:date, value:value});
             record.save().then(function(){
-                res.redirect('/habits');
+                res.redirect('/habits/'+name);
             });
         }
     });
