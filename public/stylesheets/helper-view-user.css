@@ -76,25 +76,19 @@
     margin-left: 70px;
 }
 
-
-  .modal-xl {
-    width: 90%;
-   max-width:1200px;
-  }
-
 #blood_div{
     width: 1000px;
     margin:0 auto;
 }
-    
+
 #heartrate_div{
     width: 1000px;
     margin:0 auto;
-} 
+}
 #sleep_div{
     width: 1000px;
     margin:0 auto;
- } 
+ }
 #steps_div{
     width: 1000px;
     margin:0 auto;
@@ -102,12 +96,24 @@
 #vitd_div{
     width: 1000px;
     margin:0 auto;
-} 
+}
 #general_div{
-    width: 1000px;
+    width: 900px;
     margin:0 auto;
-} 
+}
 #calendar_general_div{
     width: 1000px;
-    margin:0 auto; 
+    margin:0 auto;
+}
+
+#recommendation{
+    margin-top: 15px;
+}
+
+.modal-xl{
+    width: 1000px;
+}
+
+#sleep_div svg {
+    width: 900px;
 }

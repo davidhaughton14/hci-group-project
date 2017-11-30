@@ -19,16 +19,19 @@
 }
 
 .username{
-    font-size: 24px;
+    font-size: 20px;
     padding-left: 10px;
 }
 
 .person-div{
-    text-align: center;
     width: 80%;
     display: block;
     margin: 0 auto;
     padding-bottom: 10px;
     border-bottom: 1px solid lightgrey;
     margin-top: 15px;
+}
+
+.please{
+    margin-left: 250px;
 }

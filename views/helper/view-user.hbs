@@ -459,7 +459,7 @@ function drawAxisTickColors() {
         <div class="user-profile-wrap">
             <div class="heading-wrap">
                 <h1> {{user.username}}'s profile </h1>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#recommendationModal">Make a recommendation for {{user.username}}</button>
+                <button id="recommendation" type="button" class="btn btn-info" data-toggle="modal" data-target="#recommendationModal">Make a recommendation for {{user.username}}</button>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -545,9 +545,9 @@ function drawAxisTickColors() {
                 <h3 id="diaryDate" class="modal-title text-center"></h3>
             </div>
             <div class="modal-body">
-                <h4> Daily mood rating </h4>
+                <h4><b> Daily mood rating </b></h4>
                 <p id="diaryRating"></p>
-                <h4> Comments on day </h4>
+                <h4><b> Comments on day </b></h4>
                 <p id="diaryText" ></p>
             </div>
         </div>

@@ -27,8 +27,8 @@ router.post('/register', function(req, res, next) {
         var newUser = new User({
             username: username,
             password: password,
-            helper_flag: 1,
-            assigned: ["testUser"]
+            helper_flag: 0,
+            assigned: ["LMartin87"]
         });
 
         User.createUser(newUser, function(err, user){
@@ -37,7 +37,6 @@ router.post('/register', function(req, res, next) {
         });
 
         req.flash('success_msg', 'Account registered! Please log in');
-
         res.redirect('/');
     }
 });

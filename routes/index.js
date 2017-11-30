@@ -107,11 +107,7 @@ router.get('/recommendations', function(req,res,next){
 router.post('/save-diary', function(req,res,next){
     var rating = req.body.happyRating;
     var text = req.body.happyComments;
-    var d = new Date();
-    var day = d.getDate();
-    var month = d.getMonth();
-    var year = d.getFullYear();
-    var date = year+"-"+month+"-"+day;
+    var date = req.body.date;
     User.findOne({_id:req.session.passport.user}).then(function(result){
         var diaryEntries = result.diaryEntries;
         var sameDate = [];
